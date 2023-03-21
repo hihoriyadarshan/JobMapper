@@ -1,0 +1,63 @@
+{% load static%}
+<html>
+    <head>
+        <title>Admin Panel</title>
+        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header role="banner">
+            <h1>Admin Panel</h1>
+            <ul class="utilities">
+              <br>
+              <li class="users"><a href= "adminprofile">My Account</a></li>
+              
+              
+              <li class="logout warn"><a href="logout">Log Out</a></li>
+            </ul>
+          </header>
+          
+          <nav role='navigation'>
+            <ul class="main">
+              <li class="dashboard"><a href="#" class="btn btn--pill">Admin Login</a></li>
+              <li class="user"><a href="#" class="btn btn--pill">User </a></li>
+              <li class="write"><a href="#">Addproduct</a></li>
+              <li class="user"><a href="#" class="btn btn--pill">Feedback</a></li>
+              <li class="user"><a href="#" class="btn btn--pill">Bider</a></li>
+              <li class="user"><a href="#" class="btn btn--pill">Blog</a></li>
+
+              <li><a href="#">change password</a></li>
+            </ul>
+          </nav>
+          
+          <main role="main">
+            
+            <section class="panel important">
+              <h2>Write Some News</h2>
+              <ul>
+                <li>Information Panel</li>
+              </ul>
+            </section>
+            
+            <section class="panel important">
+              <h2>Write a post</h2>
+            <form action="bloger" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="twothirds">
+                    <h2>Blog image </h2>
+                  <input type="file" placeholder="upload image" height="50px" width="50px" name="image" />
+                   
+                    Blog title:<br/>
+                    <input type="text" name="title" size="40"/ required><br/><br/>
+                    Write a Blog:<br/>    
+                    <textarea name="message" rows="15" cols="67"></textarea><br/> 
+                  <div>
+                    <input type="submit"  value="Save" />
+                  </div>
+                  </div>
+                </form>
+            </section>
+          </main>
+    </body>
+</html>
+
+  

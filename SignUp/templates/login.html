@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/css/login.css"/>
+  <link rel="stylesheet" href="static/css/index.css"/>
+
+
+  <title>Login</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-list-container">
+            <li class="list"><a href="#home" class="link">Home</a></li>
+            <li class="list"><a href="#about-us" class="link">About</a></li>
+            <li class="list"><a href="#contact" class="link">Contact</a></li>
+            <li class="list"><a href="#contact" class="link">Recruiter login</a></li>
+            <li class="list"><a href="#Admin login" class="link">Admin Login</a></li>
+            <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
+        </ul>
+    </nav>
+
+  <div class="bg-img">
+    <div class="content">
+      <header>Login Form</header>
+    
+        <form action="loginHandle" method="post">
+        {% csrf_token %}
+        <div class="field">
+          <span class="fa fa-user"></span>
+          <input type="text" name="username" required placeholder="Enter your username">
+        </div>
+        <div class="field space">
+          <span class="fa fa-lock"></span>
+          <input type="password" name="password" class="pass-key" required placeholder="Password">
+          <span class="show">SHOW</span>
+        </div>
+        <div class="pass">
+          <a href="#">Forgot Password?</a>
+        </div>
+        <div class="field">
+          <input type="submit" value="LOGIN">
+        </div>
+      </form>
+      
+      <div class="signup">Don't have account?
+        <a href="{% url 'signup' %}">Signup Now</a>
+      </div>
+    </div>
+  </div>
+    <script>
+      const pass_field = document.querySelector(".pass-key");
+      const showBtn = document.querySelector(".show");
+      showBtn.addEventListener("click", function() {
+        if (pass_field.type === "password") {
+          pass_field.type = "text";
+          showBtn.textContent = "HIDE";
+          showBtn.style.color = "#3498db";
+        } else {
+          pass_field.type = "password";
+          showBtn.textContent = "SHOW";
+          showBtn.style.color = "#222";
+        }
+      });
+
+    </script>
+</body>
+</html>
