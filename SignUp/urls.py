@@ -18,6 +18,9 @@ urlpatterns = [
     path('company_data',views.company_data,name='company_data'),
     path('contact_data',views.contact_data,name='contact_data'),
     path('comapanyhomepage',views.companyhomepage,name='comapanyhomepage'),
+    path('user',views.user,name='user'),
+    path('showuser',views.showuser,name='showuser'),
+    path('deleteuser<id>',views.deleteuser,name='deleteuser'),
 
 
 ]

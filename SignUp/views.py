@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from SignUp.forms import SignUpForm, AdminForm, contactForm, companyForm
 from SignUp.models import SignUp, Admin_Log, Company
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 def homepage(request):
@@ -29,6 +31,9 @@ def company(request):
 
 def companyhomepage(request):
     return render(request,'companyhomepage.html') 
+
+def user(request):
+          return render(request,'user.html')
 
 
 
@@ -135,6 +140,24 @@ def loginHandlecompany(request):
 
 
 
+# show user data
+
+def showuser(request):
+    users = SignUp.objects.all()
+    p = Paginator(users, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'user.html',context)
+
 
 
 
@@ -191,3 +214,10 @@ def contact_data(request):
     return render(request,'index.html',{'form':form})
 
 
+def deleteuser(request,id):
+    context = {}
+    obj = get_object_or_404(SignUp,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showuser")
+    return render(request, "user.html", context)
