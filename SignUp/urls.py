@@ -17,6 +17,7 @@ urlpatterns = [
     path('logout',views.logout,name='logout'),
     path('company_data',views.company_data,name='company_data'),
     path('contact_data',views.contact_data,name='contact_data'),
+    # path('conta',views.conta,name='contact'),
     path('comapanyhomepage',views.companyhomepage,name='comapanyhomepage'),
     path('user',views.user,name='user'),
     path('showuser',views.showuser,name='showuser'),
