@@ -10,8 +10,10 @@ from django.core.paginator import Paginator
 # def blogpage(request):
 #     return render(request,'admin.html')
 
-def adminblog(request):
-    return render(request,'adminblog.html') 
+def adminblog(request): 
+    context = { 'adminblog_data': blog.objects.all() }
+    return render(request, "adminblog.html", {'context': context})
+
 
 def blogpage(request):
     return render(request,'blogpage.html')
@@ -37,10 +39,8 @@ def bloger(request):
 
 
 
-#show blog
 
-def showadminblog(request):
-    context = { 'adminblog_data': blog.objects.all() }
-    return render(request, "adminblog.html", {'context': context})
+
+
 
 

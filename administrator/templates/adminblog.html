@@ -37,7 +37,7 @@
             
             <section class="panel important">
               <center><h2>Blog Data</center></h2>
-              <a href="showadminblog">Show</a>
+              {% comment %} <a href="showadminblog">Show</a> {% endcomment %}
               <div class="container">
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
@@ -56,16 +56,28 @@
                   <tr>
                       <th scope="row">{{adminblog.id}}</th>
                       <td>{{adminblog.title}}</td>
-                      <td>{{adminblog.image}}</td>
+                      {% comment %} <td>{{adminblog.image}}</td>
                       {% if adminblog.image %}
                           <td>
-                             <img src="{{ adminblog.image }}"  alt="" class="prod-size" height="50px" width="50px">
+                             <img src="{{ adminblog.image.urls }}"  alt="" class="prod-size" height="50px" width="50px">
                           </td>
-                        {% else %}
+                      {% else %}
                           <td>
                             <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                           </td>  
-                         {% endif %}  
+                      {% endif %}   {% endcomment %}
+
+                                <div class="image-box">
+                        {% if adminblog.image %}
+                        <td>
+                          <img src="{{ adminblog.image.url }}"  alt="" class="prod-size" height="50px" width="50px">
+                        </td>
+                        {% else %}
+                        <td>
+                          <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                          </td>  
+                        {% endif %}     
+                      </div>
                       <td>{{adminblog.blogdate}}</td>
                       <td>{{adminblog.message}}</td>
                       

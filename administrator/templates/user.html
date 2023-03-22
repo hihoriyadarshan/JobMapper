@@ -67,7 +67,7 @@
                   <tr>
                       <th scope="row">{{user.id}}</th>
                       <div class="image-box">
-                        {% if user.image %}
+                          {% comment %} {% if user.image %}
                             <td> 
                                 <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="50px">
                             </td>
@@ -75,7 +75,17 @@
                             <td>
                               <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                             </td>  
-                          {% endif %}
+                          {% endif %} {% endcomment %}
+
+                        {% if user.image %}
+                        <td>
+                          <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
+                        </td>
+                        {% else %}
+                        <td>
+                          <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                        </td>  
+                        {% endif %}
 
                       <td>{{user.username}}</td>
                       <td>{{user.email}}</td>
