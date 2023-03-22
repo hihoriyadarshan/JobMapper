@@ -37,29 +37,6 @@ def user(request):
 
 
 
-
-
-#user  Registration
-# def signup(request):
-#     return render(request,'registration.html')
-
-# def sup(request):  
-   
-#     if request.method == "POST": 
-        
-#         form = SignUpForm(request.POST or None)  
-            
-#         if form.is_valid():  
-#             try:  
-#                 print("Hello")
-#                 form.save()  
-#                 return render(request,'registration.html')  
-#             except:  
-#                 pass  
-#     else:  
-#         form = SignUpForm()  
-#     return render(request,'home.html',{'form':form})
-
 def sup(request):  
     if request.method == "POST": 
         s = SignUp()
@@ -119,6 +96,9 @@ def company_data(request):
         b.companyname = request.POST.get('companyname')
         b.phone = request.POST.get('phone')
         b.email = request.POST.get('email')
+        if SignUp.objects.filter(email=b.email).exists():
+            #raise ValidationError("Email Exits")
+            return render(request,"companyregistration.html")
         b.password = request.POST.get('password')
 
         if len(request.FILES) != 0:

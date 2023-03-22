@@ -11,7 +11,7 @@ class SignUpForm(forms.ModelForm):
 class AdminForm(forms.ModelForm):  
     class Meta:  
         model = Admin_Log  
-        fields = ('username','password','email','phone',)
+        fields = ('username','password','email','phone','hobbies','address',)
 
 class contactForm(forms.ModelForm):  
     class Meta:  

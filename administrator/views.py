@@ -18,6 +18,9 @@ def adminblog(request):
 def blogpage(request):
     return render(request,'blogpage.html')
 
+def adminprofile(request):
+    return render(request,'adminprofile.html')
+
 
 
 
@@ -36,8 +39,6 @@ def bloger(request):
         #return HttpResponse(b)
         return render (request, "admin.html")
     return HttpResponse('Fail')
-
-
 
 
 

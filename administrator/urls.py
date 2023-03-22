@@ -7,6 +7,8 @@ urlpatterns = [
 
     path('bloger',views.bloger,name='bloger'),
     path('adminblog',views.adminblog,name='adminblog'),
+    path('adminprofile',views.adminprofile,name='adminprofile'),
+
    
 
 
