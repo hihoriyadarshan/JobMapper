@@ -40,26 +40,47 @@ def user(request):
 
 
 #user  Registration
-def signup(request):
-    return render(request,'registration.html')
+# def signup(request):
+#     return render(request,'registration.html')
+
+# def sup(request):  
+   
+#     if request.method == "POST": 
+        
+#         form = SignUpForm(request.POST or None)  
+            
+#         if form.is_valid():  
+#             try:  
+#                 print("Hello")
+#                 form.save()  
+#                 return render(request,'registration.html')  
+#             except:  
+#                 pass  
+#     else:  
+#         form = SignUpForm()  
+#     return render(request,'home.html',{'form':form})
 
 def sup(request):  
-   
     if request.method == "POST": 
-        
-        form = SignUpForm(request.POST or None)  
-            
-        if form.is_valid():  
-            try:  
-                print("Hello")
-                form.save()  
-                return render(request,'registration.html')  
-            except:  
-                pass  
-    else:  
-        form = SignUpForm()  
-    return render(request,'home.html',{'form':form})
+        s = SignUp()
+        s.username = request.POST.get('username')
+        s.email = request.POST.get('email')
+        if SignUp.objects.filter(email=s.email).exists():
+            #raise ValidationError("Email Exits")
+            return render(request,"registration.html")
+        s.job = request.POST.get('job')
+        s.skill = request.POST.get('skill')
+        s.hobbies = request.POST.get('hobbies')
+        s.phone = request.POST.get('phone')
+        s.address = request.POST.get('address')
+        s.password = request.POST.get('password')
 
+        if len(request.FILES) != 0:
+            s.image = request.FILES['image']
+        s.save()
+        # return HttpResponse(s.username)
+        return render (request, "login.html")
+    return HttpResponse('Fail')
 
 #user login
 
@@ -186,10 +207,7 @@ def cont(request):
     return render(request,'index.html',{'form':form})
 
 
-
-
-
-# show user data
+#show user
 
 def showuser(request):
     users = SignUp.objects.all()
@@ -206,7 +224,6 @@ def showuser(request):
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
     return render(request,'user.html',context)
-
 
 
 # delete user data

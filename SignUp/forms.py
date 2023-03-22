@@ -6,7 +6,7 @@ from SignUp.models import SignUp,Admin_Log, contact, Company
 class SignUpForm(forms.ModelForm):  
     class Meta:  
         model = SignUp  
-        fields = ('username','email','password','phone',)
+        fields = ('image','username','email','job','skill','hobbies','address','password',)
 
 class AdminForm(forms.ModelForm):  
     class Meta:  

@@ -4,7 +4,12 @@ from . import views
 
 urlpatterns = [
 
-    # path('blogpage',views.blogpage,name='blogpage'),
+
     path('bloger',views.bloger,name='bloger'),
+    path('showadminblog',views.showadminblog,name='showadminblog'),
+    path('adminblog',views.adminblog,name='adminblog'),
+   
+
+
 
     ]

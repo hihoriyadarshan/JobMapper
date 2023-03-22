@@ -23,7 +23,9 @@
               <li class="write"><a href="#">Addproduct</a></li>
               <li class="user"><a href="#" class="btn btn--pill">Feedback</a></li>
               <li class="user"><a href="#" class="btn btn--pill">Bider</a></li>
-              <li class="user"><a href="#" class="btn btn--pill">Blog</a></li>
+              {% comment %} <li class="user"><a href="#" class="btn btn--pill">Blog</a></li> {% endcomment %}
+              <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
+
 
               <li><a href="#">change password</a></li>
             </ul>
