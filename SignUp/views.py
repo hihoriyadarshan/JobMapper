@@ -167,7 +167,8 @@ def loginHandleAdmin(request):
 
 
 # Contact us
-def contact(request):  
+
+def cont(request):  
    
     if request.method == "POST": 
         
@@ -183,7 +184,6 @@ def contact(request):
     else:  
         form = contactForm()  
     return render(request,'index.html',{'form':form})
-
 
 
 
