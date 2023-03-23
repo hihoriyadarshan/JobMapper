@@ -78,7 +78,7 @@ def loginHandle(request):
             email = request.session['email']
             phone = request.session['phone']
 
-            return render(request,'userhomepage.html')
+            return render(request,'user-hp.html')
         else :
             return render(request,'login.html')
        
@@ -157,6 +157,7 @@ def loginHandleAdmin(request):
             username = request.session['username']
             email = request.session['email']
             phone = request.session['phone']
+            
 
             return render(request,'admin.html')
         else :
@@ -215,3 +216,10 @@ def deleteuser(request,id):
         obj.delete()
         return redirect("/showuser")
     return render(request, "user.html", context)
+
+
+#show profile
+def showprofile(request):
+    context ={"user_data":SignUp.objects.all()}
+    return render(request, "profile.html", context)
+    print('user_data')

@@ -20,6 +20,8 @@ urlpatterns = [
     path('user',views.user,name='user'),
     path('showuser',views.showuser,name='showuser'),
     path('deleteuser<id>',views.deleteuser,name='deleteuser'),
+    path('showprofile',views.showprofile,name='showprofile'),
+
 
 
 ]
