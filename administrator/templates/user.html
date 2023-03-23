@@ -62,23 +62,11 @@
                   <section class="card-container">
                     {% for user in page_obj %}  
                       <div class="card">
-                        
-                        
-                  <tr>
+                        <tr>
                       <th scope="row">{{user.id}}</th>
                       <div class="image-box">
-                          {% comment %} {% if user.image %}
-                            <td> 
-                                <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="50px">
-                            </td>
-                          {% else %}
-                            <td>
-                              <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
-                            </td>  
-                          {% endif %} {% endcomment %}
-
                         {% if user.image %}
-                        <td>
+                        <td> 
                           <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
                         </td>
                         {% else %}

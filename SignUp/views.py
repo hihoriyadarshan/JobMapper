@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from SignUp.forms import SignUpForm, AdminForm, contactForm, companyForm
 from SignUp.models import SignUp, Admin_Log, Company
 from django.core.paginator import Paginator
+
 
 
 # Create your views here.

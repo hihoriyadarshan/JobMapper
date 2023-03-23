@@ -11,8 +11,7 @@ from django.core.paginator import Paginator
 #     return render(request,'admin.html')
 
 def adminblog(request): 
-    context = { 'adminblog_data': blog.objects.all() }
-    return render(request, "adminblog.html", {'context': context})
+    return render(request, "adminblog.html", {'blogs': blog.objects.all()})
 
 
 def blogpage(request):

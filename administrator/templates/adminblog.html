@@ -52,37 +52,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for adminblog in context.adminblog_data %} 
+                  {% for blog in blogs %} 
                   <tr>
-                      <th scope="row">{{adminblog.id}}</th>
-                      <td>{{adminblog.title}}</td>
-                      {% comment %} <td>{{adminblog.image}}</td>
-                      {% if adminblog.image %}
-                          <td>
-                             <img src="{{ adminblog.image.urls }}"  alt="" class="prod-size" height="50px" width="50px">
-                          </td>
-                      {% else %}
-                          <td>
-                            <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
-                          </td>  
-                      {% endif %}   {% endcomment %}
-
-                                <div class="image-box">
-                        {% if adminblog.image %}
+                      <th scope="row">{{blog.id}}</th>
+                      <td>{{blog.title}}</td>
+                      <div class="image-box">
+                        {% comment %} <p>{{ blog.image }}</p> {% endcomment %}
+                        {% if blog.image.url %}
                         <td>
-                          <img src="{{ adminblog.image.url }}"  alt="" class="prod-size" height="50px" width="50px">
+                          <img src="{{ blog.image }}"  alt="oo" class="prod-size" height="50px" width="50px">
                         </td>
                         {% else %}
                         <td>
-                          <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                          <img src="{{ blog.image.url }}"  alt="mmmm" class="prod-size">
                           </td>  
-                        {% endif %}     
+                        {% endif %}      
                       </div>
-                      <td>{{adminblog.blogdate}}</td>
-                      <td>{{adminblog.message}}</td>
+                      <td>{{blog.blogdate}}</td>
+                      <td>{{blog.message}}</td>
                       
                      
-                      {% comment %} <td><a href="{% url 'deleteadminblog' adminblog.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
+                      {% comment %} <td><a href="{% url 'deleteblog' blog.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
                   </tr>
                   {% endfor %}
 
