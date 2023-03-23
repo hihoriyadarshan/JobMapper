@@ -23,7 +23,7 @@
           
           <nav role='navigation'>
             <ul class="main">
-              {% comment %} <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li> {% endcomment %}
+              <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li>
               <li class="user"><a href="{% url 'user' %}" class="btn btn--pill">User </a></li>
               {% comment %} <li class="write"><a href="{% url 'selleraddproduct' %}">Addproduct</a></li> {% endcomment %}
               {% comment %} <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li> {% endcomment %}
@@ -72,7 +72,7 @@
                       <td>{{blog.message}}</td>
                       
                      
-                      {% comment %} <td><a href="{% url 'deleteblog' blog.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
+                      <td><a href="{% url 'deleteblog' blog.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
                   </tr>
                   {% endfor %}
 

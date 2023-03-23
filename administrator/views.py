@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from administrator.forms import blogForm
 from administrator.models import blog
@@ -20,6 +20,9 @@ def blogpage(request):
 def adminprofile(request):
     return render(request,'adminprofile.html')
 
+def adminLTE(request):
+    return render(request,'admin.html')
+
 
 
 
@@ -38,6 +41,19 @@ def bloger(request):
         #return HttpResponse(b)
         return render (request, "admin.html")
     return HttpResponse('Fail')
+
+
+#delete blog
+def deleteblog(request,id):
+    context = {}
+    obj = get_object_or_404(blog,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/adminblog")
+    return render(request, "adminblog.html", context)
+
+
+
 
 
 
