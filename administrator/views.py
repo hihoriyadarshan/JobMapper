@@ -23,6 +23,8 @@ def adminprofile(request):
 def adminLTE(request):
     return render(request,'admin.html')
 
+def feedback(request):
+        return render(request,'feedback.html')
 
 
 
@@ -51,6 +53,9 @@ def deleteblog(request,id):
         obj.delete()
         return redirect("/adminblog")
     return render(request, "adminblog.html", context)
+
+
+# show contct data
 
 
 

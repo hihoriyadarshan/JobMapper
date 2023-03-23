@@ -11,13 +11,81 @@
             <li class="list"><a href="#home" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
             <li class="list"><a href="#contact" class="link">Contact</a></li>
-            <li class="list"><a href="#contact" class="link">Job</a></li>
-            <li class="list"><a href="{% url 'showprofile' %}" class="link">Profile</a></li>
-            <li class="list"><a href="logout" class="link">Logout</a></li>
+            <li class="list"><a href="#" class="link">Job</a></li>   
+            <li class="list"><a href="#" class="link">Profile</a></li>
+            <li class="list"><a href="logout" class="link">logout</a></li>
         </ul>
-   
     </nav>
+    <!-- This section is start in  home iteam -->
+    <section class="home" id="home">
+       
 
+            <video autoplay muted loop id="bg-video">
+                <source src="static/images/video.mp4" type="video/mp4" />
+            </video>
+    
+
+    </section>
+
+    <!-- Home page section End -->
+    
+    
+
+    <!-- About Page section start -->
+    <section class="about-us" id="about-us"> 
+        <div class="imgBox">
+            <img src="static/images/about-image-1-940x460.jpg" alt="about-us-image" />
+        </div>
+        <div class="contentBox">
+            <header class="header">
+                <h1>About Us</h1>
+            </header>
+            <div class="content">
+                <p></p>write content here...
+            </div>
+        </div>
+    </section>
+    <!-- End About-us page section -->
+
+
+    <!-- contact section Start -->
+
+    <form action="cont" method="POST">
+        {% csrf_token %}
+    <div class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-box-img">
+                <img src="static/images/contact-1-720x480.jpg" alt="Contact-us-image" />
+            </div>
+            
+            <div class="contact-form" id="contactform">
+                <h1 class="title-contact-form">Contact us</h1>
+                <div class="inputBox">
+                    <div class="col-2">
+                        <label for="fullname">fullname:</label>
+                        <input type="text" id="fullname" name="name" placeholder="your name..." class="name">
+                    </div>
+                    <div class="col-2">
+                        <label for="e-mail">email:</label>
+                        <input type="e-mail" id="e-mail" name="email" placeholder="your email..."/>
+                    </div>
+                    <div class="col-2">
+                        <label for="textarea">message:</label>
+                        <textarea placeholder="write your message here..." id="textarea" name="message" rows="10"></textarea>
+                    </div>
+
+                    <div class="col-2">
+                        <label></label>
+                        <button class="submit">Send message</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</form>
 
 </body>
 </html>

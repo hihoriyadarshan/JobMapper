@@ -33,6 +33,7 @@ def company(request):
 def companyhomepage(request):
     return render(request,'companyhomepage.html') 
 
+
 def user(request):
           return render(request,'user.html')
 
@@ -100,6 +101,7 @@ def loginHandle(request):
 
 # company registration
 
+
 def company_data(request):  
     if request.method == "POST": 
         b = Company()
@@ -107,9 +109,6 @@ def company_data(request):
         b.companyname = request.POST.get('companyname')
         b.phone = request.POST.get('phone')
         b.email = request.POST.get('email')
-        if SignUp.objects.filter(email=b.email).exists():
-            #raise ValidationError("Email Exits")
-            return render(request,"companyregistration.html")
         b.password = request.POST.get('password')
 
         if len(request.FILES) != 0:
@@ -117,7 +116,6 @@ def company_data(request):
         b.save()
         return render (request, "companylogin.html")
     return HttpResponse('Fail')
-
 
 #company login
 def loginHandlecompany(request):
@@ -234,3 +232,6 @@ def showprofile(request):
     context ={"user_data":SignUp.objects.all()}
     return render(request, "profile.html", context)
     print('user_data')
+
+
+
