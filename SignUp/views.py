@@ -72,10 +72,20 @@ def loginHandle(request):
         if uname[0].username == un and uname[0].password == ps:
             request.session['username'] = uname[0].username
             request.session['email'] = uname[0].email
+            request.session['job'] = uname[0].job
+            request.session['hobbies'] = uname[0].hobbies
+            request.session['skill'] = uname[0].skill
             request.session['phone'] = uname[0].phone
+            request.session['address'] = uname[0].address
+            
+
 
             username = request.session['username']
             email = request.session['email']
+            job = request.session['job']
+            skill = request.session['skill']
+            hobbies =request.session['hobbies']
+
             phone = request.session['phone']
 
             return render(request,'user-hp.html')
