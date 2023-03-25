@@ -21,9 +21,10 @@ class Admin_Log(models.Model):
     username = models.TextField(max_length = 50)
     password = models.TextField(max_length = 50)
     email = models.EmailField(blank = True,max_length=50) 
-    phone = models.TextField(max_length = 10)
-   
+    phone = models.TextField(max_length = 10)    
+    
 
+    
       
     def __str__(self):
         return self.username 
@@ -44,18 +45,13 @@ class Company(models.Model):
     
 
 
-
-    
-
-
-
-
-
 #contact us model
 class contact(models.Model):
     name = models.TextField(max_length = 50)
     email = models.EmailField(blank = True,max_length=50)
     message = models.TextField(max_length = 300)
+
     
     def __str__(self):
         return self.name 
+    
