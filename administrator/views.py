@@ -27,6 +27,7 @@ def adminLTE(request):
 
 
 
+
 #blog
 def bloger(request):  
     if request.method == "POST": 

@@ -21,9 +21,9 @@ urlpatterns = [
     path('feedback',views.feedback,name='feedback'),
     path('showcontact',views.showcontact,name='showcontact'),
     path('deletemessage<id>',views.deletemessage,name='deletemessage'),
-
     path('comapanyhomepage',views.companyhomepage,name='comapanyhomepage'),
     path('user',views.user,name='user'),
+    path('showcompany',views.showcompany,name='showcompany'),
     path('showuser',views.showuser,name='showuser'),
     path('deleteuser<id>',views.deleteuser,name='deleteuser'),
     path('showprofile',views.showprofile,name='showprofile'),

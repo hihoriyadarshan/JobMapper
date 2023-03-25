@@ -35,8 +35,8 @@
           <main role="main">
             
             <section class="panel important">
-              <center><h2>user</center></h2>
-              <a href="showuser">Show</a>
+              <center><h2>Comapny</center></h2>
+              <a href="showcompany">Show</a>
               <div class="container">
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
@@ -45,28 +45,24 @@
 
                     <th scope="col">id</th>
                     <th scope="col">image</th>
+                    <th scope="col">Company name</th>                  
                     <th scope="col">Username</th>                  
                     <th scope="col">E-mail</th>
-                    <th scope="col">Job</th>
-                    <th scope="col">Skill</th>
-                    <th scope="col">Hobbies</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">update</th>
                     <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
                   
                   <section class="card-container">
-                    {% for user in page_obj %}  
+                    {% for company in page_obj %}  
                       <div class="card">
                         <tr>
-                      <th scope="row">{{user.id}}</th>
+                      <th scope="row">{{company.id}}</th>
                       <div class="image-box">
-                        {% if user.image %}
+                        {% if company.image %}
                         <td> 
-                          <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
+                          <img src="{{ company.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
                         </td>
                         {% else %}
                         <td>
@@ -74,15 +70,13 @@
                         </td>  
                         {% endif %}
 
-                      <td>{{user.username}}</td>
-                      <td>{{user.email}}</td>
-                      <td>{{user.job}}</td>
-                      <td>{{user.skill}}</td>
-                      <td>{{user.hobbies}}</td>
-                      <td>{{user.phone}}</td>
-                      <td>{{user.address}}</td>
+                        <td>{{company.companyname}}</td>
+                      <td>{{company.username}}</td>
+                      <td>{{company.email}}</td>
+                      <td>{{company.phone}}</td>
+                      
                       <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td>
-                      <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
+                      {% comment %} <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
                   </tr>
                   {% endfor %}
                 </tbody>

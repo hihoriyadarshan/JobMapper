@@ -37,6 +37,9 @@ def companyhomepage(request):
 def user(request):
           return render(request,'user.html')
 
+def company_data(request):
+          return render(request,'company.html')
+
 def feedback(request):
         return render(request,'feedback.html')
 
@@ -144,6 +147,7 @@ def loginHandlecompany(request):
             # return render(request,'userhomepage.html')
             return render(request,'companylogin.html')
        
+
     else:
         form = companyForm()
         return render(request, template_name = "companylogin.html", context = {"form":form})
@@ -217,6 +221,23 @@ def showuser(request):
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
     return render(request,'user.html',context)
+
+#show company user
+def showcompany(request):
+    company = Company.objects.all()
+    p = Paginator(company, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'company.html',context)
 
 #show contact
 
