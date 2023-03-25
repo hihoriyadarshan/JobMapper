@@ -25,6 +25,8 @@
             <ul class="main">
               <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li>
               <li class="user"><a href="{% url 'user' %}" class="btn btn--pill">User </a></li>
+              <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+             
               {% comment %} <li class="write"><a href="{% url 'selleraddproduct' %}">Addproduct</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               {% comment %} <li class="user"><a href="{% url 'showaddBider' %}" class="btn btn--pill">Bider</a></li> {% endcomment %}
@@ -59,20 +61,21 @@
                 <tbody>
                   
                   <section class="card-container">
-                    {% for user in page_obj %}  
-                      <div class="card">
-                        <tr>
-                      <th scope="row">{{user.id}}</th>
-                      <div class="image-box">
-                        {% if user.image %}
-                        <td> 
-                          <img src="{{ user.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
-                        </td>
-                        {% else %}
-                        <td>
-                          <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
-                        </td>  
-                        {% endif %}
+                    
+                        {% for user in page_obj %}  
+                        <div class="card">
+                          <tr>
+                        <th scope="row">{{user.id}}</th>
+                        <div class="image-box">
+                          {% if user.image %}
+                          <td> 
+                            <img src="{{ user.image }}"  alt="" class="prod-size" height="50px" width="60px">
+                          </td>
+                          {% else %}
+                          <td>
+                            <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                          </td>  
+                          {% endif %}
 
                       <td>{{user.username}}</td>
                       <td>{{user.email}}</td>

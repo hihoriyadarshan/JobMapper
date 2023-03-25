@@ -25,6 +25,8 @@
             <ul class="main">
               <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li>
               <li class="user"><a href="{% url 'user' %}" class="btn btn--pill">User </a></li>
+              <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+             
               {% comment %} <li class="write"><a href="{% url 'selleraddproduct' %}">Addproduct</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               {% comment %} <li class="user"><a href="{% url 'showaddBider' %}" class="btn btn--pill">Bider</a></li> {% endcomment %}
@@ -49,6 +51,7 @@
                     <th scope="col">Username</th>                  
                     <th scope="col">E-mail</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">update</th>
                     <th scope="col">delete</th>
                   </tr>
                 </thead>
@@ -62,7 +65,7 @@
                       <div class="image-box">
                         {% if company.image %}
                         <td> 
-                          <img src="{{ company.image.url }}"  alt="" class="prod-size" height="50px" width="60px">
+                          <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="60px">
                         </td>
                         {% else %}
                         <td>
@@ -76,7 +79,7 @@
                       <td>{{company.phone}}</td>
                       
                       <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td>
-                      {% comment %} <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
+                      <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -97,7 +100,7 @@
 
 
             
-            <section class="panel important">
+            {% comment %} <section class="panel important"> {% endcomment %}
               
 
 
