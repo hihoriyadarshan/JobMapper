@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from SignUp.forms import SignUpForm, AdminForm, contactForm, companyForm
-from SignUp.models import SignUp, Admin_Log, Company
+from SignUp.models import SignUp, Admin_Log, Company, contact
 from django.core.paginator import Paginator
 
 
@@ -36,6 +36,9 @@ def companyhomepage(request):
 
 def user(request):
           return render(request,'user.html')
+
+def feedback(request):
+        return render(request,'feedback.html')
 
 
 
@@ -215,6 +218,24 @@ def showuser(request):
     context ={'page_obj': page_obj} 
     return render(request,'user.html',context)
 
+#show contact
+
+def showcontact(request):
+    contacts = contact.objects.all()
+    p = Paginator(contacts, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'feedback.html',context)
+
 
 # delete user data
 
@@ -225,6 +246,16 @@ def deleteuser(request,id):
         obj.delete()
         return redirect("/showuser")
     return render(request, "user.html", context)
+
+#delte blog
+
+def deletemessage(request,id):
+    context = {}
+    obj = get_object_or_404(contact,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showcontact")
+    return render(request, "feedback.html", context)
 
 
 #show profile

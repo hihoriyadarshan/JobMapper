@@ -11,7 +11,6 @@ urlpatterns = [
     path('adminLTE',views.adminLTE,name='adminLTE'),
     path('deleteblog<id>',views.deleteblog,name='deleteblog'),
     # path('showcontact',views.showcontact,name='showcontact'),
-    path('feedback',views.feedback,name='feedback'),
 
 
    

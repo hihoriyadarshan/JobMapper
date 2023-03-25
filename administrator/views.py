@@ -23,8 +23,7 @@ def adminprofile(request):
 def adminLTE(request):
     return render(request,'admin.html')
 
-def feedback(request):
-        return render(request,'feedback.html')
+
 
 
 
