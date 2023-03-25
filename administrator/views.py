@@ -55,13 +55,3 @@ def deleteblog(request,id):
     return render(request, "adminblog.html", context)
 
 
-# show contct data
-
-
-
-
-
-
-
-
-

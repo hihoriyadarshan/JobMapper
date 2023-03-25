@@ -10,10 +10,8 @@ from django.core.paginator import Paginator
 def homepage(request):
     return render(request,"index.html")
 
-
 def sign_up(request):
     return render(request,'login.html')
-    # return HttpResponse("hello");
 
 def signup(request):
     return render(request,'registration.html')
@@ -32,7 +30,6 @@ def company(request):
 
 def companyhomepage(request):
     return render(request,'companyhomepage.html') 
-
 
 def user(request):
           return render(request,'user.html')
@@ -106,8 +103,6 @@ def loginHandle(request):
     
 
 # company registration
-
-
 def company_data(request):  
     if request.method == "POST": 
         b = Company()
@@ -133,10 +128,12 @@ def loginHandlecompany(request):
         uname = Company.objects.all().filter(username=un)
 
         if uname[0].username == un and uname[0].password == ps:
+            request.session['companyname'] = uname[0].companyname
             request.session['username'] = uname[0].username
             request.session['email'] = uname[0].email
             request.session['phone'] = uname[0].phone
 
+            companyname = request.session['companyname']
             username = request.session['username']
             email = request.session['email']
             phone = request.session['phone']

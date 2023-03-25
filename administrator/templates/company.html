@@ -26,8 +26,6 @@
               <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li>
               <li class="user"><a href="{% url 'user' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
-             
-              {% comment %} <li class="write"><a href="{% url 'selleraddproduct' %}">Addproduct</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               {% comment %} <li class="user"><a href="{% url 'showaddBider' %}" class="btn btn--pill">Bider</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
@@ -38,7 +36,6 @@
             
             <section class="panel important">
               <center><h2>Comapny</center></h2>
-              <a href="showcompany">Show</a>
               <div class="container">
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
@@ -86,6 +83,8 @@
             </div>
             </table>  
             <center>
+
+
               {%if page_obj.has_previous %} {# whether the previous page exists #}
                   <a href="?page={{page_obj.previous_page_number}}"><</a> {# link to the prev page #}
               {% endif %}
@@ -100,7 +99,7 @@
 
 
             
-            {% comment %} <section class="panel important"> {% endcomment %}
+            
               
 
 

@@ -15,7 +15,6 @@ urlpatterns = [
     path('companylogin',views.companylogin,name='companylogin'),
     path('company',views.company,name='company'),
     path('company_data',views.company_data,name='company_data'),
-    # path('contact_data',views.contact_data,name='contact_data'),
     path('logout',views.logout,name='logout'),
     path('cont',views.cont,name='contact_data'),
     path('feedback',views.feedback,name='feedback'),

@@ -56,14 +56,13 @@
                       <th scope="row">{{blog.id}}</th>
                       <td>{{blog.title}}</td>
                       <div class="image-box">
-                        {% comment %} <p>{{ blog.image }}</p> {% endcomment %}
                         {% if blog.image.url %}
                         <td>
-                          <img src="{{ blog.image }}"  alt="oo" class="prod-size" height="50px" width="50px">
+                          <img src="{{ blog.image }}"  alt="" class="prod-size" height="50px" width="50px">
                         </td>
                         {% else %}
                         <td>
-                          <img src="{{ blog.image.url }}"  alt="mmmm" class="prod-size">
+                          <img src="{{ blog.image.url }}"  alt="" class="prod-size">
                           </td>  
                         {% endif %}      
                       </div>
@@ -90,15 +89,7 @@
               {% endif %}
           </center>
             </section>
-
-
-
-            
-            <section class="panel important">
               
-
-
-
             </section>
           </main>
     </body>
