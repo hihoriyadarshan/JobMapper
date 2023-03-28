@@ -26,6 +26,9 @@ urlpatterns = [
     path('showuser',views.showuser,name='showuser'),
     path('deleteuser<id>',views.deleteuser,name='deleteuser'),
     path('showprofile',views.showprofile,name='showprofile'),
+    path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),
+
+    
     
     
 

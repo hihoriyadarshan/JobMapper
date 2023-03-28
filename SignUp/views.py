@@ -40,6 +40,9 @@ def company_data(request):
 def feedback(request):
         return render(request,'feedback.html')
 
+def feedback(request):
+        return render(request,'showcompanyprofile.html')
+
 
 
 def sup(request):  
@@ -148,7 +151,6 @@ def loginHandlecompany(request):
     else:
         form = companyForm()
         return render(request, template_name = "companylogin.html", context = {"form":form})
-
 
 
 
@@ -282,5 +284,11 @@ def showprofile(request):
     return render(request, "profile.html", context)
     print('user_data')
 
+#show company profile
+
+def showcompanyprofile(request):
+    context ={"company_data":Company.objects.all()}
+    return render(request, "companyprofile.html", context)
+    print('company_data')
 
 
