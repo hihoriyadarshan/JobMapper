@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from SignUp.forms import SignUpForm, AdminForm, contactForm, companyForm
 from SignUp.models import SignUp, Admin_Log, Company, contact
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 
 
 
@@ -40,11 +44,12 @@ def company_data(request):
 def feedback(request):
         return render(request,'feedback.html')
 
-def feedback(request):
+def showcompanyprofile(request):
         return render(request,'showcompanyprofile.html')
 
 
-
+        
+        #user Registration
 def sup(request):  
     if request.method == "POST": 
         s = SignUp()
@@ -59,6 +64,14 @@ def sup(request):
         s.phone = request.POST.get('phone')
         s.address = request.POST.get('address')
         s.password = request.POST.get('password')
+
+         # sup(request,un)
+        # subject = 'welcome to JobMapper'
+        # message = f'Hello, {s.username},Your registration has been confirmed for the JOb Mapper'
+        # email_from = settings.EMAIL_HOST_USER
+        # registration_list = [s.username, s.email]
+
+        # send_mail( subject, message, email_from, registration_list)
 
         if len(request.FILES) != 0:
             s.image = request.FILES['image']
@@ -284,11 +297,10 @@ def showprofile(request):
     return render(request, "profile.html", context)
     print('user_data')
 
-#show company profile
+
+ #show company profile
 
 def showcompanyprofile(request):
     context ={"company_data":Company.objects.all()}
     return render(request, "companyprofile.html", context)
     print('company_data')
-
-

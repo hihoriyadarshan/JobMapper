@@ -24,7 +24,7 @@
           <nav role='navigation'>
             <ul class="main">
               <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin Login</a></li>
-              <li class="user"><a href="{% url 'user' %}" class="btn btn--pill">User </a></li>
+              <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
               {% comment %} <li class="write"><a href="{% url 'selleraddproduct' %}">Addproduct</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
@@ -37,7 +37,7 @@
             
             <section class="panel important">
               <center><h2>user</center></h2>
-              <a href="showuser">Show</a>
+              {% comment %} <a href="showuser">Show</a> {% endcomment %}
               <div class="container">
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">

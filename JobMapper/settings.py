@@ -146,3 +146,11 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+# Email verification
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'darshanhihoriya4@gmail.com'  
+EMAIL_HOST_PASSWORD = 'oxhmgodamxufnagj'  
+EMAIL_PORT = 587  
