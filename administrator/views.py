@@ -4,6 +4,12 @@ from administrator.forms import blogForm
 from administrator.models import blog
 from django.core.paginator import Paginator
 
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+
 # Create your views here.
 
 
@@ -16,6 +22,7 @@ def adminblog(request):
 
 def blogpage(request):
     return render(request,'blogpage.html')
+
 
 def adminprofile(request):
     return render(request,'adminprofile.html')
@@ -55,3 +62,42 @@ def deleteblog(request,id):
     return render(request, "adminblog.html", context)
 
 
+#show blog
+
+def showbloger(request):
+    context = { 'blog_data': blog.objects.all() }
+    return render(request, "blogpage.html", {'context': context})
+
+# show blog company
+
+def showbloger_company(request):
+    context = { 'blog_data': blog.objects.all() }
+    return render(request, "blogpage_company.html", {'context': context})
+
+ # pdf download
+
+def companyuser_pdf(request):
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf, pagesize=letter,bottomup=0)
+    textob = c.beginText
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica",14)
+    
+    lines =[
+        "This is line1"
+        "This is line2"
+        "This is line3"
+        "This is line4"
+
+    ]    
+
+#loop
+    for line in lines:
+        textob.textline(line)
+
+        c.drawText(textob)
+        c.showPage()
+        c.save()
+        buf.seek(0)
+
+        return FileResponse(buf, as_attachment=True, filename="companyuser.pdf")  

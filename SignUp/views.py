@@ -5,6 +5,13 @@ from SignUp.models import SignUp, Admin_Log, Company, contact
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.conf import settings
+# from xhtml2pdf import pisa
+# from django.template.loader import get_template
+
+# pdf
+
+
+
 
 
 
@@ -81,7 +88,7 @@ def sup(request):
     return HttpResponse('Fail')
 
 #user login
-
+   
 def loginHandle(request):
     
     if request.method == "POST":    
@@ -304,3 +311,27 @@ def showcompanyprofile(request):
     context ={"company_data":Company.objects.all()}
     return render(request, "companyprofile.html", context)
     print('company_data')
+
+
+#pdf download
+
+# def pdf_company_report(request):
+#     products = Company.objects.all()
+#     template_path = 'pdf_company.html'
+
+#     context = {'products': products}
+
+#     response = HttpResponse(content_type='application/pdf')
+
+#     response['Content-Disposition'] = 'filename="product_report.pdf"'
+
+#     template = get_template(template_path)
+
+#     html = template.render(context)
+#     pisa_status = pisa.CreatePDF(html,dest=response)
+#     if pisa_status.err:
+#        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+#        return response
+
+
+      

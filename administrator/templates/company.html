@@ -16,6 +16,7 @@
             <ul class="utilities">
               <br>
               <li class="users"><a href="adminprofile">My Account</a></li>
+              {% comment %} <li class="users"><a href="companyuser_pdf">User PDF Download</a></li> {% endcomment %}
               {% comment %} <li><a href="{% url 'changepassword' %}">change password</a></li> {% endcomment %}
               <li class="logout warn"><a href="logout">Log Out</a></li>
             </ul>
@@ -70,7 +71,7 @@
                         </td>  
                         {% endif %}
 
-                        <td>{{company.companyname}}</td>
+                      <td>{{company.companyname}}</td>
                       <td>{{company.username}}</td>
                       <td>{{company.email}}</td>
                       <td>{{company.phone}}</td>

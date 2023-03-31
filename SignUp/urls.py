@@ -27,6 +27,8 @@ urlpatterns = [
     path('deleteuser<id>',views.deleteuser,name='deleteuser'),
     path('showprofile',views.showprofile,name='showprofile'),
     path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),
+    # path('pdf_company_report', views.pdf_company_report, name='pdf_company_report'),
+    # path('pdf',views.getpdf)  
 
     
     

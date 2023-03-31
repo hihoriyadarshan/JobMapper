@@ -39,6 +39,7 @@ class Company(models.Model):
     email = models.EmailField(blank = True,max_length=50,unique=True) 
     password = models.TextField(max_length = 50)
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
+    # company_status=models.CharField(max_length=15, null=True)
 
     def __str__(self):
         return self.username
@@ -55,3 +56,5 @@ class contact(models.Model):
     def __str__(self):
         return self.name 
     
+
+
