@@ -4,19 +4,21 @@
         <title>user_data pdf</title>
         <link href="{% static 'css/pdf_report.css' %}" rel="stylesheet" media="all">
       </head>
+      <body>
       <table class="table">
+        
         <thead>
           <tr>
 
             <th scope="col">id</th>
-            <th scope="col">image</th>
+            {% comment %} <th scope="col">image</th> {% endcomment %}
             <th scope="col">Username</th>                  
             <th scope="col">E-mail</th>
             <th scope="col">Job</th>
             <th scope="col">Skill</th>
             <th scope="col">Hobbies</th>
             <th scope="col">Phone</th>
-            <th scope="col">Address</th>
+            {% comment %} <th scope="col">Address</th> {% endcomment %}
             {% comment %} <th scope="col">update</th> {% endcomment %}
             {% comment %} <th scope="col">delete</th> {% endcomment %}
           </tr>
@@ -25,20 +27,20 @@
           
           <section class="card-container">
             
-                {% for user in page_obj %}  
+                {% for user in users %}  
                 <div class="card">
                   <tr>
                 <th scope="row">{{user.id}}</th>
-                <div class="image-box">
+                {% comment %} <div class="image-box">
                   {% if user.image %}
                   <td> 
                     <img src="{{ user.image }}"  alt="" class="prod-size" height="50px" width="60px">
                   </td>
-                  {% else %}
-                  <td>
+                  {% else %} {% endcomment %}
+                  {% comment %} <td>
                     <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                   </td>  
-                  {% endif %}
+                  {% endif %} {% endcomment %}
 
               <td>{{user.username}}</td>
               <td>{{user.email}}</td>
@@ -46,7 +48,7 @@
               <td>{{user.skill}}</td>
               <td>{{user.hobbies}}</td>
               <td>{{user.phone}}</td>
-              <td>{{user.address}}</td>
+              {% comment %} <td>{{user.address}}</td> {% endcomment %}
               {% comment %} <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td> {% endcomment %}
               {% comment %} <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
           </tr>
@@ -54,3 +56,6 @@
         </tbody>
     </div>
     </table> 
+
+  </body>
+  </html>

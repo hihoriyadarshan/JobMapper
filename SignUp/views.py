@@ -319,13 +319,14 @@ def user_pdf_report(request):
     users = SignUp.objects.all()
     template_path = 'pdf_report.html'
     context = {'users': users}
+    # return HttpResponse(context['users'])
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="user_dat.pdf"'
+    response['Content-Disposition'] = 'filename="user_data.pdf"'
     # find the template and render it.
     template = get_template(template_path)
     html = template.render(context)
-
+    # return HttpResponse(html)
     # create a pdf
     pisa_status = pisa.CreatePDF(
        html, dest=response)
