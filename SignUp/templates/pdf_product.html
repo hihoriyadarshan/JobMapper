@@ -48,13 +48,11 @@ h1
                     </thead>
                     <tbody>
                       
-                    {% for company in page_obj %}  
-                    {% comment %} {% for data in products %} {% endcomment %}
+                     {% for data in products %}
                         <tr>
-                          <td>{{company.companyname}}</td>
-                          <td>{{company.username}}</td>
-                          <td>{{company.email}}</td>
-                          <td>{{company.phone}}</td>
+                          <td>{{data.username}}</td>
+                          <td>{{data.email}}</td>
+                          <td>{{data.job}}</td>
                         </tr>
                       {% endfor %}
                      

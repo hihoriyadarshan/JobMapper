@@ -5,10 +5,9 @@ from SignUp.models import SignUp, Admin_Log, Company, contact
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.conf import settings
-# from xhtml2pdf import pisa
-# from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 
-# pdf
 
 
 
@@ -275,6 +274,7 @@ def showcontact(request):
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
     return render(request,'feedback.html',context)
+    
 
 
 # delete user data
@@ -315,23 +315,45 @@ def showcompanyprofile(request):
 
 #pdf download
 
-# def pdf_company_report(request):
-#     products = Company.objects.all()
-#     template_path = 'pdf_company.html'
+def user_pdf_report(request):
+    users = SignUp.objects.all()
+    template_path = 'pdf_report.html'
+    context = {'users': users}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="user_dat.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
 
-#     context = {'products': products}
-
-#     response = HttpResponse(content_type='application/pdf')
-
-#     response['Content-Disposition'] = 'filename="product_report.pdf"'
-
-#     template = get_template(template_path)
-
-#     html = template.render(context)
-#     pisa_status = pisa.CreatePDF(html,dest=response)
-#     if pisa_status.err:
-#        return HttpResponse('We had some errors <pre>' + html + '</pre>')
-#        return response
-
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
 
       
+
+
+
+
+
+def render_pdf_view(request):
+    template_path = 'user_printer.html'
+    context = {'myvar': 'this is your template context'}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response, link_callback=link_callback)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response

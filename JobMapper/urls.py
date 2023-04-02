@@ -22,6 +22,10 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',include('SignUp.urls')),
     path('',include('administrator.urls')),
+    path('',include('Company.urls')),
+    path('',include('User.urls')),
+
+
 ]
 
 if settings.DEBUG:
