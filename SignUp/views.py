@@ -11,13 +11,11 @@ from django.template.loader import get_template
 
 
 
-
-
-
-
-
 # Create your views here.
 def homepage(request):
+    return render(request,"index.html")
+
+def home_page(request):
     return render(request,"index.html")
 
 def sign_up(request):
@@ -55,7 +53,7 @@ def showcompanyprofile(request):
 
 
         
-        #user Registration
+#user Registration
 def sup(request):  
     if request.method == "POST": 
         s = SignUp()
@@ -286,6 +284,14 @@ def deleteuser(request,id):
         obj.delete()
         return redirect("/showuser")
     return render(request, "user.html", context)
+
+def deletecompany(request,id):
+    context = {}
+    obj = get_object_or_404(Company,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showcompany")
+    return render(request, "company.html", context)
 
 #delte blog
 

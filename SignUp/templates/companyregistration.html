@@ -4,9 +4,12 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link rel="stylesheet" href="static/css/index.css">
-     <title>SignUp</title>
+	<link rel="stylesheet" href="static/css/index.css">
+     <script src="https://use.fontawesome.com/53fa7e3185.js"></script>
+      <title>SignUp</title>
+     
      <style>
+     
           
 * {
       padding: 0;
@@ -118,9 +121,38 @@ img
 
 .hedding_name
  {
-      font-size:60px;
+      font-size:50px;
       font-weight:bold;
  } 
+
+ input[type="file"] {
+     display: none;
+ }
+ .custom-file-upload {
+     border: 2px solid #03A9F4;
+     display: inline-block;
+     padding: 6px 12px;
+     cursor: pointer;
+ }
+ .custom-file-upload
+ {
+       
+     padding: 5px;
+     border-radius: 11px;
+     background: white;
+     color: #227983;
+     font-size: 17px;
+     font-family: cursive;
+     margin-left: 40%;
+     margin-top: 0px;
+ 
+ }
+ .custom-file-upload i
+ {
+   color: #227983;
+     font-size: 24px;
+   margin-right: 9px;}
+     
      </style>
 
 
@@ -149,7 +181,16 @@ img
                <p class="hedding_name">Company SignUp</p>
 			   
                <br>
-               <input type="file" name="image" id="textusername" placeholder="upload image" height="50px" width="50px"  />
+
+               <body>
+                    <label for="file-upload" class="custom-file-upload">
+                      <i class="fa fa-cloud-upload"></i> Profile picture
+                  </label>
+                  <input id="file-upload" name="image" type="file"/><br></br>
+               
+
+
+               {% comment %} <input type="file" name="image" id="textusername" placeholder="upload image" height="50px" width="50px"  /> {% endcomment %}
                
 
 
@@ -163,7 +204,8 @@ img
                
                <input type="text" name="password" id="textpassword" placeholder="Type your password">
                
-               <br>
+               <br> </br>
+               
 			
                <div>
 
