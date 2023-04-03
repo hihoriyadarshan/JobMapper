@@ -14,12 +14,10 @@ urlpatterns = [
     path('deleteblog<id>',views.deleteblog,name='deleteblog'),
     path('adminprofile',views.adminprofile,name='adminprofile'),
     path('adminLTE',views.adminLTE,name='adminLTE'),
-    # path('showcontact',views.showcontact,name='showcontact'),
-
-    path('companyuser_pdf', views.companyuser_pdf, name='companyuser_pdf'),
 
 
-    #pdf
+
+  
     
 
    

@@ -74,30 +74,4 @@ def showbloger_company(request):
     context = { 'blog_data': blog.objects.all() }
     return render(request, "blogpage_company.html", {'context': context})
 
- # pdf download
-
-def companyuser_pdf(request):
-    buf = io.BytesIO()
-    c = canvas.Canvas(buf, pagesize=letter,bottomup=0)
-    textob = c.beginText
-    textob.setTextOrigin(inch, inch)
-    textob.setFont("Helvetica",14)
-    
-    lines =[
-        "This is line1"
-        "This is line2"
-        "This is line3"
-        "This is line4"
-
-    ]    
-
-#loop
-    for line in lines:
-        textob.textline(line)
-
-        c.drawText(textob)
-        c.showPage()
-        c.save()
-        buf.seek(0)
-
-        return FileResponse(buf, as_attachment=True, filename="companyuser.pdf")  
+ 

@@ -1,57 +1,74 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>user_data pdf</title>
-        <link href="{% static 'css/pdf_report.css' %}" rel="stylesheet" media="all">
-      </head>
-      <body>
-      <table class="table">
-        
-        <thead>
-          <tr>
+<head>
+<title>User Data</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 95%;
+  }
+  
+  th{
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding: 8px;
+  }
+   td {
+    text-align: center;
+    padding: 8px;
+  }
+  td:nth-child(even) {
+            background-color: #D6EEEE;
+          }
+h1{
+  text-align:center;
+  font-size:20px;
+}
+</style>
 
-            <th scope="col">id</th>
-            {% comment %} <th scope="col">image</th> {% endcomment %}
-            <th scope="col">Username</th>                  
-            <th scope="col">E-mail</th>
-            <th scope="col">Job</th>
-            <th scope="col">Skill</th>
-            <th scope="col">Hobbies</th>
-            <th scope="col">Phone</th>
-            {% comment %} <th scope="col">Address</th> {% endcomment %}
-            {% comment %} <th scope="col">update</th> {% endcomment %}
-            {% comment %} <th scope="col">delete</th> {% endcomment %}
-          </tr>
-        </thead>
-        <tbody>
-          
-          <section class="card-container">
-            
+</head>
+<body>
+  <h1> User Data </h1>
+<table border="hidden" cellpadding="1" cellspacing="3">
+
+
+  <tr>
+    <th>id</th>
+    <th>image</th>
+    <th>Username</th>                  
+    <th colspan="2" >E-mail</th>
+    <th>Job</th>
+    <th>Skill</th>
+    <th>Hobbies</th>
+    <th>Phone</th>
+    {% comment %} <th scope="col">Address</th> {% endcomment %}
+  </tr>  
+
                 {% for user in users %}  
-                <div class="card">
-                  <tr>
-                <th scope="row">{{user.id}}</th>
-                {% comment %} <div class="image-box">
-                  {% if user.image %}
-                  <td> 
-                    <img src="{{ user.image }}"  alt="" class="prod-size" height="50px" width="60px">
-                  </td>
-                  {% else %} {% endcomment %}
-                  {% comment %} <td>
-                    <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
-                  </td>  
-                  {% endif %} {% endcomment %}
+                <tr>
+                  <td>{{user.id}}</td>
+                  <td scope="row">
+                  <div class="image-box">
+                      {% if user.image %}
+                     
+                        <img src="{{ user.image }}"  alt="" class="prod-size" height="50px" width="60px">
+                     
+                      {% else %} 
+                   
+                        <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                     
+                      {% endif %} </td>
 
               <td>{{user.username}}</td>
-              <td>{{user.email}}</td>
+              <td colspan="2">{{user.email}}</td>
               <td>{{user.job}}</td>
               <td>{{user.skill}}</td>
               <td>{{user.hobbies}}</td>
               <td>{{user.phone}}</td>
               {% comment %} <td>{{user.address}}</td> {% endcomment %}
-              {% comment %} <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td> {% endcomment %}
-              {% comment %} <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
-          </tr>
+             </tr>
           {% endfor %}
         </tbody>
     </div>

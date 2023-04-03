@@ -63,15 +63,14 @@
                       <th scope="row">{{company.id}}</th>
                       <div class="image-box">
                         {% if company.image %}
-                        <td> 
-                          <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="60px">
+                        <td>
+                           <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px">
                         </td>
-                        {% else %}
+                      {% else %}
                         <td>
                           <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                         </td>  
-                        {% endif %}
-
+                       {% endif %}
                       <td>{{company.companyname}}</td>
                       <td>{{company.username}}</td>
                       <td>{{company.email}}</td>
