@@ -4,9 +4,12 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link rel="stylesheet" href="static/css/index.css">
-     <title>SignUp</title>
+	<link rel="stylesheet" href="static/css/index.css">
+     <script src="https://use.fontawesome.com/53fa7e3185.js"></script>
+      <title>SignUp</title>
+     
      <style>
+     
           
 * {
       padding: 0;
@@ -18,7 +21,7 @@
    width: 100vw;
    height: 100vh;
    position: relative;
-   background-color: #227983;
+   background-color: #0c0116;
  }
 
 .content
@@ -27,7 +30,7 @@
       height: 85%;
       position: absolute;
       left: 7rem;
-      top:3rem;
+      top:5rem;
       justify-content: center;
       letter-spacing: 1px;
       text-align: left;
@@ -45,7 +48,7 @@
        outline: none;
        border: none;
        padding: 12px 20px;
-       margin: -6px 0px 40px 0px;
+       margin: -6px 0px 35px 0px;
        width:100%;
        font-size :18px;
        font-weight: bold;
@@ -118,9 +121,164 @@ img
 
 .hedding_name
  {
-      font-size:60px;
+      font-size:50px;
       font-weight:bold;
  } 
+
+ input[type="file"] {
+     display: none;
+ }
+ .custom-file-upload {
+     border: 2px solid #03A9F4;
+     display: inline-block;
+     padding: 6px 12px;
+     cursor: pointer;
+ }
+ .custom-file-upload
+ {
+       
+     padding: 5px;
+     border-radius: 11px;
+     background: white;
+     color: #227983;
+     font-size: 17px;
+     font-family: cursive;
+     margin-left: 40%;
+     margin-top: 0px;
+ 
+ }
+ .custom-file-upload i
+ {
+   color: #227983;
+     font-size: 24px;
+   margin-right: 9px;}
+
+
+   .content span {
+     position: absolute;
+     height: 15%;
+     width: 0.5%;
+     
+     }
+     
+     .content span:nth-child(1) {
+     background: #ffda05;
+     top: 0;
+     left: 0%;
+     animation: 5s span1 infinite linear;
+     animation-delay: 1s;
+     }
+     .content span:nth-child(2) {
+     background: #00a800;
+     bottom: 0;
+     right: 0%;
+     animation: 5s span2 infinite linear;
+     }
+     .content span:nth-child(3) {
+     background: #800080;
+     right: 0%;
+     top: 0px;
+     animation: 5s span3 infinite linear;
+     }
+     .content span:nth-child(4) {
+     background: #ff0000;
+     bottom: 0;
+     right: 0%;
+     animation: 5s span4 infinite linear;
+     animation-delay: 1s;
+     }
+     
+     @keyframes span1 {
+     0% {
+       top: -48%;
+       left: -48%;
+     }
+     25% {
+       top: -48%;
+       left: 98%;
+     }
+     50% {
+       top: 98%;
+       left: 98%;
+     }
+     75% {
+       top: 98%;
+       left: -48%;
+     }
+     100% {
+       top: -48%;
+       left: -48%;
+     }
+     }
+     @keyframes span2 {
+     0% {
+       bottom: -48%;
+       right: -48%;
+     }
+     25% {
+       bottom: -48%;
+       right: 98%;
+     }
+     50% {
+       bottom: 98%;
+       right: 98%;
+     }
+     75% {
+       bottom: 98%;
+       right: -48%;
+     }
+     100% {
+       bottom: -48%;
+       right: -48%;
+     }
+     }
+     @keyframes span3 {
+     0% {
+       top: -48%;
+       left: -48%;
+     }
+     25% {
+       top: -48%;
+       left: 98%;
+     }
+     50% {
+       top: 98%;
+       left: 98%;
+     }
+     75% {
+       top: 98%;
+       left: -48%;
+     }
+     100% {
+       top: 0%;
+       left: 0%;
+     }
+     }
+     
+     @keyframes span4 {
+     0% {
+       bottom: 0%;
+       right: 0%;
+     }
+     25% {
+       bottom: 0%;
+       right: 98%;
+     }
+     50% {
+       bottom: 98%;
+       right: 98%;
+     }
+     75% {
+       bottom: 98%;
+       right: 0%;
+     }
+     100% {
+       bottom: 0%;
+       right: 0%;
+     }
+     }
+     
+      
      </style>
 
 
@@ -128,6 +286,7 @@ img
 <body>
 	<nav class="navbar">
         <div class="logo">LOGO</div>
+        
         <ul class="nav-list-container">
             <li class="list"><a href="#home" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
@@ -141,6 +300,10 @@ img
      {% csrf_token %}
      <div class="mainnavbar">
           <div class="content">
+               <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
                <div class="imageclass">
                     <img src="static/images/pngwing.png" alt="about-us-image" />
 
@@ -149,7 +312,16 @@ img
                <p class="hedding_name">Company SignUp</p>
 			   
                <br>
-               <input type="file" name="image" id="textusername" placeholder="upload image" height="50px" width="50px"  />
+
+               <body>
+                    <label for="file-upload" class="custom-file-upload">
+                      <i class="fa fa-cloud-upload"></i> Profile picture
+                  </label>
+                  <input id="file-upload" name="image" type="file"/><br></br>
+               
+
+
+               {% comment %} <input type="file" name="image" id="textusername" placeholder="upload image" height="50px" width="50px"  /> {% endcomment %}
                
 
 
@@ -163,10 +335,10 @@ img
                
                <input type="text" name="password" id="textpassword" placeholder="Type your password">
                
-               <br>
-
+               <br> </br>
                
-					<div>
+			
+               <div>
 
                     <input type="submit" id="submit" value="SignUp">
                </div>
