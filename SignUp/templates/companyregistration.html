@@ -21,7 +21,7 @@
    width: 100vw;
    height: 100vh;
    position: relative;
-   background-color: #227983;
+   background-color: #0c0116;
  }
 
 .content
@@ -30,7 +30,7 @@
       height: 85%;
       position: absolute;
       left: 7rem;
-      top:3rem;
+      top:5rem;
       justify-content: center;
       letter-spacing: 1px;
       text-align: left;
@@ -48,7 +48,7 @@
        outline: none;
        border: none;
        padding: 12px 20px;
-       margin: -6px 0px 40px 0px;
+       margin: -6px 0px 35px 0px;
        width:100%;
        font-size :18px;
        font-weight: bold;
@@ -152,7 +152,133 @@ img
    color: #227983;
      font-size: 24px;
    margin-right: 9px;}
+
+
+   .content span {
+     position: absolute;
+     height: 15%;
+     width: 0.5%;
      
+     }
+     
+     .content span:nth-child(1) {
+     background: #ffda05;
+     top: 0;
+     left: 0%;
+     animation: 5s span1 infinite linear;
+     animation-delay: 1s;
+     }
+     .content span:nth-child(2) {
+     background: #00a800;
+     bottom: 0;
+     right: 0%;
+     animation: 5s span2 infinite linear;
+     }
+     .content span:nth-child(3) {
+     background: #800080;
+     right: 0%;
+     top: 0px;
+     animation: 5s span3 infinite linear;
+     }
+     .content span:nth-child(4) {
+     background: #ff0000;
+     bottom: 0;
+     right: 0%;
+     animation: 5s span4 infinite linear;
+     animation-delay: 1s;
+     }
+     
+     @keyframes span1 {
+     0% {
+       top: -48%;
+       left: -48%;
+     }
+     25% {
+       top: -48%;
+       left: 98%;
+     }
+     50% {
+       top: 98%;
+       left: 98%;
+     }
+     75% {
+       top: 98%;
+       left: -48%;
+     }
+     100% {
+       top: -48%;
+       left: -48%;
+     }
+     }
+     @keyframes span2 {
+     0% {
+       bottom: -48%;
+       right: -48%;
+     }
+     25% {
+       bottom: -48%;
+       right: 98%;
+     }
+     50% {
+       bottom: 98%;
+       right: 98%;
+     }
+     75% {
+       bottom: 98%;
+       right: -48%;
+     }
+     100% {
+       bottom: -48%;
+       right: -48%;
+     }
+     }
+     @keyframes span3 {
+     0% {
+       top: -48%;
+       left: -48%;
+     }
+     25% {
+       top: -48%;
+       left: 98%;
+     }
+     50% {
+       top: 98%;
+       left: 98%;
+     }
+     75% {
+       top: 98%;
+       left: -48%;
+     }
+     100% {
+       top: 0%;
+       left: 0%;
+     }
+     }
+     
+     @keyframes span4 {
+     0% {
+       bottom: 0%;
+       right: 0%;
+     }
+     25% {
+       bottom: 0%;
+       right: 98%;
+     }
+     50% {
+       bottom: 98%;
+       right: 98%;
+     }
+     75% {
+       bottom: 98%;
+       right: 0%;
+     }
+     100% {
+       bottom: 0%;
+       right: 0%;
+     }
+     }
+     
+      
      </style>
 
 
@@ -160,6 +286,7 @@ img
 <body>
 	<nav class="navbar">
         <div class="logo">LOGO</div>
+        
         <ul class="nav-list-container">
             <li class="list"><a href="#home" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
@@ -173,6 +300,10 @@ img
      {% csrf_token %}
      <div class="mainnavbar">
           <div class="content">
+               <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
                <div class="imageclass">
                     <img src="static/images/pngwing.png" alt="about-us-image" />
 
