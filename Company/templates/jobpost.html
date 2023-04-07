@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Job Post</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+            
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin:50px 0px 10px 0px;
+		}
+
+		.card {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			background-color: black;
+			border-radius: 15px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			padding: 15px;
+			width: 85%;
+			height: 95%;
+			color: #fff;
+		}
+
+		.form-container {
+			display: flex;
+			flex-direction: column;
+			width: 60%;
+			height: 100%;
+			padding: 0px 0px 0px 25px;
+		}
+
+		.form-container label {
+			margin-top: 10px;
+			font-weight: bold;
+		}
+
+		.form-container input[type="text"],
+		.form-container input[type="email"],
+		.form-container input[type="password"],
+		.form-container input[type="number"],
+		.form-container input[type="date"],
+		.form-container select,
+		.form-container textarea {
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f5f5f5;
+			font-size: 16px;
+			color: #333333;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.form-container input[type="submit"] {
+			background-color: #4CAF50;
+			color: #ffffff;
+			cursor: pointer;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			margin-top: 20px;
+			width: 100%;
+		}
+
+		.form-container input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.error {
+			color: #ff0000;
+			font-size: 14px;
+			margin-top: 5px;
+		}
+
+		.image-container {
+			width: 40%;
+			height: 100%;
+			background-image: url("web-1.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+
+		.form-container h2 {
+			margin-bottom: 20px;
+			color: #4CAF50;
+		}
+
+		.form-container input[type="text"],
+		.form-container input[type="email"],
+		.form-container input[type="password"],
+		.form-container input[type="number"],
+		.form-container input[type="date"],
+		.form-container select,
+		.form-container textarea {
+			background-color: #f7f7f7;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+			padding: 10px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+			color: #666
+	}
+
+	.form-container input[type="text"]:focus,
+	.form-container input[type="email"]:focus,
+	.form-container input[type="password"]:focus,
+	.form-container input[type="number"]:focus,
+	.form-container input[type="date"]:focus,
+	.form-container select:focus,
+	.form-container textarea:focus {
+		background-color: #fff;
+		border: 2px solid #4CAF50;
+	}
+
+	.form-container input[type="checkbox"] {
+		margin-right: 10px;
+	}
+
+	.form-container label.checkbox-label {
+		display: inline-block;
+		margin-bottom: 20px;
+		color: #666;
+	}
+
+	.form-container label.checkbox-label input[type="checkbox"] {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+
+	.form-container .field-group {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+	}
+
+	.form-container .field-group .field {
+		flex: 1;
+		margin-right: 10px;
+	}
+
+	.form-container .field-group .field:last-child {
+		margin-right: 0;
+	}
+
+	.form-container .field-group .field label {
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	.form-container .field-group .field input[type="text"],
+	.form-container .field-group .field input[type="email"],
+	.form-container .field-group .field input[type="password"],
+	.form-container .field-group .field input[type="number"],
+	.form-container .field-group .field input[type="date"],
+	.form-container .field-group .field select,
+	.form-container .field-group .field textarea {
+		width: 100%;
+		margin-bottom: 0;
+	}
+
+	.form-container .field-group .field.error input[type="text"],
+	.form-container .field-group .field.error input[type="email"],
+	.form-container .field-group .field.error input[type="password"],
+	.form-container .field-group .field.error input[type="number"],
+	.form-container .field-group .field.error input[type="date"],
+	.form-container .field-group .field.error select,
+	.form-container .field-group .field.error textarea {
+		border: 2px solid #ff0000;
+	}
+
+	.form-container .field-group .field.error label.error {
+		display: block;
+		color: #ff0000;
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+.form-container input[type="submit"] {
+    background: linear-gradient(to bottom right, #00a1ff, #0068ff);
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #4CAF50;
+    color: #ffffff;
+}
+
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="image-container"></div>
+			<div class="form-container">
+				<h2>Registration Form</h2>
+				<form id="registration-form" method="post" action="jobpost_data" enctype="multipart/form-data">
+                    {% csrf_token %}	
+                    <div class="field-group">
+						<div class="field">
+							<label for="job_title">Job Title</label>
+							<input type="text" id="job_title" name="job_title" required>
+							<span class="error"></span>
+						</div>
+						<div class="field">
+							<label for="company_location">Company Location</label>
+							<input type="text" id="company_location" name="company_location" required>
+							<span class="error"></span>
+						</div>
+					</div>
+					<div class="field-group">
+						<div class="field">
+<label for="salary">Salary</label>
+<input type="number" id="salary" name="salary" required>
+<span class="error"></span>
+</div>
+<div class="field">
+<label for="experience_required">Experience Required (in years)</label>
+<input type="number" id="experience_required" name="experience_required" required>
+<span class="error"></span>
+</div>
+</div>
+<div class="field-group">
+<div class="field">
+<label for="skill_required">Skill Required</label>
+<select id="skill_required" name="skill_required" required>
+<option value="">Select a skill</option>
+<option value="programming">Programming</option>
+<option value="design">Design</option>
+<option value="marketing">Marketing</option>
+<option value="management">Management</option>
+</select>
+<span class="error"></span>
+</div>
+<div class="field">
+<label for="post_date">Post Date</label>
+<input type="date" name="post_date"  id="phone" placeholder="Post date" required>
+{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
+<span class="error"></span>
+</div>
+</div>
+<div class="field-group">
+<div class="field">
+<label for="last_date">Last Date to Apply</label>
+{% comment %} <input type="date" id="last_date" name="last_date" required> {% endcomment %}
+<input type="date" name="last_date"  placeholder="last date" required>
+<span class="error"></span>
+</div>
+<div class="field">
+<label for="logo">Company Logo</label>
+<input type="file" id="logo" name="image" required>
+<span class="error"></span>
+</div>
+</div>
+<div class="field">
+<label for="job_description">Job Description</label>
+<textarea id="job_description" name="job_description" required></textarea>
+<span class="error"></span>
+</div>
+
+<input type="submit" value="submit">
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<script>
+	// form validation
+	document.getElementById("registration-form").addEventListener("submit", function(event) {
+		var jobTitle = document.getElementById("job_title");
+		var companyLocation = document.getElementById("company_location");
+		var salary = document.getElementById("salary");
+		var experienceRequired = document.getElementById("experience_required");
+		var skillRequired = document.getElementById("skill_required");
+		var postDate = document.getElementById("post_date");
+		var lastDate = document.getElementById("last_date");
+		var logo = document.getElementById("logo");
+		var jobDescription = document.getElementById("job_description");
+		var termsAndConditions = document.getElementById("terms_and_conditions");
+
+		var isValid = true;
+
+		if (jobTitle.value.trim() === "") {
+			setFieldError(jobTitle, "Please enter a job title");
+			isValid = false;
+		} else {
+			clearFieldError(jobTitle);
+		}
+
+		if (companyLocation.value.trim() === "") {
+			setFieldError(companyLocation, "Please enter a company location");
+isValid = false;
+} else {
+clearFieldError(companyLocation);
+}
+		if (salary.value.trim() === "") {
+			setFieldError(salary, "Please enter a salary");
+			isValid = false;
+		} else if (salary.value < 0) {
+			setFieldError(salary, "Please enter a positive salary value");
+			isValid = false;
+		} else {
+			clearFieldError(salary);
+		}
+
+		if (experienceRequired.value.trim() === "") {
+			setFieldError(experienceRequired, "Please enter the required experience in years");
+			isValid = false;
+		} else if (experienceRequired.value < 0) {
+			setFieldError(experienceRequired, "Please enter a positive value for experience required");
+			isValid = false;
+		} else {
+			clearFieldError(experienceRequired);
+		}
+
+		if (skillRequired.value === "") {
+			setFieldError(skillRequired, "Please select a required skill");
+			isValid = false;
+		} else {
+			clearFieldError(skillRequired);
+		}
+
+		if (postDate.value === "") {
+			setFieldError(postDate, "Please select a post date");
+			isValid = false;
+		} else {
+			clearFieldError(postDate);
+		}
+
+		if (lastDate.value === "") {
+			setFieldError(lastDate, "Please select a last date to apply");
+			isValid = false;
+		} else if (lastDate.value < postDate.value) {
+			setFieldError(lastDate, "Last date to apply should be after the post date");
+			isValid = false;
+		} else {
+			clearFieldError(lastDate);
+		}
+
+		if (logo.value === "") {
+			setFieldError(logo, "Please select a company logo");
+			isValid = false;
+		} else {
+			clearFieldError(logo);
+		}
+
+		if (jobDescription.value.trim() === "") {
+			setFieldError(jobDescription, "Please enter a job description");
+			isValid = false;
+		} else {
+			clearFieldError(jobDescription);
+		}
+
+		if (!termsAndConditions.checked) {
+			setFieldError(termsAndConditions, "Please agree to the terms and conditions");
+			isValid = false;
+		} else {
+			clearFieldError(termsAndConditions);
+		}
+
+		if (!isValid) {
+			event.preventDefault();
+		}
+	});
+
+	// set the error message for a field
+	function setFieldError(field, message) {
+		field.nextElementSibling.textContent = message;
+		field.classList.add("invalid");
+	}
+
+	// clear the error message for a field
+	function clearFieldError(field) {
+		field.nextElementSibling.textContent = "";
+		field.classList.remove("invalid");
+	}
+</script>
+</body>
+</html>
+
+
+
+

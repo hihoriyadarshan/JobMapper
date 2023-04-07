@@ -51,6 +51,11 @@ def feedback(request):
 def showcompanyprofile(request):
         return render(request,'showcompanyprofile.html')
 
+def updateuser(request):
+        return render(request,'update_user.html')
+
+
+
 
         
 #user Registration
@@ -121,6 +126,49 @@ def loginHandle(request):
         form = SignUpForm()
         return render(request, template_name = "login.html", context = {"form":form})
     
+#delete user
+
+def deleteuser(request,id):
+    context = {}
+    obj = get_object_or_404(SignUp,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showuser")
+    return render(request, "user.html", context)
+   
+   
+# user update 
+
+def updateuser(request, id):  
+    users = signup.objects.get(id=id)  
+    context = {}
+    form = SignUpForm(request.POST, instance = users)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/updateuser") 
+    return render(request, "user.html", context)
+     
+
+#show user
+
+def showuser(request):
+    users = SignUp.objects.all()
+    p = Paginator(users, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'user.html',context)
+
+
+ 
 
 # company registration
 def company_data(request):  
@@ -220,23 +268,7 @@ def cont(request):
     return render(request,'index.html',{'form':form})
 
 
-#show user
 
-def showuser(request):
-    users = SignUp.objects.all()
-    p = Paginator(users, 10)
-    page_number = request.GET.get('page')
-    
-    try:
-        page_obj = p.get_page(page_number)
-    except Paginator.PageNotAnInteger:
-        # if page_number is not an integer then assign the first page
-        page_obj = p.page(1)
-    except Paginator.EmptyPage:
-        # if page is empty then return last page
-        page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
-    return render(request,'user.html',context)
 
 #show company user
 def showcompany(request):
@@ -277,13 +309,7 @@ def showcontact(request):
 
 # delete user data
 
-def deleteuser(request,id):
-    context = {}
-    obj = get_object_or_404(SignUp,id=id)
-    if request.method == "GET":
-        obj.delete()
-        return redirect("/showuser")
-    return render(request, "user.html", context)
+
 
 def deletecompany(request,id):
     context = {}

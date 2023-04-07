@@ -82,9 +82,10 @@
                       <td>{{user.hobbies}}</td>
                       <td>{{user.phone}}</td>
                       <td>{{user.address}}</td>
-                      <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td>
+                      <td><a href="{% url 'updateuser' user.id %}" class="btn btn-daanger btn-sm ">update</a></td>
                       <td><a href="{% url 'deleteuser' user.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
-                  </tr>
+                      
+                    </tr>
                   {% endfor %}
                 </tbody>
             </div>

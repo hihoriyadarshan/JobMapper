@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/registration.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <title>Document</title>
+</head>
+<body>
+  {% comment %} <nav class="navbar">
+    <div class="logo">LOGO</div>
+    <ul class="nav-list-container">
+      <li class="list"><a href="#home" class="link">Home</a></li>
+      <li class="list"><a href="#about-us" class="link">About</a></li>
+      <li class="list"><a href="#contact" class="link">Contact</a></li>
+      <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
+      <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
+      <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
+    </ul>
+</nav> {% endcomment %}
+
+    <div class="wrapper">
+        <div class="content">
+          <h1>Registration Form</h1>
+          {% comment %} <p>Connect with us by sending your views.</p> {% endcomment %}
+        </div>
+   
+        <div>
+            <form class="form" method="POST" action="sup" enctype="multipart/form-data">
+                
+      
+          <div class="middle-form">
+            <div class="inner-form">
+              {% csrf_token %}
+              <div class="label">Profile image</div>
+              <input type="file" name="image" placeholder="Subject" value="{{user.name}}">
+            </div>
+
+          </div>
+          <div class="top-form">
+            <div class="inner-form">
+              <div class="label">Username</div>
+              <input type="text" name="username" placeholder="Jhon" value="{{user.username}}" >
+            </div>
+            <div class="inner-form">
+              <div class="label">email</div>
+              <input type="text" name="email" placeholder="Example@gmail.com" value="{{user.email}}">
+            </div>
+            <div class="inner-form">
+              <div class="label">Job</div>
+              <input type="text" name="job" placeholder="Fresher/web Developer" value="{{user.job}}">
+            </div>
+          </div>
+
+          <div class="top-form">
+            <div class="inner-form">
+              <div class="label">Skill</div>
+              <input type="text"  name="skill" placeholder="Java,PHP" value="{{user.skill}}">
+            </div>
+            <div class="inner-form">
+              <div class="label">Hobbies</div>
+              <input type="text" name="hobbies" placeholder="Diving, Reading Book" value="{{user.hobbies}}">
+            </div>
+            <div class="inner-form">
+              <div class="label">phone</div>
+              <input type="text"  name="phone" placeholder="1234567890" value="{{user.phone}}">
+            </div>
+          </div>
+      
+          <div class="bottom-form">
+            <div class="inner-form">
+              <div class="label"><Address></Address></div>
+              <textarea name="address" placeholder="Enter your Address" value="{{user.address}}"></textarea>
+            </div>
+          </div>
+
+          <div class="middle-form">
+            <div class="inner-form">
+              <div class="label">Password</div>
+              <input type="text" name="password" placeholder="Enter your password" value="{{user.password}}">
+            </div>
+            </div></br>
+
+      <div>
+          {% comment %} <button type="submit" class="btn">Sign Up</button> {% endcomment %}
+          <button type="submit" class="btn">update</button>
+
+        </div>
+        </div>
+      </div>
+      
+      
+      
+      <script>
+        $(".btn").click(function(){
+        $("input[type='text'], textarea").val("");
+        });
+      </script>
+    
+</body>
+</html>
+
+
