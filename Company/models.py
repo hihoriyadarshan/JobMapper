@@ -12,12 +12,12 @@ class company_contact(models.Model):
     
 class jobpost(models.Model):
 
-    comapnyname = models.TextField(max_length = 50)
+    # comapnyname = models.TextField(max_length = 50)
     job_title = models.TextField(max_length = 30)
     company_location = models.TextField(max_length = 50)
     salary = models.TextField(max_length = 50)
     experience_required = models.TextField(max_length = 50)
-    email = models.EmailField(blank = True,max_length=50)
+    # email = models.EmailField(blank = True,max_length=50)
     skill_required = models.CharField(max_length=20, null = True,blank=True)
     post_date = models.DateField(max_length = 15, null = True,blank=True)
     last_date = models.DateField(max_length = 15, null = True,blank=True)

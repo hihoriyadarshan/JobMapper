@@ -139,14 +139,19 @@ def deleteuser(request,id):
    
 # user update 
 
-def updateuser(request, id):  
-    users = signup.objects.get(id=id)  
+def edituser(request, id):  
     context = {}
-    form = SignUpForm(request.POST, instance = users)  
+    obj = get_object_or_404(SignUp, id=id)
+    form = SignUpForm(request.POST,request.FILES, instance = obj)  
     if form.is_valid():  
         form.save()  
-        return redirect("/updateuser") 
+        return redirect("/user") 
     return render(request, "user.html", context)
+
+
+def updateuser(request,id):
+    context = SignUp.objects.get(id=id)
+    return render(request, "update_user.html",{'context' : context})
      
 
 #show user

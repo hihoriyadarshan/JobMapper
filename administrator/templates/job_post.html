@@ -63,7 +63,7 @@
                 <tbody>
                   
                   <section class="card-container">
-                    {% for job_post1 in page_obj %}  
+                    {% for company in page_obj %}  
                       <div class="card">
                         <tr>
                       <th scope="row">{{ company.id}}</th>
@@ -77,10 +77,10 @@
                           <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                         </td>  
                        {% endif %}
-                      <td>{{company.companyname}}</td>
+                      {% comment %} <td>{{company.companyname}}</td> {% endcomment %}
                       <td>{{company.job_title}}</td>
-                      <td>{{company.email}}</td>
-                      <td>{{company.phone}}</td>
+                      {% comment %} <td>{{company.email}}</td> {% endcomment %}
+                      {% comment %} <td>{{company.phone}}</td> {% endcomment %}
                       <td>{{company.company_location}}</td>
                       <td>{{company.experience_required}}</td>
                       <td>{{company.skill_required}}</td>

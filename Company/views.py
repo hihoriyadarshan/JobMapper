@@ -52,22 +52,22 @@ def showcompanyfeedback(request):
 
 
 
-def showjobpost(request):
-    job_post1 = jobpost.objects.all()
-    p = Paginator(job_post1, 10)
-    page_number = request.GET.get('page')
+# def showjobpost(request):
+#     job_post1 = jobpost.objects.all()
+#     p = Paginator(job_post1, 10)
+#     page_number = request.GET.get('page')
     
-    try:
-        page_obj = p.get_page(page_number)
-    except Paginator.PageNotAnInteger:
-        # if page_number is not an integer then assign the first page
-        page_obj = p.page(1)
-    except Paginator.EmptyPage:
-        # if page is empty then return last page
-        page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
-    return HttpResponse(job_post)
-    return render(request,'job_post.html',context)
+#     try:
+#         page_obj = p.get_page(page_number)
+#     except Paginator.PageNotAnInteger:
+#         # if page_number is not an integer then assign the first page
+#         page_obj = p.page(1)
+#     except Paginator.EmptyPage:
+#         # if page is empty then return last page
+#         page_obj = p.page(p.num_pages)
+#     context ={'page_obj': page_obj} 
+#     return HttpResponse(job_post)
+#     return render(request,'job_post.html',context)
 
 
 
@@ -97,19 +97,19 @@ def jobpost_data(request):
         return render (request, "jobpost.html")
     return HttpResponse('Fail')
 
-#show job post user
-# def showjobpost(request):
-#     company = jobpost.objects.all()
-#     p = Paginator(company, 10)
-#     page_number = request.GET.get('page')
+#show job post 
+def showjobpost(request):
+    company = jobpost.objects.all()
+    p = Paginator(company, 10)
+    page_number = request.GET.get('page')
     
-#     try:
-#         page_obj = p.get_page(page_number)
-#     except Paginator.PageNotAnInteger:
-#         # if page_number is not an integer then assign the first page
-#         page_obj = p.page(1)
-#     except Paginator.EmptyPage:
-#         # if page is empty then return last page
-#         page_obj = p.page(p.num_pages)
-#     context ={'page_obj': page_obj} 
-#     return render(request,'job_post.html',context)
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'job_post.html',context)
