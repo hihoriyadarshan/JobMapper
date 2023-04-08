@@ -1,105 +1,304 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/registration.css">
-    <link rel="stylesheet" href="static/css/index.css">
+	<title>Registration Form</title>
+	<link rel="stylesheet" href="static/css/index.css">
+	<style>
+		body {
+			 
+			background-image: linear-gradient(45deg,#FFFACD,#FAFAD2	);
+			font-family: Arial, sans-serif;
+			color: #000080;
+		}
 
-    <title>Document</title>
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #FFFF99;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+			animation: fadein 1s;
+		}
+
+		@keyframes fadein {
+			from { opacity: 0; }
+			to   { opacity: 1; }
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		form {
+			display: grid;
+			grid-gap: 10px;
+		}
+
+		input[type="text"], input[type="email"], input[type="password"], input[type="tel"], textarea {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+			font-size: 16px;
+			width:95%;
+			 resize: none;
+			color: #333;
+			background-color: #F2F2F2;
+		}
+
+		input[type="submit"] {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			width:98%;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #fff;
+			color: #333;
+			border: 1px solid #333;
+		}
+
+		.error {
+			color: red;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+
+		label {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 5px;
+		}
+
+		.image-upload {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-gap: 10px;
+			align-items: center;
+		}
+
+		.image-upload input[type="file"] {
+			display: none;
+		}
+
+		.image-upload label {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-align: center;
+		}
+
+		.image-upload label:hover {
+			background-color: #fff;
+			color: #333;
+			border: 1px solid #333;
+		}
+
+		.image-preview {
+			max-width: 100%;
+			max-height: 200px;
+			margin-top: 10px;
+		}
+	</style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">LOGO</div>
-    <ul class="nav-list-container">
-      <li class="list"><a href="#home" class="link">Home</a></li>
-      <li class="list"><a href="#about-us" class="link">About</a></li>
-      <li class="list"><a href="#contact" class="link">Contact</a></li>
-      <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
-      <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
-      <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
-    </ul>
-</nav>
+	  <nav class="navbar">
+   		<div class="logo">LOGO</div>
+    		<ul class="nav-list-container">
+      	<li class="list"><a href="#home" class="link">Home</a></li>
+      	<li class="list"><a href="#about-us" class="link">About</a></li>
+      	<li class="list"><a href="#contact" class="link">Contact</a></li>
+      	<li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
+      	<li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
+      	<li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
+    		</ul>
+	</nav>
+	
+	<div class="container">
+		<h1>Registration Form</h1>
+		<form id="registration-form" method="POST" action="sup" enctype="multipart/form-data">
+			{% csrf_token %}
+      <label for="username">Username *</label>
+			<input type="text" id="username" name="username" required>
+			<span class="error" id="username-error"></span>
 
-    <div class="wrapper">
-        <div class="content">
-          <h1>Registration Form</h1>
-          {% comment %} <p>Connect with us by sending your views.</p> {% endcomment %}
-        </div>
-   
-        <div>
-            <form class="form" method="POST" action="sup" enctype="multipart/form-data">
-                
-      
-          <div class="middle-form">
-            <div class="inner-form">
-              {% csrf_token %}
-              <div class="label">Profile image</div>
-              <input type="file" name="image" placeholder="Subject">
-            </div>
+			<label for="email">Email *</label>
+		<input type="email" id="email" name="email" required>
+		<span class="error" id="email-error"></span>
 
-          </div>
-          <div class="top-form">
-            <div class="inner-form">
-              <div class="label">Username</div>
-              <input type="text" name="username" placeholder="Jhon" >
-            </div>
-            <div class="inner-form">
-              <div class="label">email</div>
-              <input type="text" name="email" placeholder="Example@gmail.com">
-            </div>
-            <div class="inner-form">
-              <div class="label">Job</div>
-              <input type="text" name="job" placeholder="Fresher/web Developer">
-            </div>
-          </div>
+		<label for="job">Job *</label>
+		<input type="text" id="job" name="job" required>
+		<span class="error" id="job-error"></span>
 
-          <div class="top-form">
-            <div class="inner-form">
-              <div class="label">Skill</div>
-              <input type="text"  name="skill" placeholder="Java,PHP">
-            </div>
-            <div class="inner-form">
-              <div class="label">Hobbies</div>
-              <input type="text" name="hobbies" placeholder="Diving, Reading Book">
-            </div>
-            <div class="inner-form">
-              <div class="label">phone</div>
-              <input type="text"  name="phone" placeholder="1234567890">
-            </div>
-          </div>
-      
-          <div class="bottom-form">
-            <div class="inner-form">
-              <div class="label"><Address></Address></div>
-              <textarea name="address" placeholder="Enter your Address"></textarea>
-            </div>
-          </div>
+		<label for="skill">Skill *</label>
+		<input type="text" id="skill" name="skill" required>
+		<span class="error" id="skill-error"></span>
 
-          <div class="middle-form">
-            <div class="inner-form">
-              <div class="label">Password</div>
-              <input type="text" name="password" placeholder="Enter your password">
-            </div>
-            </div></br>
+		<label for="hobbies">Hobbies *</label>
+		<input type="text" id="hobbies" name="hobbies" required>
+		<span class="error" id="hobbies-error"></span>
 
-      <div>
-          {% comment %} <button type="submit" class="btn">Sign Up</button> {% endcomment %}
-          <button type="submit" class="btn">Sign Up</button>
+		<label for="phone">Phone *</label>
+		<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+		<span class="error" id="phone-error"></span>
 
-        </div>
-        </div>
-      </div>
-      
-      
-      
-      <script>
-        $(".btn").click(function(){
-        $("input[type='text'], textarea").val("");
-        });
-      </script>
-    
+		<label for="address">Address *</label>
+		<textarea id="address" name="address" required></textarea>
+		<span class="error" id="address-error"></span>
+
+		<div class="image-upload">
+			<label for="image">Image *</label>
+			<input type="file" id="image" name="image" accept="image/*" required>
+			<span class="error" id="image-error"></span>
+		</div>
+		<img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+
+		<label for="password">Password *</label>
+		<input type="password" id="password" name="password" required>
+		<span class="error" id="password-error"></span>
+
+		<input type="submit" value="Register">
+	</form>
+</div>
+
+<script>
+	const form = document.getElementById("registration-form");
+	const username = document.getElementById("username");
+	const email = document.getElementById("email");
+	const job = document.getElementById("job");
+	const skill = document.getElementById("skill");
+	const hobbies = document.getElementById("hobbies");
+	const phone = document.getElementById("phone");
+	const address = document.getElementById("address");
+	const image = document.getElementById("image");
+	const imagePreview = document.getElementById("image-preview");
+	const password = document.getElementById("password");
+
+	form.addEventListener("submit", function(event) {
+		event.preventDefault();
+		if (validateForm()) {
+			form.submit();
+		}
+	});
+
+	function validateForm() {
+		let isValid = true;
+
+		if (username.value.trim() === "") {
+			document.getElementById("username-error").innerHTML = "Username is required";
+			isValid = false;
+		} else {
+			document.getElementById("username-error").innerHTML = "";
+		}
+
+		if (email.value.trim() === "") {
+			document.getElementById("email-error").innerHTML = "Email is required";
+			isValid = false;
+		} else if (!validateEmail(email.value)) {
+			document.getElementById("email-error").innerHTML = "Email is invalid";
+			isValid = false;
+		} else {
+			document.getElementById("email-error").innerHTML = "";
+		}
+
+		if (job.value.trim() === "") {
+			document.getElementById("job-error").innerHTML = "Job is required";
+			isValid = false;
+		} else {
+			document.getElementById("job-error").innerHTML = "";
+		}
+
+		if (skill.value.trim() === "") {
+			document.getElementById("skill-error").innerHTML = "Skill is required";
+			isValid = false;
+		} else {
+			document.getElementById("skill-error").innerHTML ="";
+			}
+					}
+
+		if (hobbies.value.trim() === "") {
+			document.getElementById("hobbies-error").innerHTML = "Hobbies are required";
+			isValid = false;
+		} else {
+			document.getElementById("hobbies-error").innerHTML = "";
+		}
+
+		if (phone.value.trim() === "") {
+			document.getElementById("phone-error").innerHTML = "Phone number is required";
+			isValid = false;
+		} else if (!validatePhone(phone.value)) {
+			document.getElementById("phone-error").innerHTML = "Phone number is invalid";
+			isValid = false;
+		} else {
+			document.getElementById("phone-error").innerHTML = "";
+		}
+
+		if (address.value.trim() === "") {
+			document.getElementById("address-error").innerHTML = "Address is required";
+			isValid = false;
+		} else {
+			document.getElementById("address-error").innerHTML = "";
+		}
+
+		if (image.value === "") {
+			document.getElementById("image-error").innerHTML = "Image is required";
+			isValid = false;
+		} else if (!validateImage(image.files[0])) {
+			document.getElementById("image-error").innerHTML = "Image format is invalid";
+			isValid = false;
+		} else {
+			document.getElementById("image-error").innerHTML = "";
+			const reader = new FileReader();
+			reader.onload = function() {
+				imagePreview.src = reader.result;
+			};
+			reader.readAsDataURL(image.files[0]);
+		}
+
+		if (password.value.trim() === "") {
+			document.getElementById("password-error").innerHTML = "Password is required";
+			isValid = false;
+		} else if (!validatePassword(password.value)) {
+			document.getElementById("password-error").innerHTML = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)";
+			isValid = false;
+		} else {
+			document.getElementById("password-error").innerHTML = "";
+		}
+
+		return isValid;
+	}
+
+	function validateEmail(email) {
+		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return re.test(email);
+	}
+
+	function validatePhone(phone) {
+		const re = /^[0-9]{10}$/;
+		return re.test(phone);
+	}
+
+	function validateImage(image) {
+		const validTypes = ["image/jpeg", "image/png", "image/gif"];
+		return validTypes.includes(image.type);
+	}
+
+	function validatePassword(password) {
+		const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+		return re.test(password);
+	}
+</script>
 </body>
 </html>
+

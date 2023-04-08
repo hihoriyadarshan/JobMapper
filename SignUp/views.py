@@ -54,6 +54,8 @@ def showcompanyprofile(request):
 def updateuser(request):
         return render(request,'update_user.html')
 
+def updatecomapny(request):
+        return render(request,'update_company.html')
 
 
 
@@ -126,18 +128,10 @@ def loginHandle(request):
         form = SignUpForm()
         return render(request, template_name = "login.html", context = {"form":form})
     
-#delete user
 
-def deleteuser(request,id):
-    context = {}
-    obj = get_object_or_404(SignUp,id=id)
-    if request.method == "GET":
-        obj.delete()
-        return redirect("/showuser")
-    return render(request, "user.html", context)
    
    
-# user update 
+# user_data update 
 
 def edituser(request, id):  
     context = {}
@@ -152,6 +146,17 @@ def edituser(request, id):
 def updateuser(request,id):
     context = SignUp.objects.get(id=id)
     return render(request, "update_user.html",{'context' : context})
+
+
+#delete user
+
+def deleteuser(request,id):
+    context = {}
+    obj = get_object_or_404(SignUp,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showuser")
+    return render(request, "user.html", context)
      
 
 #show user
@@ -172,6 +177,33 @@ def showuser(request):
     context ={'page_obj': page_obj} 
     return render(request,'user.html',context)
 
+#show userprofile
+def showprofile(request):
+    context ={"user_data":SignUp.objects.all()}
+    return render(request, "profile.html", context)
+    print('user_data')
+
+
+#user_data pdf download
+def user_pdf_report(request):
+    users = SignUp.objects.all()
+    template_path = 'pdf_report.html'
+    context = {'users': users}
+    # return HttpResponse(context['users'])
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="user_data.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+    # return HttpResponse(html)
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
 
  
 
@@ -221,7 +253,60 @@ def loginHandlecompany(request):
     else:
         form = companyForm()
         return render(request, template_name = "companylogin.html", context = {"form":form})
+    
 
+# delete company data
+
+def deletecompany(request,id):
+    context = {}
+    obj = get_object_or_404(Company,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showcompany")
+    return render(request, "company.html", context) 
+
+#show company user
+def showcompany(request):
+    company = Company.objects.all()
+    p = Paginator(company, 10)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'company.html',context)
+
+
+#company data_update
+def editcompany(request, id):  
+    context = {}
+    obj = get_object_or_404(Company, id=id)
+    form = companyForm(request.POST,request.FILES, instance = obj)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/company") 
+    return render(request, "company.html", context)
+
+
+def updatecompany(request,id):
+    context = Company.objects.get(id=id)
+    return render(request, "update_company.html",{'context' : context})
+
+
+
+
+ #show company profile
+
+def showcompanyprofile(request):
+    context ={"company_data":Company.objects.all()}
+    return render(request, "companyprofile.html", context)
+    print('company_data')
 
 
 #admin login
@@ -251,6 +336,10 @@ def loginHandleAdmin(request):
     else:
         form = AdminForm()
         return render(request, template_name = "index.html", context = {"form":form})
+    
+
+
+
 
 
 # Contact us
@@ -274,24 +363,6 @@ def cont(request):
 
 
 
-
-#show company user
-def showcompany(request):
-    company = Company.objects.all()
-    p = Paginator(company, 10)
-    page_number = request.GET.get('page')
-    
-    try:
-        page_obj = p.get_page(page_number)
-    except Paginator.PageNotAnInteger:
-        # if page_number is not an integer then assign the first page
-        page_obj = p.page(1)
-    except Paginator.EmptyPage:
-        # if page is empty then return last page
-        page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
-    return render(request,'company.html',context)
-
 #show contact
 
 def showcontact(request):
@@ -312,17 +383,6 @@ def showcontact(request):
     
 
 
-# delete user data
-
-
-
-def deletecompany(request,id):
-    context = {}
-    obj = get_object_or_404(Company,id=id)
-    if request.method == "GET":
-        obj.delete()
-        return redirect("/showcompany")
-    return render(request, "company.html", context)
 
 #delte blog
 
@@ -333,43 +393,4 @@ def deletemessage(request,id):
         obj.delete()
         return redirect("/showcontact")
     return render(request, "feedback.html", context)
-
-
-#show profile
-def showprofile(request):
-    context ={"user_data":SignUp.objects.all()}
-    return render(request, "profile.html", context)
-    print('user_data')
-
-
- #show company profile
-
-def showcompanyprofile(request):
-    context ={"company_data":Company.objects.all()}
-    return render(request, "companyprofile.html", context)
-    print('company_data')
-
-
-#user_data pdf download
-
-def user_pdf_report(request):
-    users = SignUp.objects.all()
-    template_path = 'pdf_report.html'
-    context = {'users': users}
-    # return HttpResponse(context['users'])
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="user_data.pdf"'
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
-    # return HttpResponse(html)
-    # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response)
-    # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
-
       

@@ -24,10 +24,15 @@ urlpatterns = [
     path('user',views.user,name='user'),
     path('showcompany',views.showcompany,name='showcompany'),
     path('showuser',views.showuser,name='showuser'),
+    
     path('deleteuser<id>',views.deleteuser,name='deleteuser'),
     path('updateuser<id>',views.updateuser,name='updateuser'),
     path('edituser/<id>',views.edituser,name='edituser'),
+    
     path('deletecompany<id>',views.deletecompany,name='deletecompany'),
+    path('updatecompany<id>',views.updatecompany,name='updatecompany'),
+    path('editcompany/<id>',views.editcompany,name='editcompany'),
+
     path('showprofile',views.showprofile,name='showprofile'),
     path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),
     path('create-pdf',views.user_pdf_report,name='create-pdf'),

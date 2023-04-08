@@ -76,7 +76,7 @@
                       <td>{{company.email}}</td>
                       <td>{{company.phone}}</td>
                       
-                      <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td>
+                      <td><a href="{% url 'updatecompany' company.id %}" class="btn btn-daanger btn-sm ">update</a></td>
                       <td><a href="{% url 'deletecompany' company.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
                   </tr>
                   {% endfor %}
