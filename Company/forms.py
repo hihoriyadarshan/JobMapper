@@ -10,4 +10,4 @@ class company_contactForm(forms.ModelForm):
 class jobpostForm(forms.ModelForm):  
     class Meta:  
         model = jobpost
-        fields = ('job_title','company_location','salary','experience_required','skill_required','post_date','last_date','image','job_description',)
+        fields = ('company_name','job_title','company_location','salary','experience_required','email','skill_required','phone','last_date','image','job_description',)

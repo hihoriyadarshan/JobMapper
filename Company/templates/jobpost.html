@@ -230,6 +230,11 @@
 							<span class="error"></span>
 						</div>
 						<div class="field">
+							<label for="company_location">Company Name</label>
+							<input type="text" id="company_name" name="company_name" required>
+							<span class="error"></span>
+						</div>
+						<div class="field">
 							<label for="company_location">Company Location</label>
 							<input type="text" id="company_location" name="company_location" required>
 							<span class="error"></span>
@@ -260,8 +265,14 @@
 <span class="error"></span>
 </div>
 <div class="field">
-<label for="post_date">Post Date</label>
-<input type="date" name="post_date"  id="phone" placeholder="Post date" required>
+	<label for="post_date">E-mail</label>
+	<input type="email" name="email"  id="phone" placeholder="E-mail" required>
+	{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
+	<span class="error"></span>
+	</div>
+<div class="field">
+<label for="post_date">phone</label>
+<input type="number" name="phone"  id="phone" placeholder="Phone number" required>
 {% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
 <span class="error"></span>
 </div>

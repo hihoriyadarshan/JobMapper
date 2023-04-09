@@ -52,6 +52,22 @@ def bloger(request):
     return HttpResponse('Fail')
 
 
+#Blog data_update
+def editblog(request, id):  
+    context = {}
+    obj = get_object_or_404(blog, id=id)
+    form = blogForm(request.POST,request.FILES, instance = obj)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/showbloger") 
+    return render(request, "adminblog.html", context)
+
+
+def updateblog(request,id):
+    context = blog.objects.get(id=id)
+    return render(request, "update_blog.html",{'context' : context})
+
+
 #delete blog
 def deleteblog(request,id):
     context = {}

@@ -307,7 +307,7 @@ def editcompany(request, id):
     form = companyForm(request.POST,request.FILES, instance = obj)  
     if form.is_valid():  
         form.save()  
-        return redirect("/company") 
+        return redirect("/showcompany") 
     return render(request, "company.html", context)
 
 

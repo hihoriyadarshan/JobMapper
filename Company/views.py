@@ -69,9 +69,12 @@ def jobpost_data(request):
         form = jobpostForm(request.POST or None) 
 
         j = jobpost()
+        j.company_name = request.POST.get('company_name')
         j.job_title = request.POST.get('job_title')
         j.salary = request.POST.get('salary')
         j.company_location = request.POST.get('company_location')
+        j.email = request.POST.get('email')
+        j.phone = request.POST.get('phone')
         j.experience_required = request.POST.get('experience_required')
         j.skill_required = request.POST.get('skill_required')  
         j.job_description = request.POST.get('job_description')

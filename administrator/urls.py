@@ -14,14 +14,13 @@ urlpatterns = [
     path('deleteblog<id>',views.deleteblog,name='deleteblog'),
     path('adminprofile',views.adminprofile,name='adminprofile'),
     path('adminLTE',views.adminLTE,name='adminLTE'),
+    path('updateblog<id>',views.updateblog,name='updateblog'),
+    path('editblog/<id>',views.editblog,name='editblog'),
 
 
 
 
   
     
-
-   
-
     
     ]

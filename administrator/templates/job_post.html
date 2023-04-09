@@ -49,19 +49,12 @@
                   <tr>
 
                     <th scope="col">id</th>
-                    <th scope="col">Company LOGO</th>
-                    <th scope="col">Company Name</th>
                     <th scope="col">job_title</th>                                   
+                    <th scope="col">image</th>
+                    <th scope="col">Company Name</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Company Location</th>
-                    <th scope="col">experience Required</th>
-                    <th scope="col">skill Required</th>
-                    <th scope="col">job Description</th>
-                    <th scope="col">post_date</th>
-                    <th scope="col">last_date</th>
-                    <th scope="col">update</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Address</th>            
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -71,6 +64,7 @@
                       <div class="card">
                         <tr>
                       <th scope="row">{{ company.id}}</th>
+                      <th scope="row">{{ company.job_title}}</th>
                       <div class="image-box">
                         {% if company.image %}
                         <td>
@@ -81,21 +75,17 @@
                           <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                         </td>  
                        {% endif %}
-                      {% comment %} <td>{{company.companyname}}</td> {% endcomment %}
-                      <td>{{company.job_title}}</td>
-                      {% comment %} <td>{{company.email}}</td> {% endcomment %}
-                      {% comment %} <td>{{company.phone}}</td> {% endcomment %}
+                     
+                      <td>{{company.company_name}}</td>
+                      <td>{{company.email}}</td>
                       <td>{{company.company_location}}</td>
-                      <td>{{company.experience_required}}</td>
-                      <td>{{company.skill_required}}</td>
-                      <td>{{company.job_description}}</td>
-                      <td>{{company.post_date}}</td>
-                      <td>{{company.last_date}}</td>
-
-
+                      <td>
+                        <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
+                        <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"</a><i class="fa fa-edit" style="color:white"></i></button>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#"><i class="fa fa-trash" style="color:white"></i></button>
+                      </td>
                       
-                      <td><a href="#" class="btn btn-daanger btn-sm ">update</a></td>
-                      <td><a href="{% url 'deletecompany' company.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
+          
                   </tr>
                   {% endfor %}
                 </tbody>
