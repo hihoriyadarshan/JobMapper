@@ -23,13 +23,17 @@
           
           <nav role='navigation'>
             <ul class="main">
-              <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin LTE</a></li>
+              <li class="dashboard"><a href="adminLTE" class="btn btn--pill">Admin LTE</a></li>
               <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+              <li class="write"><a href="{% url 'showjobpost' %}">Post Job</a></li>
+              <li class="write"><a href="#">Apply Job</a></li>
               <li class="write"><a href="{%url 'showcompanyfeedback' %}">Company Feedback</a></li>
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
 
+
+              <li><a href="#">change password</a></li>
             </ul>
           </nav>
           
@@ -48,7 +52,7 @@
                     <th scope="col">Blog image</th>
                     <th scope="col">Blog Date</th>
                     <th scope="col">Blog</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,9 +73,13 @@
                       </div>
                       <td>{{blog.blogdate}}</td>
                       <td>{{blog.message}}</td>
-                      
+                      <td>
+                        <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
+                        <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'updateuser' user.id %}"</a><i class="fa fa-edit" style="color:white"></i></button>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deleteblog' blog.id %}"><i class="fa fa-trash" style="color:white"></i></button>
+                      </td> 
                      
-                      <td><a href="{% url 'deleteblog' blog.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
+                      {% comment %} <td><a href="" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
                   </tr>
                   {% endfor %}
 

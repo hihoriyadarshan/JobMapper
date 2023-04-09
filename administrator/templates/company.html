@@ -16,6 +16,9 @@
             <ul class="utilities">
               <br>
               <li class="users"><a href="adminprofile">My Account</a></li>
+              <li><a href="{% url 'companycreate-pdf' %}">Create PDF</a></li>
+              <li><a href="{% url 'company_datacsvdownload' %}">Create CSV</a></li>
+
               {% comment %} <li class="users"><a href="companyuser_pdf">User PDF Download</a></li> {% endcomment %}
               {% comment %} <li><a href="{% url 'changepassword' %}">change password</a></li> {% endcomment %}
               <li class="logout warn"><a href="logout">Log Out</a></li>
@@ -24,13 +27,17 @@
           
           <nav role='navigation'>
             <ul class="main">
-              <li class="dashboard"><a href="{% url 'adminLTE' %}" class="btn btn--pill">Admin LTE</a></li>
+              <li class="dashboard"><a href="adminLTE" class="btn btn--pill">Admin LTE</a></li>
               <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+              <li class="write"><a href="{% url 'showjobpost' %}">Post Job</a></li>
+              <li class="write"><a href="#">Apply Job</a></li>
               <li class="write"><a href="{%url 'showcompanyfeedback' %}">Company Feedback</a></li>
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
-              {% comment %} <li class="user"><a href="{% url 'showaddBider' %}" class="btn btn--pill">Bider</a></li> {% endcomment %}
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
+
+
+              <li><a href="#">change password</a></li>
             </ul>
           </nav>
           

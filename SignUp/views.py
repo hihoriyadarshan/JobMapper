@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from xhtml2pdf import pisa
 from django.template.loader import get_template
+from django.contrib import messages
 
 
 
@@ -208,6 +209,19 @@ def user_pdf_report(request):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
+
+# user_data csv download
+def user_datacsvdownload(request):
+    
+    file_open = open("user_data.csv", "a")
+
+    for user in SignUp.objects.all():
+        file_open.write(str(user.id)+ "," +str(user.username)+ "," +str(user.email)+ "," +str(user.job)
+ + "," +str(user.skill)+ "," + str(user.hobbies)+"," +str(user.phone)+ "\n")
+    
+    messages.success(request, "File downloaded successfully!")
+    return render(request, "user.html")
+
  
 
 # company registration
@@ -311,6 +325,38 @@ def showcompanyprofile(request):
     return render(request, "companyprofile.html", context)
     print('company_data')
 
+#company_data pdf download
+def company_pdf_report(request):
+    company = Company.objects.all()
+    template_path = 'company_reportpdf.html'
+    context = {'company': company}
+    # return HttpResponse(context['users'])
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="company_data.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+    # return HttpResponse(html)
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+# user_data csv download
+def company_datacsvdownload(request):
+    
+    file_open = open("company_data.csv", "a")
+
+    for company in Company.objects.all():
+        file_open.write(str(company.id)+ "," +str(company.username)+ "," +str(company.companyname)+ "," +str(company.email)+ "," +str(company.phone)
+ +  "\n")
+    
+    messages.success(request, "File downloaded successfully!")
+    return render(request, "company.html")
 
 
 
@@ -406,7 +452,7 @@ def showcontact(request):
 
 
 
-#delte blog
+#delte feedback
 
 def deletemessage(request,id):
     context = {}

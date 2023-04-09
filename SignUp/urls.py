@@ -39,8 +39,13 @@ urlpatterns = [
     path('showprofile',views.showprofile,name='showprofile'),
     path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),
     path('create-pdf',views.user_pdf_report,name='create-pdf'),
+    path('companycreate-pdf',views.company_pdf_report,name='companycreate-pdf'),
+    
+    path('company_datacsvdownload',views.company_datacsvdownload,name='company_datacsvdownload'),
+    path('user_datacsvdownload',views.user_datacsvdownload,name='user_datacsvdownload'),
     path('home_page',views.home_page,name='home_page'),
     path('admin_signup',views.admin_signup,name='admin_signup'),
+    # path('admin_signup',views.admin_signup,name='admin_signup'),
 
 
 
