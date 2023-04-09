@@ -50,8 +50,7 @@
                     <th scope="col">Username</th>                  
                     <th scope="col">E-mail</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">update</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,9 +74,12 @@
                       <td>{{company.username}}</td>
                       <td>{{company.email}}</td>
                       <td>{{company.phone}}</td>
+                      <td>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye"></i></button>
+                        <button class="btn btn-success btn-sm rounded-0" color:"white;" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'updatecompany' company.id %}"</a><i class="fa fa-edit" style="color:white;"></i></button>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletecompany' company.id %}"><i class="fa fa-trash" style="color:white;"></i></button>
+                      </td>
                       
-                      <td><a href="{% url 'updatecompany' company.id %}" class="btn btn-daanger btn-sm ">update</a></td>
-                      <td><a href="{% url 'deletecompany' company.id %}" class="btn btn-daanger btn-sm ">delete</a></td>
                   </tr>
                   {% endfor %}
                 </tbody>

@@ -5,12 +5,15 @@ from . import views
 urlpatterns = [
 
     path('',views.homepage,name='home'),
+
     path('sign_up',views.sign_up,name='sign_up'),
     path('signup',views.signup,name='signup'),
     path('sup',views.sup,name='signup_data'),
+    
     path('adminlogin',views.adminlogin,name='adminlogin'),
     path('loginHandleAdmin',views.loginHandleAdmin,name='loginHandleAdmin'),
     path('loginHandlecompany',views.loginHandlecompany,name='loginHandlecompany'),
+    path('admin_data',views.admin_data,name='admin_data'),
     path('loginHandle',views.loginHandle,name='loginHandle'),
     path('companylogin',views.companylogin,name='companylogin'),
     path('company',views.company,name='company'),
@@ -37,6 +40,8 @@ urlpatterns = [
     path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),
     path('create-pdf',views.user_pdf_report,name='create-pdf'),
     path('home_page',views.home_page,name='home_page'),
+    path('admin_signup',views.admin_signup,name='admin_signup'),
+
 
 
    

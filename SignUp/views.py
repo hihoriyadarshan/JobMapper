@@ -57,6 +57,9 @@ def updateuser(request):
 def updatecomapny(request):
         return render(request,'update_company.html')
 
+def admin_signup(request):
+    return render(request,'admin_signup.html')
+
 
 
         
@@ -307,6 +310,25 @@ def showcompanyprofile(request):
     context ={"company_data":Company.objects.all()}
     return render(request, "companyprofile.html", context)
     print('company_data')
+
+
+
+
+
+#admin Signup
+
+def admin_data(request):  
+    if request.method == "POST": 
+        a = Admin_Log()
+        a.username = request.POST.get('username')
+        a.phone = request.POST.get('phone')
+        a.email = request.POST.get('email')
+        a.password = request.POST.get('password')
+
+        
+        a.save()
+        return render (request, "admin.html")
+    return HttpResponse('Fail')
 
 
 #admin login
