@@ -59,7 +59,7 @@ def editblog(request, id):
     form = blogForm(request.POST,request.FILES, instance = obj)  
     if form.is_valid():  
         form.save()  
-        return redirect("/showbloger") 
+        return redirect("/adminblog") 
     return render(request, "adminblog.html", context)
 
 

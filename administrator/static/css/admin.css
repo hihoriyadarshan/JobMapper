@@ -40,7 +40,6 @@ header[role="banner"] h1 {
   padding: 1rem;
 }
 header[role="banner"] h1:before {
-  content: "\f248";
   font-family: FontAwesome;
   padding-right: 0.6em;
   color: red;
@@ -60,7 +59,6 @@ header[role="banner"] .utilities li a {
 
 /* header */
 .utilities a:before {
-  content: "\f248";
   font-family: FontAwesome;
   padding-right: 0.6em;
 }
@@ -91,16 +89,13 @@ nav[role="navigation"] li a:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 nav[role="navigation"] li a:before {
-  content: "\f248";
   font-family: FontAwesome;
   padding-right: 0.6em;
 }
 nav[role="navigation"] .dashboard a:before {
   content: "";
 }
-nav[role="navigation"] .write a:before {
-  content: "";
-}
+
 nav[role="navigation"] .edit a:before {
   content: "";
 }

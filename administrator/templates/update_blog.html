@@ -23,27 +23,22 @@
           
           <main role="main">
             
-            <section class="panel important">
-              <h2>Write Some News</h2>
-              <ul>
-                <li>Information Panel</li>
-              </ul>
-            </section>
+           
             
             <section class="panel important">
-              <h2>Write a post</h2>
-            <form action="bloger" method="POST" enctype="multipart/form-data">
+              <center style="font-size:30px; ,color:black;"><h2>Write a Blog</h2></center>
+            <form action="editblog/{{context.id}}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                   <div class="twothirds">
-                    <h2>Blog image </h2>
-                  <input type="file" placeholder="upload image" height="50px" width="50px" name="image" />
+                    Blog image <br/>
+                  <input type="file" placeholder="upload image" height="50px" width="50px" name="image" value="{{blog.image}}" />
                    
                     Blog title:<br/>
-                    <input type="text" name="title" size="40"/ required><br/><br/>
+                    <input type="text" name="title" value="{{blog.title}}" size="40"/required><br/><br/>
                     Write a Blog:<br/>    
-                    <textarea name="message" rows="15" cols="67"></textarea><br/> 
+                    <textarea name="message" value="{{blog.message}}" rows="15" cols="67"></textarea><br/> 
                   <div>
-                    <input type="submit"  value="Save" />
+                    <input type="submit"  value="Update" />
                   </div>
                   </div>
                 </form>
