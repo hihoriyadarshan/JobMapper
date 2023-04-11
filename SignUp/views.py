@@ -167,6 +167,11 @@ def deleteuser(request,id):
 
 def showuser(request):
     users = SignUp.objects.all()
+    if request.method=="GET" :
+        us=request.GET.get('usersearch')
+        if us!=None:
+            users = SignUp.objects.filter(username=us)
+
     p = Paginator(users, 10)
     page_number = request.GET.get('page')
     
