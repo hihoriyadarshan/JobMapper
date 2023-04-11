@@ -81,6 +81,7 @@ def deleteblog(request,id):
 #show blog
 
 def showbloger(request):
+    
     context = { 'blog_data': blog.objects.all() }
     return render(request, "blogpage.html", {'context': context})
 

@@ -93,9 +93,13 @@ def jobpost_data(request):
 #show job post 
 def showjobpost(request):
     company = jobpost.objects.all()
-    p = Paginator(company, 10)
+    if request.method=="GET" :
+        cm=request.GET.get('jobsearch')
+        if cm!=None:
+            company = jobpost.objects.filter(job_title=cm)
+
+    p = Paginator(company, 5)
     page_number = request.GET.get('page')
-    
     try:
         page_obj = p.get_page(page_number)
     except Paginator.PageNotAnInteger:

@@ -172,7 +172,7 @@ def showuser(request):
         if us!=None:
             users = SignUp.objects.filter(username=us)
 
-    p = Paginator(users, 10)
+    p = Paginator(users, 5)
     page_number = request.GET.get('page')
     
     try:
@@ -287,10 +287,16 @@ def deletecompany(request,id):
         return redirect("/showcompany")
     return render(request, "company.html", context) 
 
-#show company user
+#show company user    
 def showcompany(request):
     company = Company.objects.all()
-    p = Paginator(company, 10)
+    if request.method=="GET" :
+        us=request.GET.get('companysearch')
+        if us!=None:
+            company = Company.objects.filter(companyname=us)
+
+
+    p = Paginator(company, 5)
     page_number = request.GET.get('page')
     
     try:
@@ -413,8 +419,6 @@ def loginHandleAdmin(request):
 
 
 
-
-
 # Contact us
 
 def cont(request):  
@@ -455,8 +459,6 @@ def showcontact(request):
     return render(request,'feedback.html',context)
     
 
-
-
 #delte feedback
 
 def deletemessage(request,id):
@@ -466,4 +468,5 @@ def deletemessage(request,id):
         obj.delete()
         return redirect("/showcontact")
     return render(request, "feedback.html", context)
+   
       
