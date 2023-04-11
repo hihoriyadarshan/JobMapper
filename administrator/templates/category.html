@@ -1,0 +1,175 @@
+{% load static%}
+<html>
+    <head>
+        <title>Admin Panel</title>
+        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
+        <style>
+            #cta {
+                display: block;
+                position: relative;
+                top: 13vh;
+                margin: 0 auto;
+                margin-left: 29vh; 
+                padding: 20px 40px;
+                border: 0;
+                background: hsl(200,85%,60%);
+                color: white;
+            }
+            
+            form {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                justify-content: center;
+                box-sizing: border-box;
+                background: hsl(200,70%,90%);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+                padding: 20px 50px;
+                border: 20vw solid rgba(0,0,0,0.5);
+                border-bottom: 80vh solid rgba(0,0,0,0.52);
+                transition: 0.2s ease;
+                z-index: -1;
+                opacity: 0;
+            } body.form-active form {
+                opacity: 1;
+                z-index: 10;
+
+            }
+            
+            input[type="text"], textarea, input[type="submit"] {
+                display: block;
+                box-sizing: border-box;
+                border: 0;
+                margin: 70px 205;
+                padding: 20px 20px;
+            
+                background: hsl(0,0%,98%);
+                width: 50%;
+                color: hsl(200, 85%, 20%);
+                {% comment %} margin-left:30px; {% endcomment %}
+            }
+            
+            .pay, .cancel {
+                border: 0;
+                padding: 15px 20px;
+                text-transform: uppercase;
+                display: inline-block;
+                color: white;
+                margin-right: 160px;
+            } .pay {
+                width: 20%;
+                background: hsl(200, 95%, 60%);
+               
+
+            } .cancel {
+                width: 20%;
+
+                background: hsl(0, 85%, 70%);
+            }
+        </style>
+    </head>
+    <body>
+        <header role="banner">
+            <h1>Admin Panel</h1>
+            <ul class="utilities">
+              <br>
+              
+              <li class="users"><a href= "adminprofile">My Account</a></li>
+              <li class="users"><a href="admin_signup">Registration</a></li>
+
+              
+              
+              <li class="logout warn"><a href="logout">Log Out</a></li>
+            </ul>
+          </header>
+          
+          <nav role='navigation'>
+            <ul class="main">
+              <li class="dashboard"><a href="adminLTE" class="btn btn--pill">Admin LTE</a></li>
+              <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
+              <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+              <li class="write"><a href="{% url 'category' %}">category</a></li>
+              <li class="write"><a href="{% url 'showjobpost' %}">Post Job</a></li>
+              <li class="write"><a href="#">Apply Job</a></li>
+              <li class="write"><a href="{%url 'showcompanyfeedback' %}">Company Feedback</a></li>
+              <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
+              <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
+
+
+    
+
+              <li><a href="#">change password</a></li>
+            </ul>
+          </nav>
+          
+
+                    <th scope="col">id</th>
+          {% for showcategory in page_obj %} 
+          <td>{{companyfeedback.catagory_name}}</td>
+          {% endfor %}
+          
+          
+          
+          <button id="cta" onclick="toggleForm();">Add</button>
+          
+
+            
+            <form action="add_category" method="POST">
+                    {% csrf_token %}
+                <input type="text" name="catagory_name" placeholder="Category Name">
+               
+                <button class="cancel" onclick="toggleForm();">Cancel</button>
+                <button class="pay" onclick="toggleForm();">submit</button>
+            </form>
+
+            <script>
+                var body = document.getElementsByTagName('body')[0];
+                function toggleForm() {
+                    body.classList.toggle('form-active');
+                }
+            </script>
+
+
+
+           
+
+                        <main role="main">
+                            <section class="panel important">
+                              <center><h2>Category</center></h2>
+                              <div class="container">
+                              {% comment %} <a href="showcontact">Show</a> {% endcomment %}
+                              <div class="container">
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">id</th>
+                                      <th scope="col">name</th>
+                  </thead>
+                                  <tbody>
+                                    <div class="card-container">
+                                    {% for category in page_obj %} 
+                                    <tr>
+                                        <th scope="row">{{cont.id}}</th>
+                                        <td>{{cont.name}}</td>
+                  </tbody>
+                  </table>
+                   </div>  
+                                <center>
+                                  {%if page_obj.has_previous %} {# whether the previous page exists #}
+                                      <a href="?page={{page_obj.previous_page_number}}"><</a> {# link to the prev page #}
+                                  {% endif %}
+                                  <span>{{page_obj.number}}</span> {# the current page number #}
+                                  
+                                  {%if page_obj.has_next %} {# whether the next page exists #}
+                                      <a href="?page={{page_obj.next_page_number}}">></a> {# link to the next page #}
+                                  {% endif %}
+                                  {% endfor %}
+                              </center>
+                            </section>            
+                          </main>
+                      </body>
+                  </html>
+                  

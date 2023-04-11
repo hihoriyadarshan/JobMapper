@@ -16,6 +16,12 @@ urlpatterns = [
     path('adminLTE',views.adminLTE,name='adminLTE'),
     path('updateblog<id>',views.updateblog,name='updateblog'),
     path('editblog/<id>',views.editblog,name='editblog'),
+    path('category',views.category,name='category'),
+    path('add_category',views.add_category,name='add_category'),
+    path('showcategory',views.showcategory,name='showcategory'),
+
+    
+
 
 
 

@@ -68,15 +68,14 @@
         <span></span>
                
                <div class="forgate_detail">
-               <p class="hedding_name">Company SignUp</p>
+               <h1>Company update<h1>
 			   
                <br>
 
                <body>
-                    <label for="file-upload" class="custom-file-upload">
-                      <i class="fa fa-cloud-upload"></i> Profile picture
+                    
                   </label>
-                  <input id="file-upload" name="image"  value="{{company.image}}" type="file"/><br></br>
+                  <input id="file-upload" name="image"  value="{{company.image}}" type="file"/>
                
            
 
@@ -85,7 +84,7 @@
                
                <input type="text" name="companyname" id="textusername" value="{{company.companyname}}" placeholder="Enter Your Companyname">
 
-               <input type="number" name="phone" id="textusername" value="{{company.phone}}" placeholder="Enter Your Phone number">
+               <input type="text" name="phone" id="textusername" value="{{company.phone}}" placeholder="Enter Your Phone number">
 
                <input type="text" name="email" id="textemail" value="{{company.email}}"  placeholder="Enter Your Email">
                
@@ -97,6 +96,9 @@
                <div>
 
                     <input type="submit" id="submit" value="update">
+                    <input type="submit" href="company.html" id="submit" value="Close">
+
+                    
                </div>
 
           </div>

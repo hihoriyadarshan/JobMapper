@@ -1,97 +1,118 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/registration.css">
-    <link rel="stylesheet" href="static/css/index.css">
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://use.fontawesome.com/53fa7e3185.js"></script>
+      <title>SignUp</title>
+     
+     <style>
+     
+          
+      form {
+        border: 2px solid black;
+        padding: 80px;
+      
+      }
+      
+      .form-group {
+        margin-bottom: 10px;
+      }
+      
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+      
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
 
-    <title>Document</title>
+     </style>
+
+
 </head>
 <body>
-  
+	
+	<form id="update-form" method="POST" action="edituser/{{context.id}}" enctype="multipart/form-data">
+     {% csrf_token %}
+     <div class="mainnavbar">
+          <div class="content">
+               <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+               
+               <div class="forgate_detail">
+               <h1>User update<h1>
+			   
+               <br>
 
-    <div class="wrapper">
-        <div class="content">
-          <h1>Registration Form</h1>
-         
-        </div>
-   
-        <div>
-            <form class="form" method="POST" action="edituser/{{context.id}}" enctype="multipart/form-data">
-                
-      
-          <div class="middle-form">
-            <div class="inner-form">
-              {% csrf_token %}
-              <div class="label">Profile image</div>
-              <input type="file" name="image" placeholder="Subject" value="{{user.name}}">
-            </div>
+               <body>
+                    
+              </label>
+                  
+               	
+
+		    <input type="file" id="id="file-upload"" name="image" value="{{user.name}}" accept="image/*">
+               
+
+        <input type="text" name="username" id="username" placeholder="Jhon" value="{{user.username}}" required>
+
+        <input type="text" name="email" id="email" placeholder="Example@gmail.com" value="{{user.email}}" required>
+			
+		  
+		    <input type="text" name="job" placeholder="Fresher/web Developer" value="{{user.job}}" required>
+		    
+		    <input type="text"  name="skill" placeholder="Java,PHP" value="{{user.skill}}" required>
+
+		    <input type="text" name="hobbies" placeholder="Diving, Reading Book" value="{{user.hobbies}}" required>		    
+
+		    <input type="text"  name="phone" placeholder="1234567890" value="{{user.phone}}" required>
+
+        <input type="text" name="address" placeholder="Enter your Address" value="{{user.address}}" required>
+
+        <input type="text" name="password" placeholder="Enter your password" value="{{user.password}}" required>
+               
+               <br> </br>
+               
+			
+               <div>
+
+        <input type="submit" id="submit" value="update">
+                  
+
+                    
+               </div>
 
           </div>
-          <div class="top-form">
-            <div class="inner-form">
-              <div class="label">Username</div>
-              <input type="text" name="username" placeholder="Jhon" value="{{user.username}}" >
-            </div>
-            <div class="inner-form">
-              <div class="label">email</div>
-              <input type="text" name="email" placeholder="Example@gmail.com" value="{{user.email}}">
-            </div>
-            <div class="inner-form">
-              <div class="label">Job</div>
-              <input type="text" name="job" placeholder="Fresher/web Developer" value="{{user.job}}">
-            </div>
-          </div>
+     </div>
+	</form>
 
-          <div class="top-form">
-            <div class="inner-form">
-              <div class="label">Skill</div>
-              <input type="text"  name="skill" placeholder="Java,PHP" value="{{user.skill}}">
-            </div>
-            <div class="inner-form">
-              <div class="label">Hobbies</div>
-              <input type="text" name="hobbies" placeholder="Diving, Reading Book" value="{{user.hobbies}}">
-            </div>
-            <div class="inner-form">
-              <div class="label">phone</div>
-              <input type="text"  name="phone" placeholder="1234567890" value="{{user.phone}}">
-            </div>
-          </div>
-      
-          <div class="bottom-form">
-            <div class="inner-form">
-              <div class="label">Address</Address></div>
-              <textarea name="address" placeholder="Enter your Address" value="{{user.address}}"></textarea>
-            </div>
-          </div>
-
-          <div class="middle-form">
-            <div class="inner-form">
-              <div class="label">Password</div>
-              <input type="text" name="password" placeholder="Enter your password" value="{{user.password}}">
-            </div>
-            </div></br>
-
-      <div>
-        
-          <button type="submit" class="btn">update</button>
-
-        </div>
-        </div>
-      </div>
-      
-      
-      
-      <script>
-        $(".btn").click(function(){
-        $("input[type='text'], textarea").val("");
-        });
-      </script>
-    
 </body>
 </html>
-
-

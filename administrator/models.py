@@ -12,3 +12,7 @@ class blog(models.Model):
     blogdate = models.DateTimeField(auto_now=True)
 
 
+#category model
+class Catagory(models.Model):    
+    catagory_name = models.TextField(max_length = 50)
+    
