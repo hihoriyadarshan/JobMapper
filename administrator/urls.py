@@ -18,7 +18,10 @@ urlpatterns = [
     path('editblog/<id>',views.editblog,name='editblog'),
     path('category',views.category,name='category'),
     path('add_category',views.add_category,name='add_category'),
-    path('showcategory',views.showcategory,name='showcategory'),
+    path('deletecategory<id>',views.deletecategory,name='deletecategory'),
+
+    
+    # path('showcategory',views.showcategory,name='showcategory'),
 
     
 

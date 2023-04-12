@@ -30,8 +30,7 @@ def adminprofile(request):
 def adminLTE(request):
     return render(request,'admin.html')
 
-def category(request):
-    return render(request,'category.html')
+
 
 
 
@@ -116,9 +115,10 @@ def add_category(request):
 
 # show category
 
-def showcategory(request):
-    company = Catagory.objects.all()
-    p = Paginator(company, 10)
+def category(request):
+    category = Catagory.objects.all()
+    # return HttpResponse(category)
+    p = Paginator(category, 10)
     page_number = request.GET.get('page')
     
     try:
@@ -129,5 +129,17 @@ def showcategory(request):
     except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
-    return render(request,'category.html',context)
+    # context ={'page_obj': page_obj} 
+    return render(request,'category.html',  context ={'showcategory': page_obj} )
+
+#delete Category
+
+def deletecategory(request,id):
+    context = {}
+    obj = get_object_or_404(Catagory,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/category")
+    return render(request, "category.html", context)
+
+
