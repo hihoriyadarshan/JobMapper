@@ -8,6 +8,7 @@ from django.conf import settings
 from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.contrib import messages
+from administrator.models import Catagory 
 
 
 
@@ -167,11 +168,12 @@ def deleteuser(request,id):
 
 def showuser(request):
     users = SignUp.objects.all()
+    user_count = SignUp.objects.all().count()
     if request.method=="GET" :
         us=request.GET.get('usersearch')
         if us!=None:
             users = SignUp.objects.filter(username=us)
-
+    
     p = Paginator(users, 5)
     page_number = request.GET.get('page')
     
@@ -183,8 +185,15 @@ def showuser(request):
     except Paginator.EmptyPage:
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
-    context ={'page_obj': page_obj} 
+    context ={'page_obj': page_obj,
+              'user_count': user_count} 
     return render(request,'user.html',context)
+
+
+
+
+
+
 
 #show userprofile
 def showprofile(request):
@@ -397,6 +406,7 @@ def loginHandleAdmin(request):
         un = request.POST.get("username")
         ps = request.POST.get("password")
         uname = Admin_Log.objects.all().filter(username=un)
+        
 
         if uname[0].username == un and uname[0].password == ps:
             request.session['username'] = uname[0].username
@@ -417,7 +427,19 @@ def loginHandleAdmin(request):
         return render(request, template_name = "index.html", context = {"form":form})
     
 
+# show admin dashboard
 
+def showadmindashboard(request):
+    users = SignUp.objects.all()
+    user_count = SignUp.objects.all().count()
+    Company_count = Company.objects.all().count()
+    category_count = Catagory.objects.all().count()
+
+   
+    context ={'user_count': user_count,
+              'company_count': Company_count, 
+              'category_count': category_count} 
+    return render(request,'admin.html',context)
 
 # Contact us
 

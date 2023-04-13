@@ -10,6 +10,7 @@ urlpatterns = [
     path('bloger',views.bloger,name='bloger'),
     path('showbloger',views.showbloger,name='showbloger'),
     path('showbloger_company',views.showbloger_company,name='showbloger_company'),
+    path('writeblog',views.writeblog,name='writeblog'),
     path('adminblog',views.adminblog,name='adminblog'),
     path('deleteblog<id>',views.deleteblog,name='deleteblog'),
     path('adminprofile',views.adminprofile,name='adminprofile'),

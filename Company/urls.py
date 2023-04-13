@@ -10,9 +10,9 @@ urlpatterns = [
        path('job_post',views.job_post,name='job_post'),
        # path('job_post1',views.job_post1,name='job_post1'),
 
-       path('showjobpost',views.showjobpost,name='showjobpost'),
-       # path('deletecompanyfeedback<id>',views.deletecompanyfeedback,name='deletecompanyfeedback'),
-       path('deletecompanyfeedback<id>',views.deletecompanyfeedback,name='deletecompanyfeedback'),
+       path('showjobpost',views.showjobpost,name='showjobpost'),      
+       path('showjob',views.showjob,name='showjob'),      
+       path('deletecompanyfeedback/<id>',views.deletecompanyfeedback,name='deletecompanyfeedback'),
        
 
 

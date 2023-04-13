@@ -53,12 +53,16 @@ def showcompanyfeedback(request):
 #delete company feedback
 
 def deletecompanyfeedback(request,id):
+    # return HttpResponse(id)
+
     context = {}
     obj = get_object_or_404(company_contact,id=id)
     if request.method == "GET":
         obj.delete()
         return redirect("/companyfeedback")
     return render(request, "companyfeedback.html", context)
+
+
 
 
 #job post 
@@ -111,3 +115,26 @@ def showjobpost(request):
     context ={'page_obj': page_obj} 
     return render(request,'job_post.html',context)
 
+
+
+
+
+
+
+#show job user side
+
+def showjob(request):
+    productpage = jobpost.objects.all()
+    p = Paginator(productpage, 5)
+    page_number = request.GET.get('page')
+    
+    try:
+        page_obj = p.get_page(page_number)
+    except Paginator.PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except Paginator.EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+    context ={'page_obj': page_obj} 
+    return render(request,'job.html',context)

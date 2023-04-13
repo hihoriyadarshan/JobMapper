@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from administrator.forms import blogForm, categoryForm
 from administrator.models import blog, Catagory
 from django.core.paginator import Paginator
-
+from SignUp.models import SignUp
 from django.http import FileResponse
 import io
 from reportlab.pdfgen import canvas
@@ -30,6 +30,9 @@ def adminprofile(request):
 def adminLTE(request):
     return render(request,'admin.html')
 
+def writeblog(request):
+    return render(request,'writeblog.html')
+
 
 
 
@@ -49,7 +52,7 @@ def bloger(request):
         b.save()
 
         #return HttpResponse(b)
-        return render (request, "admin.html")
+        return render (request, "writeblog.html")
     return HttpResponse('Fail')
 
 

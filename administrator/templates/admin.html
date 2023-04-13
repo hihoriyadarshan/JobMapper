@@ -4,6 +4,78 @@
         <title>Admin Panel</title>
         <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
     </head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    
+    .card {
+        width: calc(33.33% - 20px);
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 13px;
+        margin: 20px;
+        margin: 29px margin-bottom: 20px;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+    }
+    
+    h2 {
+        
+        font-size: 35px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    p {
+        margin-top: 5px;
+        padding-top: 5px;
+        font-size: 40px;
+        margin-bottom: 10px;
+        font-weight: 900;
+        text-align: center;
+    }
+    
+    .btn1 {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+    }
+    
+    .btn1:hover {
+        background-color: #3e8e41;
+    }
+    </style>
     <body>
         <header role="banner">
             <h1>Admin Panel</h1>
@@ -22,6 +94,8 @@
           <nav role='navigation'>
             <ul class="main">
               <li class="dashboard"><a href="adminLTE" class="btn btn--pill">Admin LTE</a></li>
+              <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
+              <li class="user"><a href="{% url 'writeblog' %}" class="btn btn--pill">write Blog</a></li>
               <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
               <li class="write"><a href="{% url 'category' %}">category</a></li>
@@ -30,7 +104,7 @@
               <li class="write"><a href="{%url 'showcompanyfeedback' %}">Company Feedback</a></li>
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
-
+              
 
     
 
@@ -40,32 +114,50 @@
           
           <main role="main">
             
-            <section class="panel important">
-              <h2>Write Some News</h2>
-              <ul>
-                <li>Information Panel</li>
-              </ul>
-            </section>
             
-            <section class="panel important">
-              <h2>Write a post</h2>
-            <form action="bloger" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                  <div class="twothirds">
-                    <h2>Blog image </h2>
-                  <input type="file" placeholder="upload image" height="50px" width="50px" name="image" />
-                   
-                    Blog title:<br/>
-                    <input type="text" name="title" size="40"/ required><br/><br/>
-                    Write a Blog:<br/>    
-                    <textarea name="message" rows="15" cols="67"></textarea><br/> 
-                  <div>
-                    <input type="submit"  value="Save" />
+            <div class="container">
+              
+              <div class="row">
+                  <div class="card">
+                      <h2>Users</h2><br><br>
+                    <p>{{ user_count }}</p>
+                      
                   </div>
+                  <div class="card">
+                      <h2>Company</h2><br><br>
+                      <p>{{ company_count}}</p>
+                      
                   </div>
-                </form>
-            </section>
-          </main>
+                  <div class="card">
+                      <h2>Category</h2><br><br>
+                      <p>{{ category_count }}</p>
+                      
+                  </div>
+                 
+              </div>
+          </div>
+          <div class="container">
+              
+            <div class="row">
+                <div class="card">
+                    <h2></h2><br><br>
+                  <p>{{ user_count }}</p>
+                    
+                </div>
+                <div class="card">
+                    <h2>Company</h2><br><br>
+                    <p>{{ company_count}}</p>
+                    
+                </div>
+                <div class="card">
+                    <h2>Category</h2><br><br>
+                    <p>{{ category_count }}</p>
+                    
+                </div>
+               
+            </div>
+        </div>
+             
     </body>
 </html>
 

@@ -65,7 +65,7 @@
                         
                       {% comment %} <td><a href= class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
                       <td>
-                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletecompanyfeedback' companyfeedback.id %}"><i class="fa fa-trash" style="color:white"></i></button>
+                        <a href="{% url 'deletecompanyfeedback' companyfeedback.id %}">delete</a>
                       </td>
                     </tr>
                  

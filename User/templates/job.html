@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="static/css/index.css"/>
+<style>
+.cart-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cart-item img {
+  width: 20%;
+  height: 30%;
+  object-fit: cover;
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    width: 30%;
+    gap: 25px;
+    height: 100%;
+    padding: 20px 0px 0px 10px;
+}
+
+.job-requirements {
+  display: flex;
+  flex-direction: column;
+  font-size:20px;
+  gap: 15px;
+  text-align:justify;
+  width: 50%;
+  height: 100%;
+  padding: 20px 10px 0px 10px;
+}
+
+.job-requirements button {
+  margin-top: auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.job-requirements button:hover {
+  background-color: #0062cc;
+}
+
+.job-requirements div {
+  margin-bottom: 10px;
+}
+
+.job-requirements .description {
+  height: 100%;
+  overflow: auto;
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-list-container">
+            <li class="list"><a href="#home" class="link">Home</a></li>
+            <li class="list"><a href="#about-us" class="link">About</a></li>
+            <li class="list"><a href="#contact" class="link">Contact</a></li>
+            <li class="list"><a href="{% url 'showjob' %}" class="link">Job</a></li>   
+            <li class="list"><a href="{% url 'showbloger'%}" class="link">Blog</a></li>   
+            <li class="list"><a href="{% url 'showprofile'%}" class="link">Profile</a></li>
+            <li class="list"><a href="logout" class="link">logout</a></li>
+        </ul>
+    </nav>
+            <div class="cart-container">
+                {% for company in page_obj %} 
+            <div class="cart-item">
+                {% if company.image %}
+                <td>
+                   <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px">
+                </td>
+              {% else %}
+                <td>
+                </td>  
+               {% endif %}
+                <div class="job-details">
+                <div class="job-id">Job ID: {{ company.id}}</div>
+                <div class="field">Field: IT</div>
+                <div class="company-name">Company: {{company.company_name}}</div>
+                <div class="job-title">Job : {{ company.job_title}}</div>
+                <div class="location">Location: {{company.location}}</div>
+                <div class="salary">Salary: {{company.salary}}</div>
+                <div class="email">Email: {{ company.email}}</div>
+            </div>
+                <div class="job-requirements">
+                <div class="experience-requirement">Experience Requirement: {{company.experience_required}} year</div>
+                <div class="skill-requirement">Skill Requirement: {{company.skill_required}}</div>
+                <div class="phone-number">Phone Number: {{company.phone}}</div>
+                <div class="last-date">Last Date to Apply: {{company.last_date}}</div>
+                <div class="description">Description: {{company.job_description}} </div>
+                <button class="apply-button">Apply Now</button>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+
+
+
+    </body>
+</html>

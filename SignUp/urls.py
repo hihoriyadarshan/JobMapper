@@ -48,7 +48,7 @@ urlpatterns = [
     # path('admin_signup',views.admin_signup,name='admin_signup'),
 
     # path('admin<id>',views.updateadmin,name='updateadmin'),
-    # path('editadmin/<id>',views.editadmin,name='editadmin'),
+    path('showadmindashboard',views.showadmindashboard,name='showadmindashboard'),
 
 
 
