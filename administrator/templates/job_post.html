@@ -145,8 +145,8 @@
                       <td>{{company.company_location}}</td>
                       <td>
                         <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
-                        <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'deletejobpost' %}"</a><i class="fa fa-edit" style="color:white"></i></button>
-                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#"><i class="fa fa-trash" style="color:white"></i></button>
+                        <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"><i class="fa fa-edit" style="color:white"></i></button>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletejobpost' company.id %}"</a><i class="fa fa-trash" style="color:white"></i></button>
                       </td>
                       
           
