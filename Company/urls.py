@@ -13,6 +13,7 @@ urlpatterns = [
        path('showjobpost',views.showjobpost,name='showjobpost'),      
        path('showjob',views.showjob,name='showjob'),      
        path('deletecompanyfeedback/<id>',views.deletecompanyfeedback,name='deletecompanyfeedback'),
+       path('deletejobpost<id>',views.deletejobpost,name='deletejobpost'),
        
 
 

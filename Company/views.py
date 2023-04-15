@@ -138,3 +138,13 @@ def showjob(request):
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
     return render(request,'job.html',context)
+
+# job post delete admin side
+
+def deletejobpost(request,id):
+    context = {}
+    obj = get_object_or_404(jobpost,id=id)
+    if request.method == "GET":
+        obj.delete()
+        return redirect("/showjobpost")
+    return render(request, "jobpost.html", context) 

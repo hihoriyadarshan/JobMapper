@@ -21,19 +21,18 @@
           
           <nav role='navigation'>
             <ul class="main">
-              <li class="dashboard"><a href="adminLTE" class="btn btn--pill">Admin LTE</a></li>
+              <li class="dashboard"><a href="showadmindashboard" class="btn btn--pill">Admin LTE</a></li>
               <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
+              <li class="user"><a href="{% url 'writeblog' %}" class="btn btn--pill">write Blog</a></li>
               <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
-              <li class="write"><a href="{% url 'category' %}">category</a></li>
-              <li class="write"><a href="{% url 'showjobpost' %}">Post Job</a></li>
-              <li class="write"><a href="#">Apply Job</a></li>
-              <li class="write"><a href="{%url 'showcompanyfeedback' %}">Company Feedback</a></li>
+              <li class="user"><a href="{% url 'category' %}" class="btn btn--pill">category</a></li>
+              <li class="user"><a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a></li>
+              <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li>
+              <li class="user"><a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill">Company Feedback</a></li>
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
               
-
-    
 
               <li><a href="#">change password</a></li>
             </ul>
