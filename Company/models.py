@@ -6,12 +6,10 @@ class company_contact(models.Model):
     email = models.EmailField(blank = True,max_length=50)
     message = models.TextField(max_length = 300)
     date = models.DateTimeField(auto_now=True)
-
-
-
     
     def __str__(self):
         return self.name 
+    
     
 class jobpost(models.Model):
 

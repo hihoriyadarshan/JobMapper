@@ -3,6 +3,8 @@
 <html>
 <head>
 	<title>Job Post</title>
+    <link rel="stylesheet" href="static/css/index.css"/>
+
 	<style>
 		body {
 			margin: 0;
@@ -90,7 +92,7 @@
 		.image-container {
 			width: 40%;
 			height: 100%;
-			background-image: url("web-1.jpg");
+			background-image: url("./static/images/job post.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
 			border-top-left-radius: 10px;
@@ -216,94 +218,111 @@
 </style>
 </head>
 <body>
+	<nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-list-container">
+            <li class="list"><a href="#home" class="link">Home</a></li>
+            <li class="list"><a href="#about-us" class="link">About</a></li>
+            <li class="list"><a href="#contact" class="link">Contact</a></li>
+            <li class="list"><a href="{% url 'job_post'%}" class="link">Job Post</a></li>
+            <li class="list"><a href="#" class="link">View Applicaton</a></li>
+            <li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
+            <li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
+            <li class="list"><a href="logout" class="link">logout</a></li>
+        </ul>
+    </nav>
 	<div class="container">
 		<div class="card">
 			<div class="image-container"></div>
 			<div class="form-container">
-				<h2>Registration Form</h2>
+				<h2>Add Job</h2>
 				<form id="registration-form" method="post" action="jobpost_data" enctype="multipart/form-data">
                     {% csrf_token %}	
-                    <div class="field-group">
-						<div class="field">
-							<label for="job_title">Job Title</label>
-							<input type="text" id="job_title" name="job_title" required>
-							<span class="error"></span>
-						</div>
-						<div class="field">
-							<label for="company_location">Company Name</label>
-							<input type="text" id="company_name" name="company_name" required>
-							<span class="error"></span>
-						</div>
-						<div class="field">
-							<label for="company_location">Company Location</label>
-							<input type="text" id="company_location" name="company_location" required>
-							<span class="error"></span>
-						</div>
-					</div>
+                    
 					<div class="field-group">
 						<div class="field">
-<label for="salary">Salary</label>
-<input type="number" id="salary" name="salary" required>
-<span class="error"></span>
-</div>
-<div class="field">
-<label for="experience_required">Experience Required (in years)</label>
-<input type="number" id="experience_required" name="experience_required" required>
-<span class="error"></span>
-</div>
-</div>
-<div class="field-group">
-<div class="field">
-<label for="skill_required">Skill Required</label>
-<select id="skill_required" name="skill_required" required>
-<option value="">Select a skill</option>
-<option value="programming">Programming</option>
-<option value="design">Design</option>
-<option value="marketing">Marketing</option>
-<option value="management">Management</option>
-</select>
-<span class="error"></span>
-</div>
-<div class="field">
-	<label for="post_date">E-mail</label>
-	<input type="email" name="email"  id="phone" placeholder="E-mail" required>
-	{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
-	<span class="error"></span>
-	</div>
-<div class="field">
-<label for="post_date">phone</label>
-<input type="number" name="phone"  id="phone" placeholder="Phone number" required>
-{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
-<span class="error"></span>
-</div>
-</div>
-<div class="field-group">
-<div class="field">
-<label for="last_date">Last Date to Apply</label>
-{% comment %} <input type="date" id="last_date" name="last_date" required> {% endcomment %}
-<input type="date" name="last_date"  placeholder="last date" required>
-<span class="error"></span>
-</div>
-<div class="field">
-<label for="logo">Company Logo</label>
-<input type="file" id="logo" name="image" required>
-<span class="error"></span>
-</div>
-</div>
-<div class="field">
-<label for="job_description">Job Description</label>
-<textarea id="job_description" name="job_description" required></textarea>
-<span class="error"></span>
-</div>
+						<label for="salary">Job</label>
+						<input type="text" id="job_title" name="job_title" required>
+						<span class="error"></span>
+						</div>
+						<div class="field">
+						<label for="experience_required">Company Name</label>
+						<input type="text" id="company_name" name="company_name" required>
+						<span class="error"></span>
+					  </div>
+					</div>
+					<div class="field-group">
+						
+						<div class="field">
+							<label for="post_date">E-mail</label>
+							<input type="email" name="email"  id="phone" placeholder="E-mail" required>
+							{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
+							<span class="error"></span>
+						</div>
+						
+						<div class="field">
+							<label for="salary">Salary</label>
+							<input type="text" id="company_location" name="company_location" required>
+							<span class="error"></span>
+							</div>
+						
+					</div>
+					<div class="field-group">
+					<div class="field">
+						<label for="skill_required">Skill Required</label>
+						<select id="skill_required" name="skill_required" required>
+						<option value="">Select a skill</option>
+						<option value="programming">Programming</option>
+						<option value="design">Design</option>
+						<option value="marketing">Marketing</option>
+						<option value="management">Management</option>
+						</select>
+						<span class="error"></span>
+					</div>
+					<div class="field">
+						<label for="salary">Salary</label>
+						<input type="number" id="salary" name="salary" required>
+						<span class="error"></span>
+						</div>
+				<div class="field">
+				<label for="post_date">phone</label>
+				<input type="number" name="phone"  id="phone" placeholder="Phone number" required>
+				{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
+				<span class="error"></span>
+				</div>
+				</div>
+				<div class="field-group">
+				<div class="field">
+						<label for="experience_required">Experience Required (in years)</label>
+						<input type="number" id="experience_required" name="experience_required" required>
+						<span class="error"></span>
+				</div>	
+				<div class="field">
+				<label for="last_date">Last Date to Apply</label>
+				{% comment %} <input type="date" id="last_date" name="last_date" required> {% endcomment %}
+				<input type="date" name="last_date"  placeholder="last date" required>
+				<span class="error"></span>
+				</div>
+				<div class="field">
+				<label for="logo">image</label>
+				<input type="file" id="logo" name="image" required>
+				<span class="error"></span>
+				</div>
+				</div>
+				<div class="field">
+				<label for="job_description">Job Description</label>
+				<textarea id="job_description" name="job_description" required></textarea>
+				<span class="error"></span>
+				</div>
 
-<input type="submit" value="submit">
-</div>
-</form>
-</div>
-</div>
-</div>
+				<input type="submit" value="submit">
+				</div>
+				</form>
+				</div>
+				</div>
+				</div>
 
-<script>
+				<script>
 	// form validation
 	document.getElementById("registration-form").addEventListener("submit", function(event) {
 		var jobTitle = document.getElementById("job_title");
