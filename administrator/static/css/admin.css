@@ -12,11 +12,26 @@ html {
 }
 
 body {
-  background: #f1f2f7;
+  background: #e9eaef;
   font-family: "Open Sans", arial, sans-serif;
   color: darkslategray;
 }
 
+.blank{
+      /* height: 10px; */
+      width: 10px;
+
+}
+
+.add{
+    height: 50px;
+    color: #2a3542;
+    background-color: #dddddd;
+    margin-left: 10px;
+    margin-top: 30px;
+    padding-top: 10px;
+    width: 1260px;
+}
 body.login {
   background-color: white;
   max-width: 500px;
@@ -77,6 +92,7 @@ header[role="banner"] .utilities {
 header[role="banner"] .utilities li {
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
+
 header[role="banner"] .utilities li a {
   padding: 0.7em;
   display: block;
@@ -338,28 +354,40 @@ label.error {
 /* tables */
 table {
   border-collapse: collapse;
-  width: 96%;
-  margin: 2%;
+  width: 100%;
+  /* margin: 2%; */
+  background-color: #857a11;
 }
 
 th {
   text-align: left;
   font-weight: 400;
   font-size: 13px;
+  background-color: black;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0 10px;
   padding-bottom: 14px;
+  color: white;
+  /* width: 96%; */
+
 }
 
 tr:not(:first-child):hover {
   background: rgba(0, 0, 0, 0.1);
+  background-color: black;
+  color:white
+
 }
 
 td {
   line-height: 40px;
   font-weight: 300;
   padding: 0 10px;
+  background-color: black;
+  color:white;
+  /* width: 96%; */
+
 }
 
 @media screen and (min-width: 600px) {
