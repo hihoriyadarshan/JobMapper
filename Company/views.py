@@ -117,10 +117,6 @@ def showjobpost(request):
 
 
 
-
-
-
-
 #show job user side
 
 def showjob(request):

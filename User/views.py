@@ -3,5 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 #user profile
 
-# def adminprofile(request):
-#     return render(request,'userprofile.html')
+def home(request):
+    return render(request,'user-hp.html')
+

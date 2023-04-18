@@ -9,7 +9,8 @@ from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.contrib import messages
 from administrator.models import Catagory 
-
+# password hasing
+from django.contrib.auth.hashers import make_password ,check_password
 
 
 
@@ -91,9 +92,14 @@ def sup(request):
 
         if len(request.FILES) != 0:
             s.image = request.FILES['image']
+        #password Hashing
+        # s.password = make_password(s.password)
         s.save()
+
+
         # return HttpResponse(s.username)
         return render (request, "login.html")
+    
     return HttpResponse('Fail')
 
 #user login
@@ -104,9 +110,14 @@ def loginHandle(request):
         form = SignUpForm(request.POST)
         un = request.POST.get("username")
         ps = request.POST.get("password")
-        uname = SignUp.objects.all().filter(username=un)
+        # if user.check_password(SignUp.password):
 
+        
+
+        uname = SignUp.objects.all().filter(username=un)
+        
         if uname[0].username == un and uname[0].password == ps:
+            # request.session['image'] = uname[0].FILES['image']
             request.session['username'] = uname[0].username
             request.session['email'] = uname[0].email
             request.session['job'] = uname[0].job
@@ -116,13 +127,12 @@ def loginHandle(request):
             request.session['address'] = uname[0].address
             
 
-
+            # image =   len(request.FILES).session.image = request.FILES['image']            
             username = request.session['username']
             email = request.session['email']
             job = request.session['job']
             skill = request.session['skill']
             hobbies =request.session['hobbies']
-
             phone = request.session['phone']
 
             return render(request,'user-hp.html')
@@ -190,15 +200,10 @@ def showuser(request):
     return render(request,'user.html',context)
 
 
-
-
-
-
-
 #show userprofile
 def showprofile(request):
     context ={"user_data":SignUp.objects.all()}
-    return render(request, "profile.html", context)
+    return render(request, "userprofile.html", context)
     print('user_data')
 
 

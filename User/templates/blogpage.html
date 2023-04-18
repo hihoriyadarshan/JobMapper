@@ -4,15 +4,6 @@
           <title>Blog</title>
           <link href="{% static 'css/blogpage.css' %}" rel="stylesheet" media="all">
           <link href="{% static 'css/index.css' %}" rel="stylesheet" media="all">
-          <script src="https://kit.fontawesome.com/2d2e379b4b.js" crossorigin="anonymous"></script>
-          <!-- Latest compiled and minified CSS -->
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                                          
-          <!-- jQuery library -->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                                          
-          <!-- Latest compiled JavaScript -->
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <style>
         .button {
           display: inline-block;
@@ -45,7 +36,7 @@
    <nav class="navbar">
     <div class="logo">LOGO</div>
     <ul class="nav-list-container">
-        <li class="list"><a href="#home" class="link">Home</a></li>
+        <li class="list"><a href="{% url 'home' %}" class="link">Home</a></li>
         <li class="list"><a href="#about-us" class="link">About</a></li>
         <li class="list"><a href="#contact" class="link">Contact</a></li>
         <li class="list"><a href="{% url 'showjob' %}" class="link">Job</a></li>   
