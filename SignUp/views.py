@@ -336,8 +336,6 @@ def updatecompany(request,id):
     return render(request, "update_company.html",{'context' : context})
 
 
-
-
  #show company profile
 
 def showcompanyprofile(request):
