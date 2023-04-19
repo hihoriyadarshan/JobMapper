@@ -252,6 +252,9 @@ def company_data(request):
 
         if len(request.FILES) != 0:
             b.image = request.FILES['image']
+
+        b.password = make_password(b.password)
+
         b.save()
         return render (request, "companylogin.html")
     return HttpResponse('Fail')
@@ -263,20 +266,23 @@ def loginHandlecompany(request):
         form = companyForm(request.POST)
         un = request.POST.get("username")
         ps = request.POST.get("password")
-        uname = Company.objects.all().filter(username=un)
 
-        if uname[0].username == un and uname[0].password == ps:
-            request.session['companyname'] = uname[0].companyname
-            request.session['username'] = uname[0].username
-            request.session['email'] = uname[0].email
-            request.session['phone'] = uname[0].phone
+        obj = get_object_or_404(Company, username = un )
+        
+        result = check_password(ps,obj.password)
 
-            companyname = request.session['companyname']
-            username = request.session['username']
-            email = request.session['email']
-            phone = request.session['phone']
+        data = Company.objects.all()
+
+        for i in range(len(data)):
+            if data[i].username == un:
+                request.session['companyname'] = data[i].companyname
+                request.session['username'] = data[i].username
+                request.session['email'] = data[i].email
+                request.session['phone'] = data[i].phone
+
+          
             
-
+        if result == True:
             #return HttpResponse(form)
             return render(request,'companyhomepage.html')
         else :
@@ -288,6 +294,58 @@ def loginHandlecompany(request):
         form = companyForm()
         return render(request, template_name = "companylogin.html", context = {"form":form})
     
+
+
+
+
+
+
+
+
+def loginHandle(request):
+    
+    if request.method == "POST":    
+        form = SignUpForm(request.POST)
+        un = request.POST.get("username")
+        ps = request.POST.get("password")
+
+        obj = get_object_or_404(SignUp, username = un )
+        
+        result = check_password(ps,obj.password)
+
+        data = SignUp.objects.all()
+        # return HttpResponse(form)
+        for i in range(len(data)):
+            if data[i].username == un:
+                request.session['username'] = data[i].username
+                request.session['email'] = data[i].email
+                request.session['job'] = data[i].job
+                request.session['hobbies'] = data[i].hobbies
+                request.session['skill'] = data[i].skill
+                request.session['phone'] = data[i].phone
+                request.session['address'] = data[i].address
+
+        if result == True:
+
+          
+
+            return render(request,'user-hp.html')
+        else :
+            return render(request,'login.html')
+        
+    else:
+        form = SignUpForm()
+        return render(request, template_name = "login.html", context = {"form":form})
+
+
+
+
+
+
+
+
+
+
 
 # delete company data
 
