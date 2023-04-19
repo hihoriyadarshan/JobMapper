@@ -12,14 +12,28 @@
 <html>
     <head>
         <title>Admin Panel</title>
-        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link href="{% static 'css/job list.css' %}" rel="stylesheet" media="all">
+        <link href="{% static 'css/index.css' %}" rel="stylesheet" media="all">
+        
+        {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> {% endcomment %}
+        {% comment %} <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> {% endcomment %}
        
           
       </head>
       <body style="background-color: #e9eaef;">
-        
+        <nav class="navbar">
+          <div class="logo">LOGO</div>
+          <ul class="nav-list-container">
+              <li class="list"><a href="{% url 'companyhomepage' %}" class="link">Home</a></li>
+              <li class="list"><a href="#about-us" class="link">About</a></li>
+              <li class="list"><a href="#contact" class="link">Contact</a></li>
+              <li class="list"><a href="{% url 'job_post' %}" class="link">Job Post</a></li>
+              <li class="list"><a href="{% url 'joblist' %}" class="link">Job list</a></li>
+              <li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
+              <li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
+              <li class="list"><a href="logout" class="link">logout</a></li>
+          </ul>
+      </nav> 
           
           
           
@@ -27,7 +41,7 @@
             
              <section class="panel important">
               <div class="add">
-                <center><h2>JOB POST</center></h2>
+                <center><h2 style="color:black;">JOB POST</center></h2>
                 
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
@@ -49,7 +63,7 @@
                     {% for company in page_obj %}  
                       <div class="card" style="border:none;">
                         <tr>
-                      <th scope="row">{{ company.id}}</th>
+                      <th scope="row">{{ request.session.id}}</th>
                       <th scope="row">{{ company.job_title}}</th>
                       <div class="image-box">
                         {% if company.image %}
@@ -62,9 +76,9 @@
                         </td>  
                        {% endif %}
                      
-                      <td>{{company.company_name}}</td>
-                      <td>{{company.email}}</td>
-                      <td>{{company.company_location}}</td>
+                      <td>{{request.session.company_name}}</td>
+                      <td>{{request.session.email}}</td>
+                      <td>{{request.session.company_location}}</td>
                       <td>
                         <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
                         <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"><i class="fa fa-edit" style="color:white"></i></button>

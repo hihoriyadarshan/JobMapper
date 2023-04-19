@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from SignUp.forms import SignUpForm, AdminForm, contactForm, companyForm
 from SignUp.models import SignUp, Admin_Log, Company, contact
+from Company.models import jobpost,company_contact
+from administrator.models import blog
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.conf import settings
@@ -83,18 +85,30 @@ def sup(request):
         s.password = request.POST.get('password')
 
 
-         # sup(request,un)
-        # subject = 'welcome to JobMapper'
-        # message = f'Hello, {s.username},Your registration has been confirmed for the JOb Mapper'
-        # email_from = settings.EMAIL_HOST_USER
-        # registration_list = [s.username, s.email]
-
-        # send_mail( subject, message, email_from, registration_list)
+      
+        
 
         if len(request.FILES) != 0:
             s.image = request.FILES['image']
+
+        subject = 'welcome to JobMapper'
+        message = f'Hello, {s.username},Your registration has been confirmed for the JOb Mapper'
+        email_from = settings.EMAIL_HOST_USER
+        registration_list = [s.username, s.email]
+
         #password Hashing
         s.password = make_password(s.password)
+
+       
+
+        # subject = 'welcome to E_Auction'
+        # message = f'Hello, {un},Your registration has been confirmed for the E_auction'
+        # email_from = settings.EMAIL_HOST_USER
+        # registration_list = [un, email]
+
+        send_mail( subject, message, email_from, registration_list)
+
+        send_mail( subject, message, email_from, registration_list)
         s.save()
 
 
@@ -296,57 +310,6 @@ def loginHandlecompany(request):
     
 
 
-
-
-
-
-
-
-def loginHandle(request):
-    
-    if request.method == "POST":    
-        form = SignUpForm(request.POST)
-        un = request.POST.get("username")
-        ps = request.POST.get("password")
-
-        obj = get_object_or_404(SignUp, username = un )
-        
-        result = check_password(ps,obj.password)
-
-        data = SignUp.objects.all()
-        # return HttpResponse(form)
-        for i in range(len(data)):
-            if data[i].username == un:
-                request.session['username'] = data[i].username
-                request.session['email'] = data[i].email
-                request.session['job'] = data[i].job
-                request.session['hobbies'] = data[i].hobbies
-                request.session['skill'] = data[i].skill
-                request.session['phone'] = data[i].phone
-                request.session['address'] = data[i].address
-
-        if result == True:
-
-          
-
-            return render(request,'user-hp.html')
-        else :
-            return render(request,'login.html')
-        
-    else:
-        form = SignUpForm()
-        return render(request, template_name = "login.html", context = {"form":form})
-
-
-
-
-
-
-
-
-
-
-
 # delete company data
 
 def deletecompany(request,id):
@@ -492,12 +455,23 @@ def showadmindashboard(request):
     users = SignUp.objects.all()
     user_count = SignUp.objects.all().count()
     Company_count = Company.objects.all().count()
+    job_post = jobpost.objects.all().count()
     category_count = Catagory.objects.all().count()
+    company_feedback = company_contact.objects.all().count()
+    feedback_count = contact.objects.all().count()
+    blog_count = blog.objects.all().count()
+
 
    
     context ={'user_count': user_count,
               'company_count': Company_count, 
-              'category_count': category_count} 
+              'category_count': category_count,
+              'job_post': job_post,
+              'company_feedback': company_feedback,
+              'feedback_count' : feedback_count,
+              'blog_count' : blog_count
+              
+              } 
     return render(request,'admin.html',context)
 
 # Contact us

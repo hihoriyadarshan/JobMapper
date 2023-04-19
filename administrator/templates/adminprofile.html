@@ -5,14 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-
-    <!-- Custom Css -->
+    <link rel="stylesheet" href="static/css/admin.css">
     <link rel="stylesheet" href="static/css/profile.css">
-
-    <!-- FontAwesome 5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
+
+    <header role="banner">
+        <h1>Admin Panel</h1>
+        <ul class="utilities">
+          
+            <br>
+          <li class="users"><a href="adminprofile">My Account</a></li>
+          <li><a href="#">change password</a></li>    
+          <li class="logout warn"><a href="logout">Log Out</a></li>
+            </ul>
+          </header>
+    
     <!-- Navbar top -->
     <div class="navbar-top">
         <div class="title">
@@ -20,26 +29,7 @@
         </div>
 
         <!-- Navbar -->
-        <ul>
-            <li>
-                <a href="#message">
-                    <span class="icon-count">29</span>
-                    <i class="fa fa-envelope fa-2x"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#notification">
-                    <span class="icon-count">59</span>
-                    <i class="fa fa-bell fa-2x"></i>
-                </a>
-            </li>
-            <li>
-                <a href="logout">
-                    <i class="fa fa-sign-out-alt fa-2x"></i>
-                </a>
-            </li>
-        </ul>
-        <!-- End -->
+        
     </div>
     <!-- End -->
 
