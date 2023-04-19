@@ -66,9 +66,10 @@
                         <td>{{companyfeedback.email}}</td>
                         <td>{{companyfeedback.message}}</td>
                         
-                      {% comment %} <td><a href= class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
                       <td>
-                        <a href="{% url 'deletecompanyfeedback' companyfeedback.id %}">delete</a>
+                        
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletecompanyfeedback' companyfeedback.id %}"</a><i class="fa fa-trash" style="color:white"></i></button>
+                      
                       </td>
                     </tr>
                  

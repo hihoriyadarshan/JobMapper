@@ -11,6 +11,8 @@ def companyhomepage(request):
 def job_post(request):
         return render(request,'jobpost.html')
 
+def joblist(request):
+        return render(request,'job list.html')
 
 
 
@@ -59,19 +61,18 @@ def deletecompanyfeedback(request,id):
     obj = get_object_or_404(company_contact,id=id)
     if request.method == "GET":
         obj.delete()
-        return redirect("/companyfeedback")
+        return redirect("/showcompanyfeedback")
     return render(request, "companyfeedback.html", context)
 
 
-
-
 #job post 
+
 
 def jobpost_data(request):  
     if request.method == "POST": 
 
         form = jobpostForm(request.POST or None) 
-
+       
         j = jobpost()
         j.company_name = request.POST.get('company_name')
         j.job_title = request.POST.get('job_title')
@@ -85,13 +86,18 @@ def jobpost_data(request):
         j.post_date = request.POST.get('Endtime')
         j.last_date = request.POST.get('Enddate')
 
+
         if len(request.FILES) != 0:
             j.image = request.FILES['image']
             # return HttpResponse('form')
             # return HttpResponse(jobpost_data)
-       
+
         j.save()
-        return render (request, "jobpost.html")
+
+
+    
+    return render (request, "jobpost.html")
+
     return HttpResponse('Fail')
 
 #show job post 

@@ -82,6 +82,7 @@ def sup(request):
         s.address = request.POST.get('address')
         s.password = request.POST.get('password')
 
+
          # sup(request,un)
         # subject = 'welcome to JobMapper'
         # message = f'Hello, {s.username},Your registration has been confirmed for the JOb Mapper'
@@ -93,7 +94,7 @@ def sup(request):
         if len(request.FILES) != 0:
             s.image = request.FILES['image']
         #password Hashing
-        # s.password = make_password(s.password)
+        s.password = make_password(s.password)
         s.save()
 
 
@@ -110,35 +111,31 @@ def loginHandle(request):
         form = SignUpForm(request.POST)
         un = request.POST.get("username")
         ps = request.POST.get("password")
-        # if user.check_password(SignUp.password):
 
+        obj = get_object_or_404(SignUp, username = un )
         
+        result = check_password(ps,obj.password)
 
-        uname = SignUp.objects.all().filter(username=un)
-        
-        if uname[0].username == un and uname[0].password == ps:
-            # request.session['image'] = uname[0].FILES['image']
-            request.session['username'] = uname[0].username
-            request.session['email'] = uname[0].email
-            request.session['job'] = uname[0].job
-            request.session['hobbies'] = uname[0].hobbies
-            request.session['skill'] = uname[0].skill
-            request.session['phone'] = uname[0].phone
-            request.session['address'] = uname[0].address
-            
+        data = SignUp.objects.all()
+        # return HttpResponse(form)
+        for i in range(len(data)):
+            if data[i].username == un:
+                request.session['username'] = data[i].username
+                request.session['email'] = data[i].email
+                request.session['job'] = data[i].job
+                request.session['hobbies'] = data[i].hobbies
+                request.session['skill'] = data[i].skill
+                request.session['phone'] = data[i].phone
+                request.session['address'] = data[i].address
 
-            # image =   len(request.FILES).session.image = request.FILES['image']            
-            username = request.session['username']
-            email = request.session['email']
-            job = request.session['job']
-            skill = request.session['skill']
-            hobbies =request.session['hobbies']
-            phone = request.session['phone']
+        if result == True:
+
+          
 
             return render(request,'user-hp.html')
         else :
             return render(request,'login.html')
-       
+        
     else:
         form = SignUpForm()
         return render(request, template_name = "login.html", context = {"form":form})
@@ -278,6 +275,7 @@ def loginHandlecompany(request):
             username = request.session['username']
             email = request.session['email']
             phone = request.session['phone']
+            
 
             #return HttpResponse(form)
             return render(request,'companyhomepage.html')
