@@ -101,11 +101,6 @@ def sup(request):
 
        
 
-        # subject = 'welcome to E_Auction'
-        # message = f'Hello, {un},Your registration has been confirmed for the E_auction'
-        # email_from = settings.EMAIL_HOST_USER
-        # registration_list = [un, email]
-
         send_mail( subject, message, email_from, registration_list)
 
         send_mail( subject, message, email_from, registration_list)
@@ -267,7 +262,16 @@ def company_data(request):
         if len(request.FILES) != 0:
             b.image = request.FILES['image']
 
+        subject = 'welcome to JobMapper'
+        message = f'Hello, {b.username},Your Company has been registration Succesfully'
+        email_from = settings.EMAIL_HOST_USER
+        registration_list = [b.username, b.email]    
+
         b.password = make_password(b.password)
+
+        send_mail( subject, message, email_from, registration_list)
+
+        send_mail( subject, message, email_from, registration_list)
 
         b.save()
         return render (request, "companylogin.html")
