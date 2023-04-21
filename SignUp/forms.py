@@ -21,4 +21,4 @@ class contactForm(forms.ModelForm):
 class companyForm(forms.ModelForm):  
     class Meta:  
         model = Company  
-        fields = ('username','companyname','phone','email','password','image',)
+        fields = ('username','companyname','phone','email','address','image','password',)
