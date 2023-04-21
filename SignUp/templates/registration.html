@@ -133,29 +133,42 @@
 			<input type="text" id="username" name="username" required>
 			<span class="error" id="username-error"></span>
 
-			<label for="email">Email *</label>
-		<input type="email" id="email" name="email" required>
-		<span class="error" id="email-error"></span>
-
-		<label for="job">Job *</label>
-		<input type="text" id="job" name="job" required>
-		<span class="error" id="job-error"></span>
+		<label for="email">Email *</label>
+			<input type="email" id="email" name="email" required>
+			<span class="error" id="email-error"></span>
 
 		<label for="skill">Skill *</label>
-		<input type="text" id="skill" name="skill" required>
-		<span class="error" id="skill-error"></span>
-
-		<label for="hobbies">Hobbies *</label>
-		<input type="text" id="hobbies" name="hobbies" required>
-		<span class="error" id="hobbies-error"></span>
+			<input type="text" id="skill" name="skill" required>
+			<span class="error" id="skill-error"></span>
 
 		<label for="phone">Phone *</label>
-		<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
-		<span class="error" id="phone-error"></span>
+			<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+			<span class="error" id="phone-error"></span>
+		
+		
 
-		<label for="address">Address *</label>
-		<textarea id="address" name="address" required></textarea>
-		<span class="error" id="address-error"></span>
+		{% comment %} <label for="job">Gender *</label>
+			<input type="text" id="job" name="job" required>
+			<span class="error" id="job-error"></span> {% endcomment %}
+
+
+
+
+		<label for="job">Gender *</label>
+				{% comment %} <div class="rs-select2 js-select-simple select--no-search"> {% endcomment %}
+					<select name="gender">
+						<option disabled="disabled" selected="selected">Gender</option>
+						<option>Male</option>
+						<option>Female</option>
+						<option>Other</option>
+					</select>
+					<div class="select-dropdown"></div>
+				</div>	
+
+
+
+
+
 
 		<div class="image-upload">
 			<label for="image">Image *</label>
@@ -164,9 +177,13 @@
 		</div>
 		<img id="image-preview" class="image-preview" src="#" alt="Image Preview">
 
+		<label for="address">Address *</label>
+			<textarea id="address" name="address" required></textarea>
+			<span class="error" id="address-error"></span>
+
 		<label for="password">Password *</label>
-		<input type="password" id="password" name="password" required>
-		<span class="error" id="password-error"></span>
+			<input type="password" id="password" name="password" required>
+			<span class="error" id="password-error"></span>
 
 		<input type="submit" value="Register">
 	</form>

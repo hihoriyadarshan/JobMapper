@@ -77,10 +77,9 @@ def sup(request):
         if SignUp.objects.filter(email=s.email).exists():
             #raise ValidationError("Email Exits")
             return render(request,"registration.html")
-        s.job = request.POST.get('job')
         s.skill = request.POST.get('skill')
-        s.hobbies = request.POST.get('hobbies')
         s.phone = request.POST.get('phone')
+        s.gender = request.POST.get('gender')
         s.address = request.POST.get('address')
         s.password = request.POST.get('password')
 
@@ -99,7 +98,7 @@ def sup(request):
         #password Hashing
         s.password = make_password(s.password)
 
-       
+
 
         send_mail( subject, message, email_from, registration_list)
 
@@ -131,16 +130,14 @@ def loginHandle(request):
             if data[i].username == un:
                 request.session['username'] = data[i].username
                 request.session['email'] = data[i].email
-                request.session['job'] = data[i].job
-                request.session['hobbies'] = data[i].hobbies
                 request.session['skill'] = data[i].skill
                 request.session['phone'] = data[i].phone
+                request.session['gender'] = data[i].phone
                 request.session['address'] = data[i].address
 
         if result == True:
 
-          
-
+        
             return render(request,'user-hp.html')
         else :
             return render(request,'login.html')

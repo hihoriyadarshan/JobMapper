@@ -3,15 +3,15 @@ from django.db import models
 # Create your models here.
 class SignUp(models.Model):
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
-    username = models.TextField(max_length = 50)
-    email = models.EmailField(blank = True,max_length=50,unique=True)
-    job = models.TextField(max_length = 50)
-    skill = models.TextField(max_length = 50)
-    hobbies = models.TextField(max_length = 50)
+    username = models.TextField(max_length = 255)
+    email = models.EmailField(blank = True,max_length=255,unique=True)
+    skill = models.TextField(max_length = 45)
     phone = models.TextField(max_length = 10)
-    address = models.TextField(max_length = 500)
-    password = models.TextField(max_length = 50)
-
+    gender = models.CharField(max_length=6)
+    address = models.TextField(max_length = 255)
+    password = models.TextField(max_length = 255)
+   
+    
     def __str__(self):
         return self.username
     
@@ -19,10 +19,10 @@ class SignUp(models.Model):
 #admin login model
 class Admin_Log(models.Model):
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
-    username = models.TextField(max_length = 50)
-    password = models.TextField(max_length = 50)
-    email = models.EmailField(blank = True,max_length=50) 
-    phone = models.TextField(max_length = 10)    
+    username = models.TextField(max_length = 45,unique=True)   
+    email = models.EmailField(blank = True,max_length=255,unique=True) 
+    phone = models.TextField(max_length = 10)  
+    password = models.TextField(max_length = 255)  
          
     def __str__(self):
         return self.username 
