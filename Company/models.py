@@ -1,4 +1,5 @@
 from django.db import models
+from SignUp.models import Company
 
 # Create your models here.
 class company_contact(models.Model):
@@ -13,19 +14,17 @@ class company_contact(models.Model):
     
 class jobpost(models.Model):
 
-    company_name = models.TextField(max_length = 50)
-    job_title = models.TextField(max_length = 30)
-    company_location = models.TextField(max_length = 50)
-    salary = models.TextField(max_length = 50)
-    experience_required = models.TextField(max_length = 50)
-    email = models.EmailField(blank = True,max_length=50)
-    skill_required = models.CharField(max_length=20, null = True,blank=True)
-    phone = models.TextField(max_length = 10)
+    companyname = models.ForeignKey(Company, on_delete=models.CASCADE)
+    job_id = models.AutoField(primary_key=True)
+    job_title = models.TextField(max_length = 45)
+    salary = models.TextField(max_length = 10)
+    experience_required = models.TextField(max_length = 10)
+    jobtype = models.TextField(blank = True,max_length=45)
+    skill_required = models.CharField(max_length=45, null = True,blank=True)
+    education_level = models.CharField(max_length=255)
     post_date = models.DateTimeField(auto_now=True)  
-    last_date = models.CharField(max_length = 15, null = True,blank=True)
+    last_date = models.CharField(max_length = 10, null = True,blank=True)
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
-    job_description = models.TextField(max_length = 50)
-    # terms_and_conditions = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.job_title
+    job_description = models.TextField(max_length = 255)
+   
+  

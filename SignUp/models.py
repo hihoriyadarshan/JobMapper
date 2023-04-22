@@ -34,8 +34,7 @@ class Company(models.Model):
     address =models.CharField(max_length=255)
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
     password = models.CharField(max_length = 255)
-    def __str__(self):
-        return self.username
+    
     
 #contact us model
 class contact(models.Model):

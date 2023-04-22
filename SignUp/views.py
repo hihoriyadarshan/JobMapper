@@ -291,6 +291,7 @@ def loginHandlecompany(request):
 
         for i in range(len(data)):
             if data[i].username == un:
+                request.session['company_id'] = data[i].company_id
                 request.session['companyname'] = data[i].companyname
                 request.session['username'] = data[i].username
                 request.session['email'] = data[i].email

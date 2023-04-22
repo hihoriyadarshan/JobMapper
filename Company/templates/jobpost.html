@@ -46,25 +46,27 @@
 						<span class="error"></span>
 						</div>
 						<div class="field">
-						<label for="experience_required">Company Name</label>
-						<input type="text" id="company_name" name="company_name" required>
-						<span class="error"></span>
-					  </div>
+							<label for="salary">Salary</label>
+							<input type="number" id="salary" name="salary" required>
+							<span class="error"></span>
+							</div>
 					</div>
 					<div class="field-group">
 						
 						<div class="field">
-							<label for="post_date">E-mail</label>
-							<input type="email" name="email"  id="phone"  required>
+							<label for="post_date">Education level</label>
+							<input type="text" placeholder="B.sc /M.sc" name="education_level"  id="phone" required>
 						
 							<span class="error"></span>
-						</div>
+						</div> 
 						
-						<div class="field">
-							<label for="salary">Company location</label>
-							<input type="text" id="company_location" name="company_location" required>
-							<span class="error"></span>
+							<div class="field">
+									<label for="experience_required">Experience Required</label>
+									<input type="number" id="experience_required" name="experience_required" placeholder="in year" required>
+									<span class="error"></span>
 							</div>
+						
+	
 						
 					</div>
 					<div class="field-group">
@@ -79,35 +81,26 @@
 						</select>
 						<span class="error"></span>
 					</div>
-					<div class="field">
-						<label for="salary">Salary</label>
-						<input type="number" id="salary" name="salary" required>
-						<span class="error"></span>
-						</div>
+					
 				<div class="field">
-				<label for="post_date">Phone</label>
-				<input type="number" name="phone"  id="phone" placeholder="Phone number" required>
-				{% comment %} <input type="date" id="post_date" name="post_date" required> {% endcomment %}
+				<label for="post_date">last date</label>
+				<input type="date" id="last_date" name="last_date" required> 
 				<span class="error"></span>
 				</div>
 				</div>
+					
 				<div class="field-group">
-				<div class="field">
-						<label for="experience_required">Experience Required</label>
-						<input type="number" id="experience_required" name="experience_required" placeholder="in year" required>
-						<span class="error"></span>
-				</div>	
-				<div class="field">
-				<label for="last_date">Last Date to Apply</label>
-				{% comment %} <input type="date" id="last_date" name="last_date" required> {% endcomment %}
-				<input type="date" name="last_date"  placeholder="last date" required>
-				<span class="error"></span>
-				</div>
 				<div class="field">
 				<label for="logo">image</label>
 				<input type="file" id="logo" name="image" required>
 				<span class="error"></span>
 				</div>
+				<div class="field">
+					<label for="post_date">Job Type</label>
+					<input type="text" name="jobtype"  id="phone" placeholder="Part Time/Full Time" required>
+					<span class="error"></span>
+					</div>
+
 				</div>
 				<div class="field">
 				<label for="job_description">Job Description</label>

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from Company.forms import company_contactForm,jobpostForm
 from Company.models import company_contact,jobpost
 from django.core.paginator import Paginator
+from SignUp.models import Company
+
 
 
 def companyhomepage(request):
@@ -73,32 +75,32 @@ def jobpost_data(request):
 
         form = jobpostForm(request.POST or None) 
        
-        j = jobpost()
-        j.company_name = request.POST.get('company_name')
-        j.job_title = request.POST.get('job_title')
-        j.salary = request.POST.get('salary')
-        j.company_location = request.POST.get('company_location')
-        j.email = request.POST.get('email')
-        j.phone = request.POST.get('phone')
-        j.experience_required = request.POST.get('experience_required')
-        j.skill_required = request.POST.get('skill_required')  
-        j.job_description = request.POST.get('job_description')
-        j.post_date = request.POST.get('Endtime')
-        j.last_date = request.POST.get('Enddate')
-
-
+        image = ""
         if len(request.FILES) != 0:
-            j.image = request.FILES['image']
-            # return HttpResponse('form')
-            # return HttpResponse(jobpost_data)
-
-        j.save()
+          image = str(request.FILES['image'])
+        # return HttpResponse(image)
+           
+        companyins = request.session["companyname"]
+        company = Company.objects.get(companyname= companyins)  
+        
+        jobpost.objects.create( 
+        companyname = company,  
+        job_title = request.POST.get('job_title'),
+        salary = request.POST.get('salary'),
+        jobtype = request.POST.get('jobtype'),
+        experience_required = request.POST.get('experience_required'),
+        education_level = request.POST.get('education_level'),
+        skill_required = request.POST.get('skill_required'),  
+        job_description = request.POST.get('job_description'),
+        post_date = request.POST.get('Endtime'),
+        last_date = request.POST.get('Enddate'),
+        image = image
+        )
 
 
     
     return render (request, "jobpost.html")
 
-    return HttpResponse('Fail')
 
 #show job post 
 def showjobpost(request):
