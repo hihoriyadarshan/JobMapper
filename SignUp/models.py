@@ -26,6 +26,7 @@ class Admin_Log(models.Model):
 		
 #Comapny model
 class Company(models.Model):
+    company_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=100,unique=True) 
     companyname = models.CharField(max_length = 45,unique=True)
     email = models.EmailField(blank = True,max_length=255,unique=True) 
