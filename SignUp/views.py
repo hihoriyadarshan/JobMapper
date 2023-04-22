@@ -254,6 +254,7 @@ def company_data(request):
         b.companyname = request.POST.get('companyname')
         b.phone = request.POST.get('phone')
         b.email = request.POST.get('email')
+        b.address = request.POST.get('address')
         b.password = request.POST.get('password')
 
         if len(request.FILES) != 0:

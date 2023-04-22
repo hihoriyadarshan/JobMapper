@@ -5,169 +5,8 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="static/css/index.css">
-     <script src="https://use.fontawesome.com/53fa7e3185.js"></script>
-      <title>SignUp</title>
-     
-     <style>
-     
-          
-          
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-   }
-  .mainnavbar
-   {
-     width: 100vw;
-     height: 100vh;
-     position: relative;
-     background-color: #0c0116;
-   }
-  
-  .content
-   {
-        width: 85%;
-        height: 85%;
-        position: absolute;
-        left: 7rem;
-        top:5rem;
-        justify-content: center;
-        letter-spacing: 1px;
-        text-align: left;
-        padding: 20px;
-        border: 4px groove rgb(240, 255, 255);
-        color: white;
-        display: inline-flex;
-   } 
-  
-   #textemail,#textusername,#textpassword
-    {
-         color: #227983;
-         background-color: white;
-         letter-spacing: 1px;
-         outline: none;
-         border: none;
-         padding: 12px 20px;
-         margin: -6px 0px 35px 0px;
-         width:100%;
-         font-size :18px;
-         font-weight: bold;
-         border-radius: 4px;
-         text-align: center;
-  
-   }
-  
-  input[type=submit]
-   {
-        text-transform: uppercase;
-        background-color:white;
-        color:#227983;
-        letter-spacing: 1px;
-        font-weight: bold;
-        font-size:16px;
-        padding: 8px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        outline: none;
-        border:none;
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-   }  
-   input[type=submit]:hover {
-       opacity: 0.8;
-     }
-  
-  .link_with_back
-   {
-        position: absolute;
-        bottom: 10px;
-        font-weight: bold;
-        font-size:16px;
-        cursor: pointer;
-        text-decoration:none;
-        color:yellow
-   }
-  
-  a
-   {
-        text-decoration: none;
-        letter-spacing: 1px;
-        font-size:18px;
-        color:white;
-   }
-  
-  a:hover
-   {
-        opacity: 0.8;
-   } 
-  
-  .forgate_detail
-   {
-       width: 50%;
-       height:100%;
-   }
-  .imageclass
-  {
-       width: 50%;
-       height:100%
-   }
-    
-  img 
-   {
-        width: 90%;
-        height: 100%;
-   } 
-  
-  .hedding_name
-   {
-        font-size:50px;
-        font-weight:bold;
-   } 
-  
-   input[type="file"] {
-       display: none;
-   }
-   .custom-file-upload {
-       border: 2px solid #03A9F4;
-       display: inline-block;
-       padding: 6px 12px;
-       cursor: pointer;
-   }
-   .custom-file-upload
-   {
-         
-       padding: 5px;
-       border-radius: 11px;
-       background: white;
-       color: #227983;
-       font-size: 17px;
-       font-family: cursive;
-       margin-left: 40%;
-       margin-top: 0px;
-   
-   }
-   .custom-file-upload i
-   {
-     color: #227983;
-       font-size: 24px;
-     margin-right: 9px;}
-  
-  
-     .content span {
-       position: absolute;
-       height: 15%;
-       width: 0.5%;
-       
-       }
-       
-      
-       </style>
-        
-     </style>
-
-
+	<link rel="stylesheet" href="static/css/companyregistration.css">
+     <title>Company Registration</title>
 </head>
 <body>
 	<nav class="navbar">
@@ -177,65 +16,111 @@
             <li class="list"><a href="#home" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
             <li class="list"><a href="#contact" class="link">Contact</a></li>
-            <li class="list"><a href="{% url 'company' %}" class="link">Recruiter login</a></li>
+            <li class="list"><a href="{% url 'company' %}" class="link">Company login</a></li>
             <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
             <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
         </ul>
     </nav>
-	<form  method="POST" action="company_data" id="myform" enctype="multipart/form-data">
-     {% csrf_token %}
-     <div class="mainnavbar">
-          <div class="content">
-               <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-               <div class="imageclass">
-                    <img src="static/images/pngwing.png" alt="about-us-image" />
+    <div class="container">
+	
+     <img src="static/images/Signup.jpg" alt="about-us-image" />
+<form class="form" id="myForm" name="registrationForm" onsubmit="return validateForm()" method="post" action="company_data"  enctype="multipart/form-data">
+          {% csrf_token %}
+     <p class="title">Company Register</p>
+     <div class="row">
+     <input type="text"  id="username" name="username" placeholder="Username" >
+                         
+     <input type="text"  id="companyname" name="companyname" placeholder="Enter Your Companyname">
 
-               </div>
-               <div class="forgate_detail">
-               <p class="hedding_name">Company SignUp</p>
-			   
-               <br>
+     </div>		
 
-               <body>
-                    <label for="file-upload" class="custom-file-upload">
-                      <i class="fa fa-cloud-upload"></i> Profile picture
-                  </label>
-                  <input id="file-upload" name="image" type="file"/><br></br>
-               
-
-
-               {% comment %} <input type="file" name="image" id="textusername" placeholder="upload image" height="50px" width="50px"  /> {% endcomment %}
-               
-
-
-               <input type="text" name="username" id="textusername" placeholder="Enter Your username">
-               
-               <input type="text" name="companyname" id="textusername" placeholder="Enter Your Companyname">
-
-               <input type="number" name="phone" id="textusername" placeholder="Enter Your Phone number">
-
-               <input type="text" name="email" id="textemail" placeholder="Enter Your Email">
-               
-               <input type="text" name="password" id="textpassword" placeholder="Type your password">
-               
-               <br> </br>
-               
-			
-               <div>
-
-                    <input type="submit" id="submit" value="SignUp">
-               </div>
-
-          </div>
+     <div class="row">
+     <input type="email"  id="email" name="email" placeholder="Email" >
+     
+     <input type="tel" id="phone" name="phone" placeholder="Phone Number" >
+     
      </div>
-	</form>
+     
+     <div class="row">
+     <input type="file" name="image" >
+     <input type="text" id="address" name="address" placeholder="Address" >
+     </div>
 
+     <div class="row">
+     <input type="password" id="password" name="password" placeholder="Password" >
+     <input type="checkbox" onclick="myFunction()" ><p class="error_sms">Show Password</p>
+
+     </div>
+
+     <input type="submit" value="Submit">
+</form>
+</div>
+<script>
+ function validateForm() {
+   // Get form fields
+   const username = document.forms["registrationForm"]["username"].value;
+   const companyname = document.forms["registrationForm"]["companyname"].value;
+   const email = document.forms["registrationForm"]["email"].value;
+   const phone = document.forms["registrationForm"]["phone"].value;
+   const image = document.forms["registrationForm"]["image"].value;
+   const address = document.forms["registrationForm"]["address"].value;
+   const password = document.forms["registrationForm"]["password"].value;
+
+   // Validation rules
+   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   const phoneRegex = /^\d{10}$/;
+   const passwordRegex =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+
+   // Validate fields
+   if (username === "") {
+     alert("Please enter your username.");
+     return false;
+   }
+   if (!emailRegex.test(email)) {
+     alert("Please enter a valid email address.");
+     return false;
+   }
+   if (companyname === "") {
+     alert("Please enter your companyname.");
+     return false;
+   }
+   if (!phoneRegex.test(phone)) {
+     alert("Please enter a valid phone number.");
+     return false;
+   }
+   
+   if (image === "") {
+     alert("Please upload an image.");
+     return false;
+   }
+   if (address === "") {
+     alert("Please enter your address.");
+     return false;
+   }
+   if (!passwordRegex.test(password)) {
+     alert(
+       "8 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter</h2>"
+     );
+     return false;
+   }
+
+   // If all fields are valid, submit form
+   alert("Registration successful!");
+   return true;
+ }
+  
+  
+</script>
+
+<script>
+function myFunction() {
+var x = document.getElementById("password");
+if (x.type === "password") {
+x.type = "text";
+} else {
+x.type = "password";
+}
+}
+</script>
 </body>
-</html>
-
-
-    
-    
+</html>		
