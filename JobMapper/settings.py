@@ -155,3 +155,33 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'darshanhihoriya4@gmail.com'  
 EMAIL_HOST_PASSWORD = 'tsbiimjorwldezyd'  
 EMAIL_PORT = 587  
+
+
+# logger
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers':{
+        'authLogger':{
+            'handlers':['authenticationHandler'],
+            
+            'level':'INFO',
+        },
+       
+    },
+    'handlers':{
+        'authenticationHandler':{
+            'level':'INFO',
+            'class':'logging.FileHandler',
+            'filename':'./logs/auth_info.log',
+            'formatter':'verbose',
+        },
+        
+    },
+    'formatters':{
+        'verbose':{
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style':'{',
+        }
+    }
+}

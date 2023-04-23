@@ -13,6 +13,9 @@ from django.contrib import messages
 from administrator.models import Catagory 
 # password hasing
 from django.contrib.auth.hashers import make_password ,check_password
+#loger
+import logging,traceback
+logger = logging.getLogger('authLogger')
 
 
 
@@ -133,8 +136,9 @@ def loginHandle(request):
 
         if result == True:
 
-        
-            return render(request,'user-hp.html')
+            logger.info("user: " + data[i].username + " is logged in")
+            user_info = { 'username':data, 'email':data, 'skill':data, 'gender':data, 'phone':data, 'address':data}
+            return render(request,'user-hp.html', {"user_info" :user_info}) 
         else :
             return render(request,'login.html')
         
@@ -293,13 +297,13 @@ def loginHandlecompany(request):
                 request.session['email'] = data[i].email
                 request.session['phone'] = data[i].phone
                 request.session['address'] = data[i].address
-
-
-          
             
         if result == True:
+
+            logger.info("user: " + data[i].companyname + " is logged in")
+            user_info = { 'company_id':data, 'companyname':data, 'username':data, 'email':data, 'phone':data, 'address':data}
+            return render(request,'companyhomepage.html', {"user_info" :user_info})   
             #return HttpResponse(form)
-            return render(request,'companyhomepage.html')
         else :
             # return render(request,'userhomepage.html')
             return render(request,'companylogin.html')
