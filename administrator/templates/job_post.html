@@ -62,11 +62,16 @@
                   <tr>
 
                     <th scope="col">id</th>
-                    <th scope="col">job_title</th>                                   
                     <th scope="col">image</th>
+                    <th scope="col">job_title</th>                                   
+                    <th scope="col">job type</th>
+                    <th scope="col">education</th>
+                    <th scope="col">Skill</th>
+                    <th scope="col">Experience</th>
+                    <th scope="col">Salary</th>
+                    {% comment %} <th scope="col">Post date</th> {% endcomment %}
+                    <th scope="col">last date</th>
                     <th scope="col">Company Name</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Address</th>            
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -76,26 +81,31 @@
                     {% for company in page_obj %}  
                       <div class="card" style="border:none;">
                         <tr>
-                      <th scope="row">{{ company.id}}</th>
-                      <th scope="row">{{ company.job_title}}</th>
+                      <th scope="row">{{ company.job_id}}</th>
+                      
                       <div class="image-box">
                         {% if company.image %}
                         <td>
-                           <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px">
+                           <img src="{{ company.image.url }}"  alt="" class="prod-size" height="50px" width="50px">
                         </td>
                       {% else %}
                         <td>
                           <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
                         </td>  
                        {% endif %}
-                     
-                      <td>{{company.company_name}}</td>
-                      <td>{{company.email}}</td>
-                      <td>{{company.company_location}}</td>
+                       <td>{{company.job_title}}</td>
+                       <td>{{company.jobtype}}</td>
+                       <td>{{company.education_level}}</td>
+                       <td>{{company.skill_required}}</td>
+                       <td>{{company.experience_required}}</td>
+                      <td>{{company.salary}}</td>
+                      {% comment %} <td>{{company.post_date}}</td> {% endcomment %}
+                      <td>{{company.last_date}}</td>
+                      <td>{{company.companyname.companyname}}</td>
                       <td>
-                        <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
+                        {% comment %} <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button> {% endcomment %}
                         <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"><i class="fa fa-edit" style="color:white"></i></button>
-                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletejobpost' company.id %}"</a><i class="fa fa-trash" style="color:white"></i></button>
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletejobpost' company.job_id %}"</a><i class="fa fa-trash" style="color:white"></i></button>
                       </td>
                       
           

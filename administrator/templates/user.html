@@ -71,13 +71,12 @@
                   <tr>
                    
                     <th scope="col" style="width:30px;">id</th>
-                    <th scope="col">image</th>
+                    <th scope="col">Profile</th>
                     <th scope="col">Username</th>                  
                     <th scope="col">E-mail</th>
-                    <th scope="col">Job</th>
                     <th scope="col">Skill</th>
-                    <th scope="col">Hobbies</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Gender</th>
                     <th scope="col">Address</th>
                     <th scope="col">Action</th>
                  
@@ -104,13 +103,12 @@
 
                       <td>{{user.username}}</td>
                       <td>{{user.email}}</td>
-                      <td>{{user.job}}</td>
                       <td>{{user.skill}}</td>
-                      <td>{{user.hobbies}}</td>
                       <td>{{user.phone}}</td>
+                      <td>{{user.gender}}</td>
                       <td>{{user.address}}</td>
                       <td>
-                        <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
+                        {% comment %} <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button> {% endcomment %}
                         <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'updateuser' user.id %}"</a><i class="fa fa-edit" style="color:white"></i></button>
                         <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deleteuser' user.id %}"><i class="fa fa-trash" style="color:white"></i></button>
                       </td>

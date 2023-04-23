@@ -30,9 +30,9 @@ urlpatterns = [
     path('updateuser<id>',views.updateuser,name='updateuser'),
     path('edituser/<id>',views.edituser,name='edituser'),
     
-    path('deletecompany<id>',views.deletecompany,name='deletecompany'),
-    path('updatecompany<id>',views.updatecompany,name='updatecompany'),
-    path('editcompany/<id>',views.editcompany,name='editcompany'),
+    path('deletecompany<company_id>',views.deletecompany,name='deletecompany'),
+    path('updatecompany<company_id>',views.updatecompany,name='updatecompany'),
+    path('editcompany/<company_id>',views.editcompany,name='editcompany'),
 
     path('showprofile',views.showprofile,name='showprofile'),
     path('showcompanyprofile',views.showcompanyprofile,name='showcompanyprofile'),

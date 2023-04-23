@@ -58,7 +58,7 @@
 </head>
 <body>
 	
-	<form  method="POST" action="editcompany/{{context.id}}" id="myform" enctype="multipart/form-data">
+	<form  method="POST" action="editcompany/{{context.company_id}}" id="myform" enctype="multipart/form-data">
      {% csrf_token %}
      <div class="mainnavbar">
           <div class="content">
@@ -87,10 +87,12 @@
                <input type="text" name="phone" id="textusername" value="{{company.phone}}" placeholder="Enter Your Phone number">
 
                <input type="text" name="email" id="textemail" value="{{company.email}}"  placeholder="Enter Your Email">
+
+               <input type="text" name="address" id="textemail" value="{{company.address}}"  placeholder="Enter Your Address">
                
                <input type="text" name="password" id="textpassword" value="{{company.password}}"  placeholder="Type your password">
                
-               <br> </br>
+               
                
 			
                <div>

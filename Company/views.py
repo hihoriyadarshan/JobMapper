@@ -75,9 +75,10 @@ def jobpost_data(request):
 
         form = jobpostForm(request.POST or None) 
        
-        image = ""
+        image = " "
         if len(request.FILES) != 0:
           image = str(request.FILES['image'])
+         
         # return HttpResponse(image)
            
         companyins = request.session["companyname"]
@@ -96,7 +97,6 @@ def jobpost_data(request):
         last_date = request.POST.get('Enddate'),
         image = image
         )
-
 
     
     return render (request, "jobpost.html")
@@ -145,9 +145,9 @@ def showjob(request):
 
 # job post delete admin side
 
-def deletejobpost(request,id):
+def deletejobpost(request,job_id):
     context = {}
-    obj = get_object_or_404(jobpost,id=id)
+    obj = get_object_or_404(jobpost,job_id=job_id)
     if request.method == "GET":
         obj.delete()
         return redirect("/showjobpost")

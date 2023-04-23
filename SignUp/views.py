@@ -81,11 +81,7 @@ def sup(request):
         s.phone = request.POST.get('phone')
         s.gender = request.POST.get('gender')
         s.address = request.POST.get('address')
-        s.password = request.POST.get('password')
-
-
-      
-        
+        s.password = request.POST.get('password')    
 
         if len(request.FILES) != 0:
             s.image = request.FILES['image']
@@ -132,7 +128,7 @@ def loginHandle(request):
                 request.session['email'] = data[i].email
                 request.session['skill'] = data[i].skill
                 request.session['phone'] = data[i].phone
-                request.session['gender'] = data[i].phone
+                request.session['gender'] = data[i].gender
                 request.session['address'] = data[i].address
 
         if result == True:
@@ -296,6 +292,8 @@ def loginHandlecompany(request):
                 request.session['username'] = data[i].username
                 request.session['email'] = data[i].email
                 request.session['phone'] = data[i].phone
+                request.session['address'] = data[i].address
+
 
           
             
@@ -315,9 +313,9 @@ def loginHandlecompany(request):
 
 # delete company data
 
-def deletecompany(request,id):
+def deletecompany(request,company_id):
     context = {}
-    obj = get_object_or_404(Company,id=id)
+    obj = get_object_or_404(Company,company_id=company_id)
     if request.method == "GET":
         obj.delete()
         return redirect("/showcompany")
@@ -348,9 +346,9 @@ def showcompany(request):
 
 
 #company data_update
-def editcompany(request, id):  
+def editcompany(request, company_id):  
     context = {}
-    obj = get_object_or_404(Company, id=id)
+    obj = get_object_or_404(Company, company_id=company_id)
     form = companyForm(request.POST,request.FILES, instance = obj)  
     if form.is_valid():  
         form.save()  
@@ -358,8 +356,8 @@ def editcompany(request, id):
     return render(request, "company.html", context)
 
 
-def updatecompany(request,id):
-    context = Company.objects.get(id=id)
+def updatecompany(request,company_id):
+    context = Company.objects.get(company_id=company_id)
     return render(request, "update_company.html",{'context' : context})
 
 

@@ -1,12 +1,12 @@
-{% comment %} {{request.session.company_name }}
+ {% comment %} {{request.session.company_name }}
 {{request.session.job_title }}
 {{request.session.salary }}
 {{request.session.company_location }}
 {{request.session.email }}
-{{request.session.phone }}
+
 {{request.session.experience_required }}
 {{request.session.skill_required }}
-{{request.session.job_description }} {% endcomment %}
+{{request.session.job_description }}  {% endcomment %}
 
 {% load static %}
 <html>
@@ -60,11 +60,11 @@
                 <tbody>
                   
                   <section class="card-container">
-                    {% for company in page_obj %}  
+                     
                       <div class="card" style="border:none;">
                         <tr>
                       <th scope="row">{{ request.session.id}}</th>
-                      <th scope="row">{{ company.job_title}}</th>
+                      <th scope="row">{{ request.session.job_title}}</th>
                       <div class="image-box">
                         {% if company.image %}
                         <td>
@@ -76,18 +76,19 @@
                         </td>  
                        {% endif %}
                      
-                      <td>{{request.session.company_name}}</td>
-                      <td>{{request.session.email}}</td>
-                      <td>{{request.session.company_location}}</td>
-                      <td>
+                      <td>{{request.session.companyname}}</td>
+                      <td>{{request.session.email }}</td>
+                      <td>{{request.session.address}}</td>
+                    
+                      {% comment %} <td>
                         <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
                         <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="#"><i class="fa fa-edit" style="color:white"></i></button>
                         <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deletejobpost' company.id %}"</a><i class="fa fa-trash" style="color:white"></i></button>
                       </td>
-                      
+                       {% endcomment %}
           
                   </tr>
-                  {% endfor %}
+             
                 </tbody>
             </div>
             </table>  
