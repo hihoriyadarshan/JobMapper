@@ -69,3 +69,7 @@
     overflow: auto;
   }
   
+  .apply-button{
+    color: white;
+    overflow: hidden;
+  }

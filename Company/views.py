@@ -74,6 +74,7 @@ def jobpost_data(request):
     if request.method == "POST": 
 
         form = jobpostForm(request.POST or None) 
+
        
         image = " "
         if len(request.FILES) != 0:
@@ -97,6 +98,8 @@ def jobpost_data(request):
         last_date = request.POST.get('Enddate'),
         image = image
         )
+        data = jobpost.objects.all()
+        request.session['job_title'] = data.job_title
 
     
     return render (request, "jobpost.html")

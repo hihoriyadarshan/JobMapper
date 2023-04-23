@@ -238,8 +238,8 @@ def user_datacsvdownload(request):
     file_open = open("user_data.csv", "a")
 
     for user in SignUp.objects.all():
-        file_open.write(str(user.id)+ "," +str(user.username)+ "," +str(user.email)+ "," +str(user.job)
- + "," +str(user.skill)+ "," + str(user.hobbies)+"," +str(user.phone)+ "\n")
+        file_open.write(str(user.id)+ "," +str(user.username)+ "," +str(user.email)+ "," +str(user.gender)
+ + "," +str(user.skill)+ "," +str(user.phone)+ "\n")
     
     messages.success(request, "File downloaded successfully!")
     return render(request, "user.html")
@@ -399,7 +399,7 @@ def company_datacsvdownload(request):
     file_open = open("company_data.csv", "a")
 
     for company in Company.objects.all():
-        file_open.write(str(company.id)+ "," +str(company.username)+ "," +str(company.companyname)+ "," +str(company.email)+ "," +str(company.phone)
+        file_open.write(str(company.company_id)+ "," +str(company.username)+ "," +str(company.companyname)+ "," +str(company.email)+ "," +str(company.phone)
  +  "\n")
     
     messages.success(request, "File downloaded successfully!")
