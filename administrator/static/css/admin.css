@@ -47,7 +47,7 @@ body {
 
 .close-btn {
   position: absolute;
-  top: 5px;
+  top: 25px;
   right: 10px;
   font-size: 30px;
   cursor: pointer;

@@ -62,7 +62,46 @@
             
             <section class="panel important">
               <div class="add">
-                <center><h2>Company</center></h2>
+                <div class="head-2">
+                          Company </div>
+             
+              <button id="open-popup-btn" class="button">+ Add New</button>
+              <div class="popup-wrapper" id="popup">
+                <div class="popup-container">
+                  <span class="close-btn" id="close-btn">&times;</span>
+                  <form class="form" id="myForm" name="registrationForm" onsubmit="return validateForm()" method="post" action="company_data"  enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                    {% comment %} <h2>Fill in the form</h2> {% endcomment %}
+                    <label for="username"> name:</label>
+                    <input type="text"  id="username" name="username" placeholder="Username" required>
+
+              
+                    <label for="companyname">Company name:</label>
+                    <input type="text"  id="companyname" name="companyname" placeholder="Enter Your Companyname" required>
+              
+                    
+                    <label for="email">Email:</label>
+                    <input type="email"  id="email" name="email" placeholder="Email" required>
+              
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+              
+                    <label for="image">Profile image :</label>
+                    <input type="file" name="image" required>
+
+                    <label for="image">Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Address" required>
+
+                    <label for="image">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password"  required>
+              
+                    <input type="submit" value="Submit">
+                  </form>
+                </div>
+              </div>
+
+
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
                 <thead>
@@ -124,17 +163,24 @@
               {% endif %}
           </center>
             </section>
-
-
-
-            
-            
-              
-
-
-
             </section>
           </main>
+          <script>
+           
+              const openPopupBtn = document.getElementById('open-popup-btn');
+              const popupWrapper = document.getElementById('popup');
+              const closeBtn = document.getElementById('close-btn');
+              
+              openPopupBtn.addEventListener('click', () => {
+                popupWrapper.style.display = 'flex';
+              });
+              
+              closeBtn.addEventListener('click', () => {
+                popupWrapper.style.display = 'none';
+              });
+              
+              </script>
+          </script>
     </body>
 </html>
 
