@@ -3,6 +3,7 @@
     <head>
         <title>Admin Panel</title>
         <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" class="text-white" href="https://bootstrapious.com/">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +11,7 @@
      
         <link rel="stylesheet" href="assets/css/normalize.css">
 		{% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> {% endcomment %}
-        
+
       </head>
     <body style="background-color: #e9eaef;">
         <header role="banner">
@@ -63,8 +64,60 @@
             
             <section class="panel important">
             <div class="add">
-              <center><h2>user</center></h2>
-              
+              <div class="head-2">
+                        User </div>
+           
+            <button id="open-popup-btn" class="button">+ Add New</button>
+      
+                <div class="popup-wrapper" id="popup">
+                  <div class="popup-container">
+                    <span class="close-btn" id="close-btn">&times;</span>
+                    
+		                <form class="form" id="myForm" name="registrationForm" onsubmit="return validateForm()" method="POST" action="sup"  enctype="multipart/form-data">
+                				{% csrf_token %}	
+
+                      <h2>Fill in the form</h2>
+                      <div class="form-input">
+                 
+                      {% comment %} <label for="username"> name:</label> {% endcomment %}
+		                	<input type="text"    id="username" name="username" placeholder="Enter your username"  required>
+                    
+                      {% comment %} <label or="email">Email:</label> {% endcomment %}
+			                <input type="email" placeholder="Enter your Email" id="email" name="email"  required>
+                   
+                      {% comment %} <label for="email">Skill:</label> {% endcomment %}
+                      <input type="text" id="skill" name="skill" placeholder="Enter your skill" required>
+
+                      {% comment %} <label for="phone">Phone:</label>          {% endcomment %}
+	                		<input type="tel" id="phone" name="phone"  placeholder="Enter your phone number" required>
+
+                      </br>
+                      {% comment %} <label for="phone">Gender</label> {% endcomment %}
+                      <select name="gender" id="gender" >
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+
+
+                      {% comment %} <label for="image">Profile image:</label> {% endcomment %}
+                      <input type="file" id="image" name="image" accept="image/*" placeholder="Profile" required>
+                      
+                     
+
+                      {% comment %} <label for="image">Address</label> {% endcomment %}
+					            <input type="text" id="address" name="address" placeholder="Enter your Address" required>
+
+                   
+                      <input type="text" id="password" name="password" placeholder="Enter your password" required>
+                      <input type="submit" value="Submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+                           
+                
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
                 <thead>
@@ -133,9 +186,77 @@
 
 
 
-            
-            <section class="panel important">
+            <script>
+              const openPopupBtn = document.getElementById('open-popup-btn');
+              const popupWrapper = document.getElementById('popup');
+              const closeBtn = document.getElementById('close-btn');
               
+              openPopupBtn.addEventListener('click', () => {
+                popupWrapper.style.display = 'flex';
+              });
+              
+              closeBtn.addEventListener('click', () => {
+                popupWrapper.style.display = 'none';
+              });
+              
+              function validateForm() {
+                // Get form fields
+                const username = document.forms["registrationForm"]["username"].value;
+                const email = document.forms["registrationForm"]["email"].value;
+                const skill = document.forms["registrationForm"]["skill"].value;
+                const phone = document.forms["registrationForm"]["phone"].value;
+                const gender = document.forms["registrationForm"]["gender"].value;
+                const image = document.forms["registrationForm"]["image"].value;
+                const address = document.forms["registrationForm"]["address"].value;
+                const password = document.forms["registrationForm"]["password"].value;
+            
+                // Validation rules
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phoneRegex = /^\d{10}$/;
+                const passwordRegex =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+            
+                // Validate fields
+                if (username === "") {
+                  alert("Please enter your username.");
+                  return false;
+                }
+                if (!emailRegex.test(email)) {
+                  alert("Please enter a valid email address.");
+                  return false;
+                }
+                if (skill === "") {
+                  alert("Please enter your skill.");
+                  return false;
+                }
+                if (!phoneRegex.test(phone)) {
+                  alert("Please enter a valid phone number.");
+                  return false;
+                }
+                if (gender === "") {
+                  alert("Please select your gender.");
+                  return false;
+                }
+                if (image === "") {
+                  alert("Please upload an image.");
+                  return false;
+                }
+                if (address === "") {
+                  alert("Please enter your address.");
+                  return false;
+                }
+                if (!passwordRegex.test(password)) {
+                  alert(
+                  "Password must be 8 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter"
+                  );
+                  return false;
+                }
+            
+                // If all fields are valid, submit form
+                alert("Registration successful!");
+                return true;
+                }
+              </script>      
+                      
 
 
 

@@ -98,8 +98,9 @@ def jobpost_data(request):
         last_date = request.POST.get('Enddate'),
         image = image
         )
-        data = jobpost.objects.all()
-        request.session['job_title'] = data.job_title
+      
+        # data = jobpost.objects.all()
+        # request.session['job_title'] = data.job_title
 
     
     return render (request, "jobpost.html")
