@@ -9,6 +9,12 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib.auth.hashers import make_password ,check_password
+#loger
+import logging,traceback
+logger = logging.getLogger('authLogger')
 
 # Create your views here.
 
@@ -146,3 +152,44 @@ def deletecategory(request,id):
     return render(request, "category.html", context)
 
 
+# admin add company
+
+#user Registration
+def sup1(request):  
+    if request.method == "POST": 
+        s = SignUp()
+        s.username = request.POST.get('username')
+        s.email = request.POST.get('email')
+        if SignUp.objects.filter(email=s.email).exists():
+            #raise ValidationError("Email Exits")
+            return render(request,"registration.html")
+        s.skill = request.POST.get('skill')
+        s.phone = request.POST.get('phone')
+        s.gender = request.POST.get('gender')
+        s.address = request.POST.get('address')
+        s.password = request.POST.get('password')    
+
+        if len(request.FILES) != 0:
+            s.image = request.FILES['image']
+
+        subject = 'welcome to JobMapper'
+        message = f'Hello, {s.username},Your registration has been confirmed for the JOb Mapper'
+        email_from = settings.EMAIL_HOST_USER
+        registration_list = [s.username, s.email]
+
+        #password Hashing
+        s.password = make_password(s.password)
+
+
+
+        send_mail( subject, message, email_from, registration_list)
+
+        send_mail( subject, message, email_from, registration_list)
+        s.save()
+
+        users = SignUp.objects.all()
+
+        # return HttpResponse(s.username)
+        return redirect ("/showuser",{"context": users})
+    
+    return HttpResponse('Fail')

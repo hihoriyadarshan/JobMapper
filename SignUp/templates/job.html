@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Job</title>
+<link rel="stylesheet" href="static/css/index.css"/>
+<link rel="stylesheet" href="static/css/job.css"/>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-list-container">
+            <li class="list"><a href="{% url 'home' %}" class="link">Home</a></li>
+            <li class="list"><a href="#about-us" class="link">About</a></li>
+            <li class="list"><a href="#contact" class="link">Contact</a></li>
+            <li class="list"><a href="{% url 'showjob' %}" class="link">Job</a></li>   
+            {% comment %} <li class="list"><a href="{% url 'showbloger'%}" class="link">Blog</a></li>    {% endcomment %}
+         
+        </ul> 
+    </nav>
+            <div class="cart-container">
+                {% for company in page_obj %} 
+            <div class="cart-item">
+                {% if company.image %}
+                <td>
+                   <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px">
+                </td>
+              {% else %}
+                <td>
+                </td>  
+               {% endif %}
+                <div class="job-details">
+                <div class="job-id">Job ID: {{ company.job_id}}</div>
+                <div class="field">Field: IT</div>
+                <div class="company-name">Company: {{company.companyname.companyname}}</div>
+                <div class="job-title">Job : {{ company.job_title}}</div>
+                <div class="location">Location: {{company.location}}</div>
+                <div class="salary">Salary: {{company.salary}}</div>
+                <div class="email">Email: {{ company.email}}</div>
+            </div>
+                <div class="job-requirements">
+                <div class="experience-requirement">Experience Requirement: {{company.experience_required}} year</div>
+                <div class="skill-requirement">Skill Requirement: {{company.skill_required}}</div>
+                <div class="phone-number">Phone Number: {{company.phone}}</div>
+                <div class="last-date">Last Date to Apply: {{company.last_date}}</div>
+                <div class="description">Description: {{company.job_description}} </div>
+                <button class="apply-button"> <a href="{% url 'sign_up' %}" >Apply Now</a></button>
+
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+
+
+
+    </body>
+</html>

@@ -68,6 +68,8 @@ def updatecomapny(request):
 def admin_signup(request):
     return render(request,'admin_signup.html')
 
+def job1(request):
+    return render(request,'job.html')
 
 
         

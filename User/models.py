@@ -6,7 +6,7 @@ from Company.models import jobpost
 
 class JobApplication(models.Model):
     
-    j = models.ForeignKey(jobpost, on_delete=models.CASCADE)
+    job_id = models.ForeignKey(jobpost, on_delete=models.CASCADE)
     jobapplication_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     email = models.EmailField(blank = True,max_length=255,unique=True) 

@@ -15,6 +15,7 @@ urlpatterns = [
        path('deletecompanyfeedback/<id>',views.deletecompanyfeedback,name='deletecompanyfeedback'),
        path('deletejobpost<job_id>',views.deletejobpost,name='deletejobpost'),
        path('joblist',views.joblist,name='joblist'),
+       path('showjob1',views.showjob1,name='showjob1'),
        
 
 
