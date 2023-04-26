@@ -88,7 +88,7 @@ def deleteblog(request,id):
     return render(request, "adminblog.html", context)
 
 
-#show blog
+#show user blog
 
 def showbloger(request):
     
@@ -101,6 +101,12 @@ def showbloger_company(request):
     context = { 'blog_data': blog.objects.all() }
     return render(request, "blogpage_company.html", {'context': context})
 
+
+# show blog home
+
+def showbloger_home(request):
+    context = { 'blog_data': blog.objects.all() }
+    return render(request, "homeblog.html", {'context': context})
  
  # category
 

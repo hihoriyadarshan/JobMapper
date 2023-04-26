@@ -21,7 +21,7 @@ urlpatterns = [
     path('add_category',views.add_category,name='add_category'),
     path('deletecategory<id>',views.deletecategory,name='deletecategory'),
     path('sup1',views.sup1,name='sup1'),
-
+    path('showbloger_home',views.showbloger_home,name='showbloger_home'),
 
     
     # path('showcategory',views.showcategory,name='showcategory'),
