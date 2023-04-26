@@ -161,7 +161,7 @@ def showjob(request):
         # if page is empty then return last page
         page_obj = p.page(p.num_pages)
     context ={'page_obj': page_obj} 
-    return render(request,'job.html',context)
+    return render(request,'job_user.html',context)
 
 # job post delete admin side
 

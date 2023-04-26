@@ -36,13 +36,14 @@
    <nav class="navbar">
     <div class="logo">LOGO</div>
     <ul class="nav-list-container">
-        <li class="list"><a href="{% url 'home' %}" class="link">Home</a></li>
+        <li class="list"><a href="{% url 'home_page'%}" class="link">Home</a></li>
         <li class="list"><a href="#about-us" class="link">About</a></li>
         <li class="list"><a href="#contact" class="link">Contact</a></li>
-        <li class="list"><a href="{% url 'showjob' %}" class="link">Job</a></li>   
-        <li class="list"><a href="{% url 'showbloger'%}" class="link">Blog</a></li>   
-        <li class="list"><a href="{% url 'showprofile'%}" class="link">Profile</a></li>
-        <li class="list"><a href="logout" class="link">logout</a></li>
+        <li class="list"><a href="{% url 'showjob1' %}" class="link">job</a></li>  
+        <li class="list"><a href="{% url 'showbloger_home' %}" class="link">Blog</a></li>
+        <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
+        <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
+        <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
     </ul>
 </nav>
     <div class="header">

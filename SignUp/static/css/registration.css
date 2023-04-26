@@ -1,234 +1,233 @@
 body {
-  background-image: linear-gradient(217deg
+background-image: linear-gradient(217deg,#d5f8e5,#59e4a8);
+			font-family: Arial, sans-serif;
+			margin:20px;
+		}
+
+		.container {
+			height: 90vh;
+			width: 90%;
+			margin: auto;
+			display: grid;
+			grid-template-columns: 40% 60%;
+			grid-gap: 20px;
+			align-items: center;
+			justify-content: center;
+			background-color: #FFFFFF;
+			padding: 20px;
+			box-sizing: border-box;
+			border-radius: 10px;
+		}
+
+		.container img {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
+
+		.form {
+                display: grid;
+				grid-template-columns: 1fr;
+				grid-gap: 30px;
+				width: 100%;
+				height: 100%;
+			  }
+		
+		#email,#username
+		 {
+		 width:50%;}
+
+		.form input[type="text"],
+		.form input[type="email"],
+		.form input[type="tel"],
+		.form input[type="password"],
+		.form select {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #F5F5F5;
+			height: 80%;
+			font-size: 20px;
+			font-weight:bold;
+			color: black;
+			box-sizing: border-box;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		.form input[type="submit"] {
+			width: 100%;
+			padding: 10px;
+			border: none;
+			height: 80%;
+			border-radius: 5px;
+			background-image: linear-gradient(217deg
 ,#d5f8e5,#59e4a8);
-    font-family: Arial, sans-serif;
-    margin:20px;
-  }
+			color: black;
+			font-size: 20px;
+			font-weight:bold;			
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+		}
 
-  .container {
-    height: 90vh;
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-gap: 20px;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFFFFF;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 10px;
-  }
+		.form input[type="submit"]:hover {
+			background-color: #FF6347;
+		}
 
-  .container img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-  }
+		.form input[type="file"] {
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #F5F5F5;
+			font-size: 20px;
+			height: 80%;
+			font-weight:bold;
+			color: #757575;
+			box-sizing: border-box;
+		}
 
-  .form {
-              display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 30px;
-      width: 100%;
-      height: 100%;
-      }
-  
-  #email,#username
-   {
-   width:50%;}
-
-  .form input[type="text"],
-  .form input[type="email"],
-  .form input[type="tel"],
-  .form input[type="password"],
-  .form select {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #F5F5F5;
-    height: 80%;
-    font-size: 20px;
-    font-weight:bold;
-    color: black;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
-
-  .form input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    height: 80%;
-    border-radius: 5px;
-    background-image: linear-gradient(217deg
-,#d5f8e5,#59e4a8);
-    color: black;
-    font-size: 20px;
-    font-weight:bold;			
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-
-  .form input[type="submit"]:hover {
-    background-color: #FF6347;
-  }
-
-  .form input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #F5F5F5;
-    font-size: 20px;
-    height: 80%;
-    font-weight:bold;
-    color: #757575;
-    box-sizing: border-box;
-  }
-
-  .form input[type="file"]::-webkit-file-upload-button {
+		.form input[type="file"]::-webkit-file-upload-button {
 background-image: linear-gradient(217deg
 ,#d5f8e5,#59e4a8);			color: black;
-    border: none;
-    border-radius: 5px;
-    height: 80%;
-    padding: 10px;
-    font-size: 20px;
-    font-weight:bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
+			border: none;
+			border-radius: 5px;
+			height: 80%;
+			padding: 10px;
+			font-size: 20px;
+			font-weight:bold;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+		}
 
-  .form input[type="file"]::-webkit-file-upload-button:hover {
+		.form input[type="file"]::-webkit-file-upload-button:hover {
 background-image: linear-gradient(217deg
 ,#d5f8e5,#59e4a8);		}
 
-  .form input[type="file"]::-moz-file-upload-button {
+		.form input[type="file"]::-moz-file-upload-button {
 background-image: linear-gradient(217deg
 ,#d5f8e5,#59e4a8);	
-    color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    height: 60%;
-    font-size: 20px;
-    font-weight:bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
+			color: black;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			height: 60%;
+			font-size: 20px;
+			font-weight:bold;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+		}
 
-  .form input[type="file"]::-moz-file-upload-button:hover {
-    background-color: #FF6347;
-  }
+		.form input[type="file"]::-moz-file-upload-button:hover {
+			background-color: #FF6347;
+		}
 
-  .form select {
-    padding: 10px;
-    border: none;
-    border-radius:5px;
+		.form select {
+			padding: 10px;
+			border: none;
+			border-radius:5px;
 background-color: #F5F5F5;
-    font-size: 20px;
-    font-weight:bold;
-    color: #757575;
+			font-size: 20px;
+			font-weight:bold;
+			color: #757575;
 box-sizing: border-box;
 -webkit-appearance: none;
 -moz-appearance: none;
 appearance: none;
 }
 
-.form select::-ms-expand {
-  display: none;
-}
+	.form select::-ms-expand {
+		display: none;
+	}
+	
+	#address
+	 {
+	 width:100%;}
+	 
+	 #password
+	 {
+	 width:50%;}
 
-#address
- {
- width:100%;}
- 
- #password
- {
- width:50%;}
+	.form input[type="checkbox"] {
+		width: auto;
+		padding: 10px;
+		width:50px;
+		border-radius: 5px;
+		color: #333333;
+		box-sizing: border-box;
+		height: 50%;
+				cursor: pointer;
+		display: inline-block;
+		margin-right: 5px;
+		vertical-align: middle;
+	}
 
-.form input[type="checkbox"] {
-  width: auto;
-  padding: 10px;
-  width:50px;
-  border-radius: 5px;
-  color: #333333;
-  box-sizing: border-box;
-  height: 50%;
-      cursor: pointer;
-  display: inline-block;
-  margin-right: 5px;
-  vertical-align: middle;
-}
+	
 
+	.form input[type="radio"] {
+		display: none;
+	}
 
+	.form input[type="radio"] + label {
+		display: inline-block;
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		background-color: #F5F5F5;
+		color: #333333;
+		box-sizing: border-box;
+		font-size: 16px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
 
-.form input[type="radio"] {
-  display: none;
-}
+	.form input[type="radio"]:checked + label {
+		background-color: #FF7F50;
+		color: #FFFFFF;
+	}
 
-.form input[type="radio"] + label {
-  display: inline-block;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #F5F5F5;
-  color: #333333;
-  box-sizing: border-box;
-  font-size: 16px;
-  cursor: pointer;
-  vertical-align: middle;
-}
+	.form input[type="radio"] + label:hover {
+		background-color: #FF6347;
+	}
 
-.form input[type="radio"]:checked + label {
-  background-color: #FF7F50;
-  color: #FFFFFF;
-}
+	.form input[type="radio"] + label::before {
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 2px solid #333333;
+		border-radius: 50%;
+		margin-right: 10px;
+		vertical-align: middle;
+		box-sizing: border-box;
+		text-align: center;
+		line-height: 1;
+	}
 
-.form input[type="radio"] + label:hover {
-  background-color: #FF6347;
-}
+	.form input[type="radio"]:checked + label::before {
+		background-color: #333333;
+		color: #FFFFFF;
+	}
 
-.form input[type="radio"] + label::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #333333;
-  border-radius: 50%;
-  margin-right: 10px;
-  vertical-align: middle;
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 1;
-}
+	.form input[type="radio"] + label:hover::before {
+		border-color: #FF6347;
+	}
+	.row
+	 {
+	     display: flex;
+    gap: 5px;
+	    align-items: center;
+	
+	}
 
-.form input[type="radio"]:checked + label::before {
-  background-color: #333333;
-  color: #FFFFFF;
-}
-
-.form input[type="radio"] + label:hover::before {
-  border-color: #FF6347;
-}
-.row
- {
-     display: flex;
-  gap: 5px;
-    align-items: center;
-
-}
-
-#gender,#skill,#phone
-{
-    width:33%;	
-}
-.title
- {
-   margin: 10px 0px -15px 0px;
-   font-size:40px;
- }
- 
+	#gender,#skill,#phone
+	{
+      width:33%;	
+	}
+	.title
+	 {
+	   margin: 10px 0px -15px 0px;
+	   font-size:40px;
+	 }
+	 

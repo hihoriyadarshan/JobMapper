@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from administrator.forms import blogForm, categoryForm
 from administrator.models import blog, Catagory
 from django.core.paginator import Paginator
-from SignUp.models import SignUp
+from SignUp.models import SignUp,Company
 from django.http import FileResponse
 import io
 from reportlab.pdfgen import canvas
@@ -120,13 +120,13 @@ def add_category(request):
             
             try:  
                 form.save()  
-                return render(request,'category.html')  
+                return redirect(request,'/category')  
             except:  
                 pass  
     else:  
         form = categoryForm()  
-    return render(request,'category.html',{'form':form})
-
+    return redirect("/category",{'form':form})
+ 
 
 # show category
 
@@ -198,4 +198,34 @@ def sup1(request):
         # return HttpResponse(s.username)
         return redirect ("/showuser",{"context": users})
     
+    return HttpResponse('Fail')
+
+
+# Company add user
+def company_data1(request):  
+    if request.method == "POST": 
+        b = Company()
+        b.username = request.POST.get('username')
+        b.companyname = request.POST.get('companyname')
+        b.phone = request.POST.get('phone')
+        b.email = request.POST.get('email')
+        b.address = request.POST.get('address')
+        b.password = request.POST.get('password')
+
+        if len(request.FILES) != 0:
+            b.image = request.FILES['image']
+
+        subject = 'welcome to JobMapper'
+        message = f'Hello, {b.username},Your Company has been registration Succesfully'
+        email_from = settings.EMAIL_HOST_USER
+        registration_list = [b.username, b.email]    
+
+        b.password = make_password(b.password)
+
+        send_mail( subject, message, email_from, registration_list)
+
+        send_mail( subject, message, email_from, registration_list)
+
+        b.save()
+        return redirect("/showcompany")
     return HttpResponse('Fail')

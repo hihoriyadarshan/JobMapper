@@ -4,22 +4,23 @@
 <head>
 	<title>Registration Form</title>
 	<link rel="stylesheet" href="static/css/index.css">
-	{% comment %} <link rel="stylesheet" href="static/css/registration.css"> {% endcomment %}
+	<link rel="stylesheet" href="static/css/registration.css">
 	
 </head>
 <body>
-	  <nav class="navbar">
-   		<div class="logo">LOGO</div>
-    	<ul class="nav-list-container">
-      	<li class="list"><a href="#home" class="link">Home</a></li>
-      	<li class="list"><a href="#about-us" class="link">About</a></li>
-      	<li class="list"><a href="#contact" class="link">Contact</a></li>
-      	<li class="list"><a href="{% url 'companylogin'%}" class="link">Company login</a></li>   
-      	<li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
-      	<li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
-    	</ul>
-	</nav>
-	
+	<nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-list-container">
+            <li class="list"><a href="{% url 'home_page'%}" class="link">Home</a></li>
+            <li class="list"><a href="#about-us" class="link">About</a></li>
+            <li class="list"><a href="#contact" class="link">Contact</a></li>
+            <li class="list"><a href="{% url 'showjob1' %}" class="link">job</a></li>  
+            <li class="list"><a href="{% url 'showbloger_home' %}" class="link">Blog</a></li>
+            <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
+            <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
+            <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
+        </ul>
+    </nav>
 	<body>
 		<div class="container">
 		
@@ -28,109 +29,109 @@
 		<form class="form" id="myForm" name="registrationForm" onsubmit="return validateForm()" method="POST" action="sup"  enctype="multipart/form-data">
 			
 				{% csrf_token %}	
-			<p class="title">Register</p>
-			<div class="row">
-			<input type="text" class="col-sm-4" id="username" name="username" placeholder="Username" >
-							
-			<div class="row">
-			<input type="email" class="col-sm-4" id="email" name="email" placeholder="Email" >
-			</div>		
-	
-			<div class="row">
-			<input type="text" id="skill" name="skill" placeholder="Skill" >
-			<input type="tel" id="phone" name="phone" placeholder="Phone Number" >
-			<select name="gender" id="gender" >
-				<option value="">Select Gender</option>
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-			</select>
-			</div>
-					<div class="row">
-	
-			<input type="file" name="image" >
-					<input type="text" id="address" name="address" placeholder="Address" >
-			</div>
-	
-			<div class="row">
-			<input type="password" id="password" name="password" placeholder="Password" >
-					<input type="checkbox" onclick="myFunction()" ><p class="error_sms">Show Password</p>
-	
-			</div>
-	
-			<input type="submit" value="Submit">
-		</form>
-	</div>
-	<script>
-		  function validateForm() {
-			// Get form fields
-			const username = document.forms["registrationForm"]["username"].value;
-			const email = document.forms["registrationForm"]["email"].value;
-			const skill = document.forms["registrationForm"]["skill"].value;
-			const phone = document.forms["registrationForm"]["phone"].value;
-			const gender = document.forms["registrationForm"]["gender"].value;
-			const image = document.forms["registrationForm"]["image"].value;
-			const address = document.forms["registrationForm"]["address"].value;
-			const password = document.forms["registrationForm"]["password"].value;
-	
-			// Validation rules
-			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			const phoneRegex = /^\d{10}$/;
-			const passwordRegex =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-	
-			// Validate fields
-			if (username === "") {
-			  alert("Please enter your username.");
-			  return false;
-			}
-			if (!emailRegex.test(email)) {
-			  alert("Please enter a valid email address.");
-			  return false;
-			}
-			if (skill === "") {
-			  alert("Please enter your skill.");
-			  return false;
-			}
-			if (!phoneRegex.test(phone)) {
-			  alert("Please enter a valid phone number.");
-			  return false;
-			}
-			if (gender === "") {
-			  alert("Please select your gender.");
-			  return false;
-			}
-			if (image === "") {
-			  alert("Please upload an image.");
-			  return false;
-			}
-			if (address === "") {
-			  alert("Please enter your address.");
-			  return false;
-			}
-			if (!passwordRegex.test(password)) {
-			  alert(
-				"Password must be 8 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter"
-			  );
-			  return false;
-			}
-	
-			// If all fields are valid, submit form
-			alert("Registration successful!");
-			return true;
+				<p class="title">Register</p>
+				<div class="row">
+				<input type="text" class="col-sm-4" id="username" name="username" placeholder="Username" >
+								
+		
+				<input type="email" class="col-sm-4" id="email" name="email" placeholder="Email" >
+				</div>		
+		
+				<div class="row">
+				<input type="text" id="skill" name="skill" placeholder="Skill" >
+				<input type="tel" id="phone" name="phone" placeholder="Phone Number" >
+				<select name="gender" id="gender" >
+					<option value="">Select Gender</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+				</div>
+						<div class="row">
+		
+				<input type="file" name="image" >
+						<input type="text" id="address" name="address" placeholder="Address" >
+				</div>
+		
+				<div class="row">
+				<input type="password" id="password" name="password" placeholder="Password" >
+						<input type="checkbox" onclick="myFunction()" ><p class="error_sms">Show Password</p>
+		
+				</div>
+		
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+		<script>
+			  function validateForm() {
+				// Get form fields
+				const username = document.forms["registrationForm"]["username"].value;
+				const email = document.forms["registrationForm"]["email"].value;
+				const skill = document.forms["registrationForm"]["skill"].value;
+				const phone = document.forms["registrationForm"]["phone"].value;
+				const gender = document.forms["registrationForm"]["gender"].value;
+				const image = document.forms["registrationForm"]["image"].value;
+				const address = document.forms["registrationForm"]["address"].value;
+				const password = document.forms["registrationForm"]["password"].value;
+		
+				// Validation rules
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				const phoneRegex = /^\d{10}$/;
+				const passwordRegex =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+		
+				// Validate fields
+				if (username === "") {
+				  alert("Please enter your username.");
+				  return false;
+				}
+				if (!emailRegex.test(email)) {
+				  alert("Please enter a valid email address.");
+				  return false;
+				}
+				if (skill === "") {
+				  alert("Please enter your skill.");
+				  return false;
+				}
+				if (!phoneRegex.test(phone)) {
+				  alert("Please enter a valid phone number.");
+				  return false;
+				}
+				if (gender === "") {
+				  alert("Please select your gender.");
+				  return false;
+				}
+				if (image === "") {
+				  alert("Please upload an image.");
+				  return false;
+				}
+				if (address === "") {
+				  alert("Please enter your address.");
+				  return false;
+				}
+				if (!passwordRegex.test(password)) {
+				  alert(
+					"8 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter</h2>"
+				  );
+				  return false;
+				}
+		
+				// If all fields are valid, submit form
+				alert("Registration successful!");
+				return true;
+			  }
+			  
+			  
+			</script>
+		
+		   <script>
+		   function myFunction() {
+		  var x = document.getElementById("password");
+		  if (x.type === "password") {
+			x.type = "text";
+		  } else {
+			x.type = "password";
 		  }
-		  
-		  
-		</script>
-	
-	   <script>
-	   function myFunction() {
-	  var x = document.getElementById("password");
-	  if (x.type === "password") {
-		x.type = "text";
-	  } else {
-		x.type = "password";
-	  }
-	}
-	   </script>
-	</body>
-	</html>		
-	
+		}
+		   </script>
+		</body>
+		</html>		
+		
