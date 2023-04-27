@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <head>
+        <title>Change Password </title>
+        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
+    </head>
+</body>    
+<h2>Change Password</h2>
+	      <form action="change_password1" method="post">
+            {% csrf_token %}
+            <div class="twothirds">
+
+	            <input type="hidden" name="username1" value="{{request.session.username}}" size="40"/><br/><br/>
+
+                Old Password :<br/> 
+	            <input type="password" name="password" size="40"/><br/><br/>
+
+                New Password :<br/>
+	            <input type="password" name="new_password" size="40"/><br/><br/>
+
+                Confirm New Password :<br/>
+	            <input type="password" name="cnfm_password" size="40"/><br/><br/>
+
+	            <input type="submit" name="submit" value="Save" />
+
+	        </div>
+	      </form>
