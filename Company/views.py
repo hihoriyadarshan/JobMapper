@@ -96,7 +96,7 @@ def jobpost_data(request):
         job_description = request.POST.get('job_description'),
         post_date = request.POST.get('Endtime'),
         last_date = request.POST.get('Enddate'),
-        image = image
+        image = request.FILES['image']
         )
       
         # data = jobpost.objects.all()
