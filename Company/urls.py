@@ -16,6 +16,8 @@ urlpatterns = [
        path('deletejobpost<job_id>',views.deletejobpost,name='deletejobpost'),
        path('joblist',views.joblist,name='joblist'),
        path('showjob1',views.showjob1,name='showjob1'),
+       path('company_change_pswd',views.company_change_pswd,name='company_change_pswd'),
+       path('change_password',views.change_password,name='change_password'),
        
 
 
