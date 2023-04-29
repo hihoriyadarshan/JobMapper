@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from administrator.forms import blogForm, categoryForm
 from administrator.models import blog, Catagory
 from django.core.paginator import Paginator
-from SignUp.models import SignUp,Company
+from SignUp.models import SignUp,Company,Admin_Log
 from django.http import FileResponse
 import io
 from reportlab.pdfgen import canvas
@@ -12,7 +12,7 @@ from reportlab.lib.pagesizes import letter
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password ,check_password
-#loger
+from django.contrib import messages
 import logging,traceback
 logger = logging.getLogger('authLogger')
 
@@ -157,8 +157,42 @@ def deletecategory(request,id):
         return redirect("/category")
     return render(request, "category.html", context)
 
+# change password user
+def admin_change_pswd(request):
+    return render(request,'admin_change_pswd.html')
 
-# admin add company
+def change_password2(request):
+    if request.method == "POST":    
+        old_pswd = request.POST.get("password")
+        username1 = request.POST.get("username1")
+    
+        obj = get_object_or_404(Admin_Log, username = username1)
+        
+        result = check_password(old_pswd, obj.password)
+        if result == True:
+            new_pswd = request.POST.get("new_password")
+            cnfm_pswd = request.POST.get("cnfm_password")
+            
+            if new_pswd == cnfm_pswd:
+                
+                obj.password = make_password(new_pswd)
+                obj.save()
+                
+                messages.success(request, "Password Changed successfully!")
+                return render(request,'admin_change_pswd.html')
+            else :
+                messages.error(request, "New Password and Confirm Password doesn't match!")
+                return render(request, 'admin_change_pswd.html')
+        else:
+            messages.error(request, "Old is password is not correct!")
+            return render(request, 'admin_change_pswd.html')
+
+
+
+
+
+
+# admin add User
 
 #user Registration
 def sup1(request):  

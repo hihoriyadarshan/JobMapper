@@ -18,8 +18,8 @@
               <li class="logout warn"><a href="logout">Log Out</a></li>
             </ul>
           </header>
-          
-          <nav role='navigation'>
+                  
+        <nav role='navigation'>
             <ul class="main">
               <li class="dashboard"><a href="showadmindashboard" class="btn btn--pill">Admin LTE</a></li>
               <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
@@ -34,39 +34,37 @@
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
               <li><a href="{% url 'admin_change_pswd' %}">change password</a></li>
             </ul>
-          </nav>
-          
-          <main role="main">
+          </nav>   
+              <main role="main">      
+                    <section class="panel important">
+                     
+                      <ul>
+                     <center>   <li style="font-size:40px;">Change Password</li> </center>
+                      </ul>
+                    </section>
+                    
+                    <section class="panel important">
+                                 
+                <form action="change_password2" method="post">
+                        {% csrf_token %}
+                        <div class="twothirds">
             
-            <section class="panel important">
-             
-              <ul>
-             <center>   <li style="font-size:40px;">Write a Blog</li> </center>
-              </ul>
-            </section>
+                        <input type="hidden" name="username1" value="{{request.session.username}}" size="40"/><br/><br/>
             
-            <section class="panel important">
-                         
-            <form action="bloger" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                  <div class="twothirds">
-                    Blog image: </br>
-                  <input type="file" placeholder="upload image" height="50px" width="50px" name="image" />
-                   
-                    Blog title:<br/>
-                    <input type="text" name="title" size="40"/ required><br/><br/>
-                    Write a Blog:<br/>   
-                   
-                    <textarea name="message" rows="15" cols="67"></textarea><br/> 
-                  <div>
-                    <input type="submit"  value="Save" />
-                  </div>
-                  </div>
+                         Old Password :<br/> 
+                        <input type="password" name="password" size="40"/><br/><br/>
+            
+                          New Password :<br/>
+                         <input type="password" name="new_password" size="40"/><br/><br/>
+            
+                          Confirm New Password :<br/>
+                        <input type="password" name="cnfm_password" size="40"/><br/><br/>
+            
+                        <input type="submit" name="submit" value="Save" />
+            
+                    </div>
                 </form>
-            </section>
-          </main>
-         
-    </body>
+           </section>
+       </main>              
+   </body>
 </html>
-
-  

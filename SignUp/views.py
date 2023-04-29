@@ -410,7 +410,7 @@ def company_datacsvdownload(request):
 
 
 
-#admin Signup
+#Sub admin-add  
 
 def admin_data(request):  
     if request.method == "POST": 
@@ -419,7 +419,7 @@ def admin_data(request):
         a.phone = request.POST.get('phone')
         a.email = request.POST.get('email')
         a.password = request.POST.get('password')
-
+        a.password = make_password(a.password)
         
         a.save()
         return render (request, "admin.html")
@@ -435,17 +435,21 @@ def loginHandleAdmin(request):
         un = request.POST.get("username")
         ps = request.POST.get("password")
         uname = Admin_Log.objects.all().filter(username=un)
+
+        obj = get_object_or_404(Admin_Log, username = un )
+        
+        result = check_password(ps,obj.password)
+
+        data = Admin_Log.objects.all()
         
 
-        if uname[0].username == un and uname[0].password == ps:
-            request.session['username'] = uname[0].username
-            request.session['email'] = uname[0].email
-            request.session['phone'] = uname[0].phone
+        for i in range(len(data)):
+            if data[i].username == un:
+                request.session['username'] = data[i].username
+                request.session['email'] = data[i].email
+                request.session['phone'] = data[i].phone
 
-            username = request.session['username']
-            email = request.session['email']
-            phone = request.session['phone']
-            
+        if result == True:            
 
             return render(request,'admin.html')
         else :

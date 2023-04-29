@@ -23,6 +23,8 @@ urlpatterns = [
     path('sup1',views.sup1,name='sup1'),
     path('company_data1',views.company_data1,name='company_data1'),
     path('showbloger_home',views.showbloger_home,name='showbloger_home'),
+    path('admin_change_pswd',views.admin_change_pswd,name='admin_change_pswd'),
+    path('change_password2',views.change_password2,name='change_password2'),
 
     
     # path('showcategory',views.showcategory,name='showcategory'),
