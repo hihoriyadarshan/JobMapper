@@ -128,6 +128,27 @@ def add_category(request):
     return redirect("/category",{'form':form})
  
 
+#Category update
+def editadd_category(request, id):  
+    context = {}
+    obj = get_object_or_404(Catagory, id=id)
+    form = categoryForm(request.POST,request.FILES, instance = obj)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/category") 
+    return render(request, "category.html", context)
+
+
+def updatecompany(request,id):
+    context = Catagory.objects.get(id=id)
+    return render(request, "category.html",{'context' : context})
+
+
+
+
+
+
+
 # show category
 
 def category(request):
