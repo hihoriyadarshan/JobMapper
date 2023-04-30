@@ -6,6 +6,8 @@ from django.core.paginator import Paginator
 from SignUp.models import Company
 from django.contrib.auth.hashers import make_password ,check_password
 from django.contrib import messages
+import pandas as pd
+
 
 
 
@@ -106,6 +108,10 @@ def jobpost_data(request):
 
     
     return render (request, "jobpost.html")
+
+
+
+
 
 
 #show job post 

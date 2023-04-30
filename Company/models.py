@@ -1,5 +1,6 @@
 from django.db import models
 from SignUp.models import Company
+from django.db import models
 
 # Create your models here.
 class company_contact(models.Model):
@@ -27,4 +28,6 @@ class jobpost(models.Model):
     image = models.ImageField(upload_to = 'media', null = True,blank=True)
     job_description = models.TextField(max_length = 255)
    
+
+
   

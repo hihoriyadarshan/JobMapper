@@ -93,7 +93,7 @@
                             </tbody>
                          </table>
                       </div>  
-                                <center>
+                                {% comment %} <center>
                                   {%if showcategory.has_previous %} {# whether the previous page exists #}
                                       <a href="?page={{showcategory.previous_page_number}}"><</a> {# link to the prev page #}
                                   {% endif %}
@@ -103,7 +103,7 @@
                                       <a href="?page={{showcategory.next_page_number}}">></a> {# link to the next page #}
                                   {% endif %}
                                 
-                              </center>
+                              </center> {% endcomment %}
                             </section>            
                           </main>
                        <script>

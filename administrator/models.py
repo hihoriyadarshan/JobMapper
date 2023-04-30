@@ -14,5 +14,5 @@ class blog(models.Model):
 
 #category model
 class Catagory(models.Model):    
-    catagory_name = models.TextField(max_length = 50,unique=True)
+    catagory_name = models.TextField(max_length = 50)
     

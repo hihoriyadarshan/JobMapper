@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from administrator.forms import blogForm, categoryForm
+from Company.forms import  jobpostForm
 from administrator.models import blog, Catagory
 from django.core.paginator import Paginator
 from SignUp.models import SignUp,Company,Admin_Log
@@ -15,6 +16,7 @@ from django.contrib.auth.hashers import make_password ,check_password
 from django.contrib import messages
 import logging,traceback
 logger = logging.getLogger('authLogger')
+import pandas as pd
 
 # Create your views here.
 
@@ -38,10 +40,6 @@ def adminLTE(request):
 
 def writeblog(request):
     return render(request,'writeblog.html')
-
-
-
-
 
 
 
@@ -145,10 +143,6 @@ def updatecompany(request,id):
 
 
 
-
-
-
-
 # show category
 
 def category(request):
@@ -167,6 +161,7 @@ def category(request):
         page_obj = p.page(p.num_pages)
     # context ={'page_obj': page_obj} 
     return render(request,'category.html',  context ={'showcategory': page_obj} )
+
 
 #delete Category
 

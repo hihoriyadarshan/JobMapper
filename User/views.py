@@ -15,51 +15,21 @@ from django.shortcuts import render,redirect,get_object_or_404
 def home(request):
     return render(request,'user-hp.html')
 
-def jobapply_form(request):
-    # j = jobpost.objects.get(job_id=id)
-    # return HttpResponse(j)
-    return render(request,'apply.html')
+def jobapply_form(request,id):
+    # return HttpResponse(id)
+    j = jobpost.objects.get(job_id=id)
+    return render(request,'apply.html',{'j': j })
 
 
-def jobapply(request): 
-    # job = get_object_or_404(jobpost,job_id=id)   
+
+def user_jobapply(request):   
     if request.method == "POST":
-        form = JobApplicationForm(request.POST or None) 
+        # a = request.POST.get('job_id')
+        # return HttpResponse(a)
+        
 
-        resume = " "
-        if len(request.FILES) != 0:
-          resume = str(request.FILES['resume'])
-
-        j_id = request.session["job_id"]
-        job = jobpost.objects.get(job_id= j_id) 
-    
-        jobapply.objects.create( 
-            job_id = job, 
-            name = request.POST.get('name'),
-            email = request.POST.get('email'),
-            phone = request.POST.get('phone'),
-            resume = request.FILES['resume']
-            )
-
+        return HttpResponse('Fail')
         return render (request, "apply.html")
-    
-        # a = request.POST.get("job_ids")
-        # return HttpResponse(a) 
-    # return HttpResponse(job) 
-    # if request.method == "POST":
-    #     a = request.POST.get("job_ids")
-    #     job = get_object_or_404(jobpost,job_id=a)   
-    #     return HttpResponse(job)
-       
-       
-
-        if request.method == "GET":
-            job = request.get["job_id"]
-            return HttpResponse(job)
-        company = jobpost.objects.get(job_id= job)  
-        
-        
-    # return HttpResponse('Fail')
 
 
 #chnage password user

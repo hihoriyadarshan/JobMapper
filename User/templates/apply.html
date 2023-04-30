@@ -13,10 +13,10 @@
         <hgroup>
             <h1>Apply Job</h1>
         </hgroup>
-        <form action="jobapply" method="POST" enctype="multipart/form-data">
+        <form action="user_jobapply" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" name="job_ids" value="{{ j.job_id}}">
-            
+            <input type="hidden" name="job_id" value="{{ j.job_id}}" />
+        
             <div class="group"> 
             <label>Upload CV</label>
             </div>
@@ -40,7 +40,6 @@
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
             </button>
         </form>
-       
-        </script>
+    
 </body>
 </html>
