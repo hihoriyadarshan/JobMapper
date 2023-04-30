@@ -18,16 +18,19 @@
 <body>
     <nav class="navbar">
         <div class="logo">LOGO</div>
-        <ul class="nav-list-container">
-          <li class="list"><a href="{% url 'companyhomepage' %}" class="link">Home</a></li>
-          <li class="list"><a href="#about-us" class="link">About</a></li>
-          <li class="list"><a href="#contact" class="link">Contact</a></li>
-          <li class="list"><a href="{% url 'job_post'%}" class="link">Job Post</a></li>
-          <li class="list"><a href="{% url 'joblist' %}" class="link">Job list</a></li>   
-          <li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
-          <li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
-          <li class="list"><a href="logout" class="link">logout</a></li>
-      </ul>
+        <nav class="navbar">
+            <div class="logo">LOGO</div>
+            <ul class="nav-list-container">
+                <li class="list"><a href="{% url 'companyhomepage' %}" class="link">Home</a></li>
+                <li class="list"><a href="#about-us" class="link">About</a></li>
+                <li class="list"><a href="#contact" class="link">Contact</a></li>
+                <li class="list"><a href="{% url 'job_post' %}" class="link">Job Post</a></li>
+                <li class="list"><a href="{% url 'joblist' %}" class="link">Job list</a></li>
+                <li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
+                <li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
+                <li class="list"><a href="logout" class="link">logout</a></li>
+            </ul>
+        </nav>
     </nav>
     <!-- Navbar top -->
     <div class="navbar-top">

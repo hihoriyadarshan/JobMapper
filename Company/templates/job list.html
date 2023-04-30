@@ -41,17 +41,18 @@
             
              <section class="panel important">
               <div class="add">
-                <center><h2 style="color:black;">JOB POST</center></h2>
+                <center><h2 style="color:black;">Job Application</center></h2>
                 
               <tabel class="table" style="font-size: 30px;">
                 <table class="table">
                 <thead>
                   <tr>
 
-                    <th scope="col">id</th>
-                    <th scope="col">job_title</th>                                   
-                    <th scope="col">image</th>
-                    <th scope="col">Company Name</th>
+                    {% comment %} <th scope="col">Job id</th> {% endcomment %}
+                    <th scope="col">Application id</th>
+                    <th scope="col">name</th>                                   
+                    <th scope="col">Resume</th>
+                    <th scope="col">Phone</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Address</th>            
                     <th scope="col">Action</th>
@@ -63,22 +64,22 @@
                      
                       <div class="card" style="border:none;">
                         <tr>
-                      <th scope="row">{{ request.session.id}}</th>
-                      <th scope="row">{{ request.session.job_title}}</th>
+                      {% comment %} <th scope="row">{{ request.session.id}}</th> {% endcomment %}
+                      {% comment %} <th scope="row">{{ request.session.job_title}}</th> {% endcomment %}
                       <div class="image-box">
                         {% if company.image %}
                         <td>
-                           <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px">
+                           {% comment %} <img src="{{ company.image }}"  alt="" class="prod-size" height="50px" width="50px"> {% endcomment %}
                         </td>
                       {% else %}
                         <td>
-                          <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size">
+                          {% comment %} <img src="{% static 'images/noimage.png' %}"  alt="" class="prod-size"> {% endcomment %}
                         </td>  
                        {% endif %}
-                     
+{% comment %}                      
                       <td>{{request.session.companyname}}</td>
                       <td>{{request.session.email }}</td>
-                      <td>{{request.session.address}}</td>
+                      <td>{{request.session.address}}</td> {% endcomment %}
                     
                       {% comment %} <td>
                         <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>

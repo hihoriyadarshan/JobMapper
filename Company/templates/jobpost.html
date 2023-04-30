@@ -20,16 +20,19 @@
 <body>
 	<nav class="navbar">
         <div class="logo">LOGO</div>
-        <ul class="nav-list-container">
-            <li class="list"><a href="{% url 'companyhomepage' %}" class="link">Home</a></li>
-            <li class="list"><a href="#about-us" class="link">About</a></li>
-            <li class="list"><a href="#contact" class="link">Contact</a></li>
-            <li class="list"><a href="{% url 'job_post' %}" class="link">Job Post</a></li>
-            <li class="list"><a href="{% url 'joblist' %}" class="link">Job list</a></li>
-            <li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
-            <li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
-            <li class="list"><a href="logout" class="link">logout</a></li>
-        </ul>
+        <nav class="navbar">
+			<div class="logo">LOGO</div>
+			<ul class="nav-list-container">
+				<li class="list"><a href="{% url 'companyhomepage' %}" class="link">Home</a></li>
+				<li class="list"><a href="#about-us" class="link">About</a></li>
+				<li class="list"><a href="#contact" class="link">Contact</a></li>
+				<li class="list"><a href="{% url 'job_post' %}" class="link">Job Post</a></li>
+				<li class="list"><a href="{% url 'joblist' %}" class="link">Job list</a></li>
+				<li class="list"><a href="{% url 'showbloger_company'%}" class="link">Blog</a></li>               
+				<li class="list"><a href="{% url 'showcompanyprofile' %}" class="link">Profile</a></li>
+				<li class="list"><a href="logout" class="link">logout</a></li>
+			</ul>
+		</nav>
     </nav>
 	<div class="container">
 		<div class="card">
@@ -65,21 +68,13 @@
 									<input type="number" id="experience_required" name="experience_required" placeholder="in year" required>
 									<span class="error"></span>
 							</div>
-						
-	
-						
+		
 					</div>
 					<div class="field-group">
 					<div class="field">
-						<label for="skill_required">Skill Required</label>
-						<select id="skill_required"  name="skill_required" required>
-						<option value="">Select a skill</option>
-						<option value="programming">Programming</option>
-						<option value="design">Design</option>
-						<option value="marketing">Marketing</option>
-						<option value="management">Management</option>
-						</select>
-						<span class="error"></span>
+					<label for="post_date">Skill required</label>
+					<input type="text" id="Skill_required" name="skill_required" placeholder="required Skill" required>
+						
 					</div>
 					
 				<div class="field">
@@ -96,8 +91,15 @@
 				<span class="error"></span>
 				</div>
 				<div class="field">
-					<label for="post_date">Job Type</label>
-					<input type="text" name="jobtype"  id="phone" placeholder="Part Time/Full Time" required>
+					<div class="field">
+						<label for="skill_required">Job Type</label>
+						<select id="skill_required"  name="jobtype" required>
+						<option value="">Select a jobtype</option>
+						<option value="programming">Full-Time</option>
+						<option value="design">Part-Time</option>
+						</select>
+						<span class="error"></span>
+					</div>
 					<span class="error"></span>
 					</div>
 

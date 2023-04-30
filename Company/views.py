@@ -118,7 +118,7 @@ def jobpost_data(request):
 def showjobpost(request):
     company = jobpost.objects.all()
     if request.method=="GET" :
-        cm=request.GET.get('jobsearch')
+        cm=request.GET.get('jobtitle')
         if cm!=None:
             company = jobpost.objects.filter(job_title=cm)
 

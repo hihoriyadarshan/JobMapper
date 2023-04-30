@@ -27,6 +27,18 @@
           box-shadow: 0 5px #666;
           transform: translateY(4px);
         }
+        select{
+          background-color: transparent;
+          outline: none;
+          font-size: 16px;
+          color: white;
+          {% comment %} border :none; {% endcomment %}
+          
+      }    
+      option{
+          background-color: black;
+          color: white;
+      } 
       </style>
 
     </head>                
@@ -41,9 +53,15 @@
         <li class="list"><a href="#contact" class="link">Contact</a></li>
         <li class="list"><a href="{% url 'showjob1' %}" class="link">job</a></li>  
         <li class="list"><a href="{% url 'showbloger_home' %}" class="link">Blog</a></li>
-        <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
+        {% comment %} <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
         <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
-        <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li>
+        <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li> {% endcomment %}
+        <li class="list"><select name="forma" onchange="location = this.value;">
+          <option value="" selected>Select your login</option>
+          <option value="{% url 'sign_up' %}">Login</option>
+          <option value="{% url 'companylogin' %}">Company</option>                
+          <option value="{% url 'adminlogin' %}">Admin</option>
+         </select></li> 
     </ul>
 </nav>
     <div class="header">

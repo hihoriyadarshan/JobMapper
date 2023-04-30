@@ -36,14 +36,14 @@ h1{
 
   <tr>
     <th>id</th>
-    <th>image</th>
+    <th>Profile</th>
     <th>Username</th>                  
     <th colspan="2" >E-mail</th>
     <th>Job</th>
     <th>Skill</th>
-    <th>Hobbies</th>
     <th>Phone</th>
-    {% comment %} <th scope="col">Address</th> {% endcomment %}
+    <th>Gender</th>
+    <th scope="col">Address</th>
   </tr>  
 
                 {% for user in users %}  
@@ -63,11 +63,11 @@ h1{
 
               <td>{{user.username}}</td>
               <td colspan="2">{{user.email}}</td>
-              <td>{{user.job}}</td>
               <td>{{user.skill}}</td>
               <td>{{user.hobbies}}</td>
               <td>{{user.phone}}</td>
-              {% comment %} <td>{{user.address}}</td> {% endcomment %}
+              <td>{{user.gender}}</td>
+              <td>{{user.address}}</td>
              </tr>
           {% endfor %}
         </tbody>
