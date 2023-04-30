@@ -195,8 +195,8 @@ def change_password(request):
         obj = get_object_or_404(Company, username = username1)
         
         result = check_password(old_pswd, obj.password)
-        if obj.companyname == 2 and result == True:
-        # if result == True:
+        # if obj.companyname == 2 and result == True:
+        if result == True:
         
             new_pswd = request.POST.get("new_password")
             cnfm_pswd = request.POST.get("cnfm_password")
@@ -207,7 +207,7 @@ def change_password(request):
                 obj.save()
                 
                 messages.success(request, "Password Changed successfully!")
-                return render(request,'company_change_pswd.html')
+                return render(request,'companyprofile.html')
             else :
                 messages.error(request, "New Password and Confirm Password doesn't match!")
                 return render(request, 'company_change_pswd.html')

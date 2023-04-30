@@ -57,7 +57,7 @@ def change_password1(request):
                 obj.save()
                 
                 messages.success(request, "Password Changed successfully!")
-                return render(request,'user_change_pswd.html')
+                return render(request,'userprofile.html')
             else :
                 messages.error(request, "New Password and Confirm Password doesn't match!")
                 return render(request, 'user_change_pswd.html')
