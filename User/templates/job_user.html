@@ -46,7 +46,7 @@
                 <div class="phone-number">Phone Number: {{company.phone}}</div>
                 <div class="last-date">Last Date to Apply: {{company.last_date}}</div>
                 <div class="description">Description: {{company.job_description}} </div>
-                <button class="apply-button"> <a href="{% url 'jobapply_form' company.job_id %}" >Apply Now</a></button>
+                <a href="{% url 'jobapply_form' company.job_id %}" class="apply-button" >Apply Now</a>
                 </div>
             </div>
             {% endfor %}

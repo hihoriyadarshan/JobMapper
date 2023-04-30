@@ -13,6 +13,8 @@
     box-sizing: border-box;
     font-family: var(--font-family);
     scroll-behavior: smooth;
+   
+    
 }
 
 
@@ -99,6 +101,8 @@
 .nav-list-container .list .link:hover::before{
     bottom: -8px;
 }
+
+   
 
 .home{
     position: relative;
