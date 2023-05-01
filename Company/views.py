@@ -1,48 +1,81 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponse
 from Company.forms import company_contactForm,jobpostForm
 from Company.models import company_contact,jobpost
 from django.core.paginator import Paginator
 from SignUp.models import Company
 from django.contrib.auth.hashers import make_password ,check_password
 from django.contrib import messages
-from administrator.models import Catagory
 import pandas as pd
-
-##
-from .resources import jobpostResource
-from tablib import Dataset
-
-def job_upload(request):
-    if request.method == "POST":
-        jobpost_Resource = jobpostResource
-        Dataset = Dataset()
-        new_jobpost = request.FILES['myfile']
-
-        if not new_jobpost.name.endswith('xlsx'):
-            messages.info(request,'wrong format')
-            return render (request,'upload.html')
-        
-        imported_data = Dataset.load(new_jobpost.read(),format='xlsx')
-        for data in imported_data:
-            value = job_post()
-            value = job_post(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                data[4],
-                data[5],
-                data[6],
-                data[7],
-                data[8],
-                data[9],
-            )
-            value.save()
-    
-    return render(request, 'upload.html')
+import io
+from django.urls import reverse
+from django.core.exceptions import ValidationError
+from django.db import IntegrityError
+import chardet
+from django.http import HttpResponse
 
 
+
+
+# """ Insert Games using CSV upload """
+def jobpost_csv_upload(request,companyname):
+    return HttpResponse(companyname)
+    context = Company.objects.get(companyname=companyname)
+    if request.method == 'POST' and request.FILES['file']:
+        uploaded_file = request.FILES['file']
+        file_name = uploaded_file.name
+        if file_name.endswith('.csv'):
+            # For CSV files, read the file directly
+            raw_data = uploaded_file.read()
+            # Detect the encoding of the file
+            file_encoding = chardet.detect(raw_data)['encoding']
+            # Decode the file using the detected encoding
+            decoded_data = raw_data.decode(file_encoding)
+            # Create a StringIO object for pandas to read from
+            file_stream = io.StringIO(decoded_data)
+            df = pd.read_csv(file_stream)
+        elif file_name.endswith('.xls') or file_name.endswith('.xlsx'):
+            # For Excel files, use pandas to read the file
+            df = pd.read_excel(io.BytesIO(uploaded_file.read()))
+        else:
+            messages.error(request, 'File is not a CSV or Excel file')
+            return render(request, "csvupload.html")
+
+        # Loop through each row in the DataFrame and create a new instance of YourModel
+        for index, row in df.iterrows():
+            # Check for any primary key or unique constraints
+            try:
+                obj = jobpost.objects.create(
+                    companyname            = row['companyname'],
+                    job_title              = row['job_title'],
+                    salary                 =row['salary'],
+                    experience_required    = row['experience_required'],
+                    jobtype                = row['jobtype'],
+                    skill_required         = row['skill_required'],
+                    education_level        = row['education_level'],
+                    last_date              = row['last_date'],
+                    job_description        = row['job_description'],
+
+
+
+                )
+            except ValidationError as e:
+                # Handle any validation errors
+                messages.error(request, f"Error creating object: {str(e)}")
+                return render(request, "csvupload.html",{'context' : context})
+                
+                # return redirect(reverse(jobpost_csv_upload),{'context' : context})
+            except IntegrityError as e:
+                # Handle any duplicate primary key or unique constraint errors
+                messages.error(request, f"Error creating object: {str(e)}")
+                return render(request, "csvupload.html")
+             
+                # return redirect(reverse(jobpost_csv_upload))
+        messages.success(request, 'CSV file uploaded successfully')
+        return render(request, "csvupload.html")
+    return render(request, "csvupload.html")
+
+        # return redirect(reverse(jobpost_csv_upload))
+    # return redirect(reverse(jobpost_csv_upload))
 
 
 
@@ -139,8 +172,7 @@ def jobpost_data(request):
         image = request.FILES['image']
         )
       
-        # data = jobpost.objects.all()
-        # request.session['job_title'] = data.job_title
+        
 
     
     return render (request, "jobpost.html")

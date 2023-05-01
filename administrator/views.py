@@ -41,6 +41,9 @@ def adminLTE(request):
 def writeblog(request):
     return render(request,'writeblog.html')
 
+def uploadcsv(request,companyname):
+    context = Company.objects.get(companyname=companyname)
+    return render(request,'uploadcsv.html',{'context':context})
 
 
 #blog

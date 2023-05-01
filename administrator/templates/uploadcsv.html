@@ -1,0 +1,6 @@
+<form action="jobpost_csv_upload company.companyname.companyname" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="file" name="file"  id="upload" required/>
+	<button class="upload-csv-btn btn btn-primary" type="submit">Upload CSV</button>
+	{{company.companyname.companyname}}
+</form>
