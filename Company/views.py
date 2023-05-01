@@ -6,7 +6,43 @@ from django.core.paginator import Paginator
 from SignUp.models import Company
 from django.contrib.auth.hashers import make_password ,check_password
 from django.contrib import messages
+from administrator.models import Catagory
 import pandas as pd
+
+##
+from .resources import jobpostResource
+from tablib import Dataset
+
+def job_upload(request):
+    if request.method == "POST":
+        jobpost_Resource = jobpostResource
+        Dataset = Dataset()
+        new_jobpost = request.FILES['myfile']
+
+        if not new_jobpost.name.endswith('xlsx'):
+            messages.info(request,'wrong format')
+            return render (request,'upload.html')
+        
+        imported_data = Dataset.load(new_jobpost.read(),format='xlsx')
+        for data in imported_data:
+            value = job_post()
+            value = job_post(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4],
+                data[5],
+                data[6],
+                data[7],
+                data[8],
+                data[9],
+            )
+            value.save()
+    
+    return render(request, 'upload.html')
+
+
 
 
 
@@ -117,10 +153,15 @@ def jobpost_data(request):
 #show job post 
 def showjobpost(request):
     company = jobpost.objects.all()
-    if request.method=="GET" :
+    if request.method=="GET":
+        pm=request.GET.get('education_level')
         cm=request.GET.get('jobtitle')
+        if pm!=None:
+            company = jobpost.objects.filter(education_level=pm)
         if cm!=None:
             company = jobpost.objects.filter(job_title=cm)
+            
+          
 
     p = Paginator(company, 5)
     page_number = request.GET.get('page')
@@ -214,3 +255,6 @@ def change_password(request):
         else:
             messages.error(request, "Old is password is not correct!")
             return render(request, 'company_change_pswd.html')
+        
+
+

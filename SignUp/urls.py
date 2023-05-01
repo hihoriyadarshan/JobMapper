@@ -49,6 +49,8 @@ urlpatterns = [
     path('showadmindashboard',views.showadmindashboard,name='showadmindashboard'),
     path('job1',views.job1,name='job1'),
 
+    
+
 
 
 

@@ -11,6 +11,10 @@ from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.contrib import messages
 from administrator.models import Catagory 
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.core.mail import send_mail
+import math, random
 # password hasing
 from django.contrib.auth.hashers import make_password ,check_password
 #loger
@@ -111,6 +115,25 @@ def sup(request):
         return render (request, "login.html")
     
     return HttpResponse('Fail')
+
+
+
+
+
+def generateOTP() :
+     digits = "0123456789"
+     OTP = ""
+     for i in range(6) :
+         OTP += digits[math.floor(random.random() * 10)]
+     return OTP
+
+def send_otp(request):
+     email=request.GET.get("email")
+     print(email)
+     o=generateOTP()
+     htmlgen = '<p>Your OTP is <strong>o</strong></p>'
+     send_mail('OTP request',o,'<your gmail id>',[email], fail_silently=False, html_message=htmlgen)
+     return HttpResponse(o)
 
 #user login
    

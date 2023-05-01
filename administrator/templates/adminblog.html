@@ -36,7 +36,7 @@
               <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
               <li class="user"><a href="{% url 'category' %}" class="btn btn--pill">category</a></li>
               <li class="user"><a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a></li>
-              <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li>
+              {% comment %} <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li> {% endcomment %}
               <li class="user"><a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill">Company Feedback</a></li>
               <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
               <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>

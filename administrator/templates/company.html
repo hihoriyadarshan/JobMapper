@@ -107,11 +107,12 @@
 
                     <th scope="col">id</th>
                     <th scope="col">image</th>
-                    <th scope="col">Company name</th>                  
+                    <th scope="col">Company name</th>
+                    <th scope="col">Company title</th>
+              
                     <th scope="col">Username</th>                  
                     <th scope="col">E-mail</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -133,6 +134,7 @@
                         </td>  
                        {% endif %}
                       <td>{{company.companyname}}</td>
+                      <th>{{company.job_title}}</td>
                       <td>{{company.username}}</td>
                       <td>{{company.email}}</td>
                       <td>{{company.phone}}</td>

@@ -18,6 +18,7 @@ def home(request):
 def jobapply_form(request,id):
     # return HttpResponse(id)
     j = jobpost.objects.get(job_id=id)
+    # return HttpResponse(j)
     return render(request,'apply.html',{'j': j })
 
 
