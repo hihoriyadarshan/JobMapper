@@ -337,7 +337,39 @@ def loginHandlecompany(request):
     else:
         form = companyForm()
         return render(request, template_name = "companylogin.html", context = {"form":form})
+
+# company bulk upload  
+def bulk_upload(request):
+    if request.method == 'GET':
+        return render(request, "bulkUpload.html")
     
+    csv_file = request.FILES['csv_file']
+    if not csv_file.name.endswith('.csv'):
+        return HttpResponse("File not valid")
+    if csv_file.multiple_chunks():
+        return HttpResponse("Uploaded file is big")
+    
+    file_data = csv_file.read().decode("UTF-8")
+    lines = file_data.split("\n")
+    c = len(lines)
+    for i in range(0, c-1):
+        fields = lines[i].split(",")
+        data_dict = {}
+        data_dict["username"] = fields[0]
+        data_dict["companyname"] = fields[1]
+        data_dict["phone"] = fields[2]
+        data_dict["email"] = fields[3]
+        data_dict["address"] = fields[4]
+        # data_dict["image"] = fields[1]
+        # data_dict["password"] = fields[1]
+
+
+        
+        form = companyForm(data_dict)
+        if form.is_valid():
+            form.save()
+    
+    return redirect("/showcompany")
 
 
 # delete company data

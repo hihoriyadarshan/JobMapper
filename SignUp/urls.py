@@ -48,6 +48,7 @@ urlpatterns = [
     # path('admin<id>',views.updateadmin,name='updateadmin'),
     path('showadmindashboard',views.showadmindashboard,name='showadmindashboard'),
     path('job1',views.job1,name='job1'),
+    path('bulk_upload',views.bulk_upload,name="bulk_upload"),
 
     
 

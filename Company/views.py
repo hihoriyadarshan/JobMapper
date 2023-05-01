@@ -61,7 +61,7 @@ def jobpost_csv_upload(request,companyname):
             except ValidationError as e:
                 # Handle any validation errors
                 messages.error(request, f"Error creating object: {str(e)}")
-                return render(request, "csvupload.html",{'context' : context})
+                return render(request, "csvupload.html")
                 
                 # return redirect(reverse(jobpost_csv_upload),{'context' : context})
             except IntegrityError as e:
