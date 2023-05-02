@@ -5,7 +5,8 @@
 <title>Job</title>
 <link rel="stylesheet" href="static/css/index.css"/>
 <link rel="stylesheet" href="static/css/job.css"/>
-<link rel="stylesheet" href="static/css/admin.css"/>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{% comment %} <link rel="stylesheet" href="static/css/admin.css"/> {% endcomment %}
 
 <style>
     select{
@@ -20,6 +21,55 @@
         background-color: black;
         color: white;
     }     
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        margin-right: 130px;
+        margin-top: -5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 300px;
+        outline: none;
+      }
+      
+      button[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        position:absolute;
+        right:625px;
+        width:5%;
+        margin-top: -5px;
+        padding: 21px;
+        cursor: pointer;
+        height:9.5%;
+        border-radius: 0 25px 25px 0;
+      }
+      
+      button[type="submit"] i {
+        font-size: 16px;
+      }
+      
+      /* Change color of search box and icon when focused */
+      input[type="text"]:focus, button[type="submit"]:focus {
+        outline: none;
+      }
+      
+      input[type="text"]:focus {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      
+      button[type="submit"]:focus {
+        background-color: #666;
+      }
     
     </style>
 </head>
@@ -27,28 +77,26 @@
     <nav class="navbar">
         <div class="logo">LOGO</div>
         <ul class="nav-list-container">
+              <div class="search-container">
+                <form method="get">
+                    <input type="text" placeholder="Search..." name="job_title">
+                  <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+                </form>
             <li class="list"><a href="{% url 'home_page'%}" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
             <li class="list"><a href="#contact" class="link">Contact</a></li>
             <li class="list"><a href="{% url 'showjob1' %}" class="link">job</a></li>  
             <li class="list"><a href="{% url 'showbloger_home' %}" class="link">Blog</a></li>
-            {% comment %} <li class="list"><a href="{% url 'companylogin'%}" class="link">Recruiter login</a></li>   
-            <li class="list"><a href="{% url 'adminlogin' %}" class="link">Admin Login</a></li>
-            <li class="list"><a href="{% url 'sign_up' %}" class="link">Login</a></li> {% endcomment %}
             <li class="list"><select name="forma" onchange="location = this.value;">
                 <option value="" selected>Select your login</option>
                 <option value="{% url 'sign_up' %}">Login</option>
                 <option value="{% url 'companylogin' %}">Company</option>                
                 <option value="{% url 'adminlogin' %}">Admin</option>
                </select></li> 
+             
         </ul>
     </nav>
-    <ul class="utilities">
-        <div class="search-container">
-          <form method="get">
-            <input type="text" placeholder="Search..." name="companysearch">
-            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
-          </form>
+        
 
       
             <div class="cart-container">
