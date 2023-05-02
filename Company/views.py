@@ -236,6 +236,10 @@ def showjob1(request):
 
 def showjob(request):
     productpage = jobpost.objects.all()
+    if request.method=="GET" :
+        us=request.GET.get('job_title')
+        if us!=None:
+            productpage = jobpost.objects.filter(job_title=us)
     p = Paginator(productpage, 5)
     page_number = request.GET.get('page')
     
