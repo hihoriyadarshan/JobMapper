@@ -282,3 +282,34 @@ def company_data1(request):
         b.save()
         return redirect("/showcompany")
     return HttpResponse('Fail')
+
+
+# bulk upload
+def bulk_upload2(request):
+    if request.method == 'GET':
+        return render(request, "bulkUploadcategory.html")
+    
+    csv_file = request.FILES['csv_file']
+    if not csv_file.name.endswith('.csv'):
+        return HttpResponse("File not valid")
+    if csv_file.multiple_chunks():
+        return HttpResponse("Uploaded file is big")
+    
+    file_data = csv_file.read().decode("UTF-8")
+    lines = file_data.split("\n")
+    c = len(lines)
+    for i in range(0, c-1):
+        fields = lines[i].split(",")
+        data_dict = {}
+        data_dict["id"] = fields[0]
+        data_dict["catagory_name"] = fields[1]
+        # data_dict["image"] = fields[1]
+        # data_dict["password"] = fields[1]
+
+
+        
+        form = categoryForm(data_dict)
+        if form.is_valid():
+            form.save()
+    
+    return redirect("/category")

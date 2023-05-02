@@ -26,6 +26,9 @@ urlpatterns = [
     path('admin_change_pswd',views.admin_change_pswd,name='admin_change_pswd'),
     path('change_password2',views.change_password2,name='change_password2'),
     path('uploadcsv',views.uploadcsv,name='uploadcsv'),
+
+    path('bulk_upload2',views.bulk_upload2,name="bulk_upload2"),
+
    
 
     

@@ -5,6 +5,8 @@
 <title>Job</title>
 <link rel="stylesheet" href="static/css/index.css"/>
 <link rel="stylesheet" href="static/css/job.css"/>
+<link rel="stylesheet" href="static/css/admin.css"/>
+
 <style>
     select{
         background-color: transparent;
@@ -41,6 +43,14 @@
                </select></li> 
         </ul>
     </nav>
+    <ul class="utilities">
+        <div class="search-container">
+          <form method="get">
+            <input type="text" placeholder="Search..." name="companysearch">
+            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+          </form>
+
+      
             <div class="cart-container">
                 {% for company in page_obj %} 
             <div class="cart-item">
