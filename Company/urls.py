@@ -10,7 +10,7 @@ urlpatterns = [
        path('showcompanyfeedback',views.showcompanyfeedback,name='showcompanyfeedback'),
        path('jobpost_data',views.jobpost_data,name='jobpost_data'),
        path('job_post',views.job_post,name='job_post'),
-       # path('job_post1',views.job_post1,name='job_post1'),
+       path('jobpost_datacsvdownload',views.jobpost_datacsvdownload,name='jobpost_datacsvdownload'),
 
        path('showjobpost',views.showjobpost,name='showjobpost'),      
       

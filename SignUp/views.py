@@ -464,7 +464,7 @@ def company_pdf_report(request):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
-# user_data csv download
+# company_data csv download
 def company_datacsvdownload(request):
     
     file_open = open("company_data.csv", "a")
@@ -478,9 +478,7 @@ def company_datacsvdownload(request):
 
 
 
-
 #Sub admin-add  
-
 def admin_data(request):  
     if request.method == "POST": 
         a = Admin_Log()
@@ -496,7 +494,6 @@ def admin_data(request):
 
 
 #admin login
-
 def loginHandleAdmin(request):
     
     if request.method == "POST":    
@@ -574,10 +571,6 @@ def cont(request):
     return render(request,'index.html',{'form':form})
 
 
-
-
-    
-
 #delte feedback
 
 def deletemessage(request,id):
@@ -586,6 +579,4 @@ def deletemessage(request,id):
     if request.method == "GET":
         obj.delete()
         return redirect("/showcontact")
-    return render(request, "feedback.html", context)
-   
-      
+    return render(request, "feedback.html", context)    

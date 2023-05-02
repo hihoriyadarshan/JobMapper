@@ -12,6 +12,8 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 import chardet
 from django.http import HttpResponse
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 
 
 
@@ -178,7 +180,17 @@ def jobpost_data(request):
     return render (request, "jobpost.html")
 
 
+# jobpost_data csv download
+def jobpost_datacsvdownload(request):
+    
+    file_open = open("jobpost_data.csv", "a")
 
+    for company in jobpost.objects.all():
+        file_open.write(str(company.job_id)+ "," +str(company.job_title)+ "," +str(company.jobtype)+ "," +str(company.education_level)+ "," +str(company.skill_required)+ "," +str(company.experience_required)+ "," +str(company.salary)+ "," +str(company.companyname.companyname)
+ +  "\n")
+    
+    messages.success(request, "File downloaded successfully!")
+    return redirect("/showjobpost")
 
 
 
