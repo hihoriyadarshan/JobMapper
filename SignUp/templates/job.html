@@ -31,12 +31,12 @@
       input[type="text"] {
         padding: 10px;
         border: none;
-        border-radius: 25px;
+        border-radius: 0px;
         font-size: 16px;
         margin-right: 130px;
         margin-top: -5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        width: 300px;
+        width: 574px;
         outline: none;
       }
       
@@ -51,17 +51,30 @@
         padding: 21px;
         cursor: pointer;
         height:9.5%;
-        border-radius: 0 25px 25px 0;
+        border-radius: 0;
       }
       
       button[type="submit"] i {
-        font-size: 16px;
+        font-size: 26px;
       }
       
       /* Change color of search box and icon when focused */
       input[type="text"]:focus, button[type="submit"]:focus {
         outline: none;
       }
+      .bx {
+        font-family: boxicons!important;
+        font-weight: 400;
+        font-style: normal;
+        font-variant: normal;
+        line-height: 0;
+        text-rendering: auto;
+        display: inline-block;
+        text-transform: none;
+        speak: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
       
       input[type="text"]:focus {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -115,7 +128,7 @@
                 <div class="field">Field: IT</div>
                 <div class="company-name">Company: {{company.companyname.companyname}}</div>
                 <div class="job-title">Job : {{ company.job_title}}</div>
-                <div class="location">Location: {{company.location}}</div>
+                <div class="location">Location: {{company.companyname.address}}</div>
                 <div class="salary">Salary: {{company.salary}}</div>
                 <div class="email">Email: {{ company.companyname.email}}</div>
             </div>

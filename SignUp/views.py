@@ -207,6 +207,7 @@ def deleteuser(request,id):
 def showuser(request):
     users = SignUp.objects.all()
     user_count = SignUp.objects.all().count()
+    
     if request.method=="GET" :
         us=request.GET.get('usersearch')
         if us!=None:

@@ -15,29 +15,29 @@
         </hgroup>
         <form action="user_jobapply" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="hidden" name="job_id" value="{{ j.job_id}}" />
+            <input type="text" name="job_id" value="{{ job.job_id }}" />
         
             <div class="group"> 
-            <label>Upload CV</label>
+                <label>Upload CV</label>
             </div>
             <div class="group">
-            <input type="File" name="resume"><span class="highlight"></span><span class="bar"></span>
+                <input type="File" name="resume"><span class="highlight"></span><span class="bar"></span>
             </div>    
             <div class="group">
-            <input type="text" name="name" required><span class="highlight"></span><span class="bar"></span>
-            <label>Name</label>
+                <input type="text" name="name" required><span class="highlight"></span><span class="bar"></span>
+                <label>Name</label>
             </div>
             <div class="group">
-            <input type="email" name="email" required><span class="highlight"></span><span class="bar"></span>
-            <label>Email</label>
+                <input type="email" name="email" required><span class="highlight"></span><span class="bar"></span>
+                <label>Email</label>
             </div>
             <div class="group">
-            <input type="number" name="phone"><span class="highlight"></span><span class="bar"></span>
-            <label>Phone</label>
+                <input type="number" name="phone"><span class="highlight"></span><span class="bar"></span>
+                <label>Phone</label>
             </div>
-           
+                   
             <button type="submit" class="button buttonBlue">Apply job
-            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
             </button>
         </form>
     

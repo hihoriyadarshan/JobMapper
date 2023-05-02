@@ -5,12 +5,84 @@
 <title>Job</title>
 <link rel="stylesheet" href="static/css/index.css"/>
 <link rel="stylesheet" href="static/css/job.css"/>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+<style>
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        border: none;
+        border-radius: 0px;
+        font-size: 16px;
+        margin-right: 130px;
+        margin-top: -5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 574px;
+        outline: none;
+      }
+      
+      button[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        position:absolute;
+        right:594px;
+        width:5%;
+        margin-top: -5px;
+        padding: 21px;
+        cursor: pointer;
+        height:9.5%;
+        border-radius: 0;
+      }
+      
+      button[type="submit"] i {
+        font-size: 26px;
+      }
+      
+      /* Change color of search box and icon when focused */
+      input[type="text"]:focus, button[type="submit"]:focus {
+        outline: none;
+      }
+      .bx {
+        font-family: boxicons!important;
+        font-weight: 400;
+        font-style: normal;
+        font-variant: normal;
+        line-height: 0;
+        text-rendering: auto;
+        display: inline-block;
+        text-transform: none;
+        speak: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+      
+      input[type="text"]:focus {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      
+      button[type="submit"]:focus {
+        background-color: #666;
+      }
+    
+    </style>
+</style>    
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">LOGO</div>
         <ul class="nav-list-container">
+             <div class="search-container">
+                <form method="get">
+                    <input type="text" placeholder="Search..." name="job_title">
+                  <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+                </form>
             <li class="list"><a href="{% url 'home' %}" class="link">Home</a></li>
             <li class="list"><a href="#about-us" class="link">About</a></li>
             <li class="list"><a href="#contact" class="link">Contact</a></li>
@@ -46,7 +118,7 @@
                 <div class="phone-number">Phone Number: {{company.companyname.phone}}</div>
                 <div class="last-date">Last Date to Apply: {{company.last_date}}</div>
                 <div class="description">Description: {{company.job_description}} </div>
-                
+                {% comment %} <a href="{% url 'jobapply_form' company.job_id %}">Apply for this job</a> {% endcomment %}
                 <button class="apply-button"> <a href="{% url 'jobapply_form' company.job_id %}" >Apply Now</a></button>
                 
             </div>
