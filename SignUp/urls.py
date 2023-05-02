@@ -19,7 +19,7 @@ urlpatterns = [
     path('logout',views.logout,name='logout'),
     path('cont',views.cont,name='contact_data'),
     path('feedback',views.feedback,name='feedback'),
-    path('showcontact',views.showcontact,name='showcontact'),
+   
     path('deletemessage<id>',views.deletemessage,name='deletemessage'),
     path('comapanyhomepage',views.companyhomepage,name='comapanyhomepage'),
     path('user',views.user,name='user'),
