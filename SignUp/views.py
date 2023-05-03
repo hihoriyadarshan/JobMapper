@@ -281,7 +281,7 @@ def user_datacsvdownload(request):
  + "," +str(user.skill)+ "," +str(user.phone)+ "\n")
     
     messages.success(request, "File downloaded successfully!")
-    return render(request, "user.html")
+    return redirect("/user_datacsvdownload")
 
  
 
@@ -474,7 +474,7 @@ def company_datacsvdownload(request):
  +  "\n")
     
     messages.success(request, "File downloaded successfully!")
-    return render(request, "company.html")
+    return redirect( "/showcompany")
 
 
 
