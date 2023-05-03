@@ -56,13 +56,31 @@
 					</div>
 					<div class="field-group">
 						
+
 						<div class="field">
-							<label for="post_date">Education level</label>
-							<input type="text" placeholder="B.sc /M.sc" name="education_level"  id="phone" required>
-						
+							<div class="field">
+								<label for="skill_required">Education level </label>
+								<select id="skill_required"  name="education_level" required>
+								<option value="">Select a Education level </option>
+								<option value="programming">B.sc-IT</option>
+								<option value="design">B.tech</option>
+								<option value="design">B.com</option>
+								<option value="design">B.A</option>
+								<option value="design">M.tech</option>
+								<option value="design">M.sc-IT</option>
+								<option value="design">M.com</option>
+								<option value="design">Diploma</option>
+
+
+								</select>
+								<span class="error"></span>
+							</div>
 							<span class="error"></span>
-						</div> 
-						
+							</div>
+
+
+
+
 							<div class="field">
 									<label for="experience_required">Experience Required</label>
 									<input type="number" id="experience_required" name="experience_required" placeholder="in year" required>
@@ -70,12 +88,25 @@
 							</div>
 		
 					</div>
+					
 					<div class="field-group">
 					<div class="field">
-					<label for="post_date">Skill required</label>
-					<input type="text" id="Skill_required" name="skill_required" placeholder="required Skill" required>
-						
-					</div>
+						<div class="field">
+							<label for="skill_required">Skill required</label>
+							<select id="skill_required"  name="skill_required" required>
+							<option value="">Select a Skill required</option>
+							<option value="programming">programming</option>
+							<option value="design">Design</option>
+							<option value="design">Sales</option>
+							<option value="design">Markating</option>
+							<option value="design">Typing</option>
+							<option value="design">other</option>
+
+							</select>
+							<span class="error"></span>
+						</div>
+						<span class="error"></span>
+						</div>
 					
 				<div class="field">
 				<label for="post_date">last date</label>
@@ -97,6 +128,7 @@
 						<option value="">Select a jobtype</option>
 						<option value="programming">Full-Time</option>
 						<option value="design">Part-Time</option>
+						<option value="design">Freelancing</option>
 						</select>
 						<span class="error"></span>
 					</div>
@@ -116,6 +148,7 @@
 				</div>
 				</div>
 				</div>
+				
 
 				<script>
 	// form validation
@@ -227,7 +260,10 @@ clearFieldError(companyLocation);
 		field.nextElementSibling.textContent = "";
 		field.classList.remove("invalid");
 	}
+
+
 </script>
+
 </body>
 </html>
 
