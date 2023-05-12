@@ -374,8 +374,8 @@ def bulk_upload(request):
         data_dict["phone"] = fields[2]
         data_dict["email"] = fields[3]
         data_dict["address"] = fields[4]
-        # data_dict["image"] = fields[1]
-        # data_dict["password"] = fields[1]
+        data_dict["image"] = fields[5]
+        data_dict["password"] = fields[6]
 
 
         
