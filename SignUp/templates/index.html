@@ -88,42 +88,69 @@ option{
 
     <!-- contact section Start -->
 
-    <form action="cont" method="POST">
+    <form name="contactForm" action="cont" method="POST" onsubmit="return validateForm()">
         {% csrf_token %}
-    <div class="contact" id="contact">
-        <div class="contact-box">
-            <div class="contact-box-img">
-                <img src="static/images/contact-1-720x480.jpg" alt="Contact-us-image" />
-            </div>
-            
-            <div class="contact-form" id="contactform">
-                <h1 class="title-contact-form">Contact us</h1>
-                <div class="inputBox">
-                    <div class="col-2">
-                        <label for="fullname">fullname:</label>
-                        <input type="text" id="fullname" name="name" placeholder="your name..." class="name">
-                    </div>
-                    <div class="col-2">
-                        <label for="e-mail">email:</label>
-                        <input type="e-mail" id="e-mail" name="email" placeholder="your email..."/>
-                    </div>
-                    <div class="col-2">
-                        <label for="textarea">message:</label>
-                        <textarea placeholder="write your message here..." id="textarea" name="message" rows="10"></textarea>
-                    </div>
-
-                    <div class="col-2">
-                        <label></label>
-                        <button class="submit">Send message</button>
+        <div class="contact" id="contact">
+            <div class="contact-box">
+                <div class="contact-box-img">
+                    <img src="static/images/contact-1-720x480.jpg" alt="Contact-us-image" />
+                </div>
+                <div class="contact-form" id="contactform">
+                    <h1 class="title-contact-form">Contact us</h1>
+                    <div class="inputBox">
+                        <div class="col-2">
+                            <label for="fullname">fullname:</label>
+                            <input type="text" id="fullname" name="name" placeholder="your name..." class="name" />
+                        </div>
+                        <div class="col-2">
+                            <label for="e-mail">email:</label>
+                            <input type="email" id="e-mail" name="email" placeholder="your email..." />
+                        </div>
+                        <div class="col-2">
+                            <label for="textarea">message:</label>
+                            <textarea placeholder="write your message here..." id="textarea" name="message" rows="10"></textarea>
+                        </div>
+                        <div class="col-2">
+                            <label></label>
+                            <button class="submit">Send message</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-    </div>
-</form>
+    </form>
 
 </body>
 </html>
+
+<script type="text/javascript">
+    function validateForm() {
+        var name = document.forms["contactForm"]["name"].value;
+        var email = document.forms["contactForm"]["email"].value;
+        var message = document.forms["contactForm"]["message"].value;
+
+        if (name === "") {
+            alert("Please enter your name");
+            return false;
+        }
+
+        if (email === "") {
+            alert("Please enter your email address");
+            return false;
+        }
+
+        // Regular expression to check for a valid email format
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!email.match(emailRegex)) {
+            alert("Please enter a valid email address");
+            return false;
+        }
+
+        if (message === "") {
+            alert("Please enter your feedback message");
+            return false;
+        }
+
+        return true;
+    }
+</script>
