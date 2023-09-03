@@ -1,70 +1,138 @@
 {% load static%}
 <html>
-    <head>
-        <title>Admin Panel</title>
-        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
-    </head>
-    <body>
-        <header role="banner">
-            <h1>Admin Panel</h1>
-            <ul class="utilities">
-              <br>
-              
-              <li class="users"><a href= "adminprofile">My Account</a></li>
-              <li class="users"><a href="admin_signup">Registration</a></li>
+  <head>
+    <title>Admin Panel</title>
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all" />
+  </head>
+  <body>
+    <header role="banner">
+      <h1>Admin Panel</h1>
+      <ul class="utilities">
+        <br />
 
-              
-              
-              <li class="logout warn"><a href="logout">Log Out</a></li>
-            </ul>
-          </header>
-                  
-        <nav role='navigation'>
-            <ul class="main">
-              <li class="dashboard"><a href="showadmindashboard" class="btn btn--pill">Admin LTE</a></li>
-              <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
-              <li class="user"><a href="{% url 'writeblog' %}" class="btn btn--pill">write Blog</a></li>
-              <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
-              <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
-              <li class="user"><a href="{% url 'category' %}" class="btn btn--pill">category</a></li>
-              <li class="user"><a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a></li>
-              {% comment %} <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li> {% endcomment %}
-              <li class="user"><a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill">Company Feedback</a></li>
-              <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
-              <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
-              <li><a href="{% url 'admin_change_pswd' %}">change password</a></li>
-            </ul>
-          </nav>   
-              <main role="main">      
-                    <section class="panel important">
-                     
-                      <ul>
-                     <center>   <li style="font-size:40px;">Change Password</li> </center>
-                      </ul>
-                    </section>
-                    
-                    <section class="panel important">
-                                 
-                <form action="change_password2" method="post">
-                        {% csrf_token %}
-                        <div class="twothirds">
-            
-                        <input type="hidden" name="username1" value="{{request.session.username}}" size="40"/><br/><br/>
-            
-                         Old Password :<br/> 
-                        <input type="password" name="password" size="40"/><br/><br/>
-            
-                          New Password :<br/>
-                         <input type="password" name="new_password" size="40"/><br/><br/>
-            
-                          Confirm New Password :<br/>
-                        <input type="password" name="cnfm_password" size="40"/><br/><br/>
-            
-                        <input type="submit" name="submit" value="Save" />
-            
-                    </div>
-                </form>
-           </section>
-       </main>              
-   </body>
+        <li class="users"><a href="adminprofile">My Account</a></li>
+        <li class="users"><a href="admin_signup">Registration</a></li>
+
+        <li class="logout warn"><a href="logout">Log Out</a></li>
+      </ul>
+    </header>
+
+    <nav role="navigation">
+      <ul class="main">
+        <li class="dashboard">
+          <a href="showadmindashboard" class="btn btn--pill">Admin LTE</a>
+        </li>
+        <li class="user">
+          <a href="{% url 'showadmindashboard' %}" class="btn btn--pill"
+            >Dashboard
+          </a>
+        </li>
+        <li class="user">
+          <a href="{% url 'writeblog' %}" class="btn btn--pill">write Blog</a>
+        </li>
+        <li class="user">
+          <a href="{% url 'showuser' %}" class="btn btn--pill">User </a>
+        </li>
+        <li class="user">
+          <a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a>
+        </li>
+        <li class="user">
+          <a href="{% url 'category' %}" class="btn btn--pill">category</a>
+        </li>
+        <li class="user">
+          <a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a>
+        </li>
+        {% comment %}
+        <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li>
+        {% endcomment %}
+        <li class="user">
+          <a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill"
+            >Company Feedback</a
+          >
+        </li>
+        <li class="user">
+          <a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a>
+        </li>
+        <li class="user">
+          <a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a>
+        </li>
+        <li><a href="{% url 'admin_change_pswd' %}">change password</a></li>
+      </ul>
+    </nav>
+    <main role="main">
+      <section class="panel important">
+        <ul>
+          <center><li style="font-size: 40px">Change Password</li></center>
+        </ul>
+      </section>
+
+      <section class="panel important">
+        <form
+          name="passwordForm"
+          action="change_password2"
+          method="post"
+          onsubmit="return validateForm()"
+        >
+          {% csrf_token %}
+          <div class="twothirds">
+            <input
+              type="hidden"
+              name="username1"
+              value="{{request.session.username}}"
+              size="40"
+            /><br /><br />
+
+            Old Password:<br />
+            <input type="password" name="password" size="40" /><br /><br />
+
+            New Password:<br />
+            <input type="password" name="new_password" size="40" /><br /><br />
+
+            Confirm New Password:<br />
+            <input type="password" name="cnfm_password" size="40" /><br /><br />
+
+            <input type="submit" name="submit" value="Change Password" />
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
+
+<script type="text/javascript">
+  function validateForm() {
+    var oldPassword = document.forms["passwordForm"]["password"].value;
+    var newPassword = document.forms["passwordForm"]["new_password"].value;
+    var confirmPassword = document.forms["passwordForm"]["cnfm_password"].value;
+
+    if (oldPassword === "" || newPassword === "" || confirmPassword === "") {
+      alert("All fields must be filled out");
+      return false;
+    }
+
+    if (newPassword.length < 8) {
+      alert("New password must be at least 8 characters long");
+      return false;
+    }
+
+    // Regular expression to check for at least one special character
+    var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+    if (!specialCharRegex.test(newPassword)) {
+      alert("New password must contain at least one special character");
+      return false;
+    }
+
+    if (newPassword === oldPassword) {
+      alert("Password changed unsuccessfully");
+      return false;
+    }
+
+    if (newPassword !== confirmPassword) {
+      alert("new password and confirmPassword not matched");
+      return true;
+    }
+
+    alert("Password changed successfully");
+    return true;
+  }
+</script>
