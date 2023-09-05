@@ -53,23 +53,59 @@
         </style>   
     </head>
 </body>    
-	      <form action="change_password" method="post">
-            <center> <h2>Change Password</h2>  </center>
-            {% csrf_token %}
-            <div class="twothirds">
+<form name="passwordForm" action="change_password" method="post" onsubmit="return validateForm();">
+  <center><h2>Change Password</h2></center>
+  {% csrf_token %}
+  <div class="twothirds">
+      <input type="hidden" name="username1" value="{{request.session.username}}" size="40" /><br/><br/>
 
-	            <input type="hidden" name="username1" value="{{request.session.username}}" size="40"/><br/><br/>
+      Old Password:<br/>
+      <input type="password" name="password" size="40" /><br/><br/>
 
-                Old Password :<br/> 
-	            <input type="password" name="password" size="40"/><br/><br/>
+      New Password:<br/>
+      <input type="password" name="new_password" size="40" /><br/><br/>
 
-                New Password :<br/>
-	            <input type="password" name="new_password" size="40"/><br/><br/>
+      Confirm New Password:<br/>
+      <input type="password" name="cnfm_password" size="40" /><br/><br/>
 
-                Confirm New Password :<br/>
-	            <input type="password" name="cnfm_password" size="40"/><br/><br/>
+      <input type="submit" name="submit" value="Save" />
+  </div>
+</form>
 
-	            <input type="submit" name="submit" value="Save" />
-
-	        </div>
-	      </form>
+        <script type="text/javascript">
+          function validateForm() {
+            var oldPassword = document.forms["passwordForm"]["password"].value;
+            var newPassword = document.forms["passwordForm"]["new_password"].value;
+            var confirmPassword = document.forms["passwordForm"]["cnfm_password"].value;
+        
+            if (oldPassword === "" || newPassword === "" || confirmPassword === "") {
+              alert("All fields must be filled out");
+              return false;
+            }
+        
+            if (newPassword.length < 8) {
+              alert("New password must be at least 8 characters long");
+              return false;
+            }
+        
+            // Regular expression to check for at least one special character
+            var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+            if (!specialCharRegex.test(newPassword)) {
+              alert("New password must contain at least one special character");
+              return false;
+            }
+        
+            if (newPassword === oldPassword) {
+              alert("old password is not correct");
+              return false;
+            }
+        
+            if (newPassword !== confirmPassword) {
+              alert("new password and confirmPassword not matched");
+              return true;
+            }
+        
+            alert("Password changed successfully");
+            return true;
+          }
+        </script>

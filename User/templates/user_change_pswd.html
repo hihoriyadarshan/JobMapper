@@ -54,45 +54,69 @@
     </head>
 
 </body>    
-
-	      <form action="change_password1" class="form" method="post">
-           <center> <h2 style="bolder:500">Change Password</h2> </center>
-            {% csrf_token %}
-            <div class="twothirds">
-
-	            <input type="hidden" name="username1"  value="{{request.session.username}}" size="40"/><br/><br/>
-
-                Old Password :<br/> 
-	            <input type="password" name="password"  id="current-password"  size="40"/><br/><br/>
-
-                New Password :<br/>
-	            <input type="password" name="new_password"  id="new-password" size="40"/><br/><br/>
-
-                Confirm New Password :<br/>
-	            <input type="password" name="cnfm_password"  id="confirm-password" size="40"/><br/><br/>
-
-	            <input type="submit" name="submit" value="Save" />
-
-	        </div>
-	      </form>
-
-<script>
-const form = document.getElementById("change-password-form");
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
+        <form name="passwordForm" action="change_password1" class="form" method="post" onsubmit="return validateForm();">
+          <center><h2 style="font-weight: bold;">Change Password</h2></center>
+          {% csrf_token %}
+          <div class="twothirds">
+              <input type="hidden" name="username1" value="{{request.session.username}}" size="40" /><br /><br />
   
-  const currentPassword = document.getElementById("current-password").value;
-  const newPassword = document.getElementById("new-password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
+              Old Password:<br />
+              <input type="password" name="password" id="current-password" size="40" /><br /><br />
   
-  if (newPassword !== confirmPassword) {
-    alert("New password and confirm password do not match");
-    return;
-  }
+              New Password:<br />
+              <input type="password" name="new_password" id="new-password" size="40" /><br /><br />
   
-  // code to change password
-});
-</script>
+              Confirm New Password:<br />
+              <input type="password" name="cnfm_password" id="confirm-password" size="40" /><br /><br />
+  
+              <input type="submit" name="submit" value="Save" />
+          </div>
+      </form>
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+          function validateForm() {
+            var oldPassword = document.forms["passwordForm"]["password"].value;
+            var newPassword = document.forms["passwordForm"]["new_password"].value;
+            var confirmPassword = document.forms["passwordForm"]["cnfm_password"].value;
+        
+            if (oldPassword === "" || newPassword === "" || confirmPassword === "") {
+              alert("All fields must be filled out");
+              return false;
+            }
+        
+            if (newPassword.length < 8) {
+              alert("New password must be at least 8 characters long");
+              return false;
+            }
+        
+            // Regular expression to check for at least one special character
+            var specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+            if (!specialCharRegex.test(newPassword)) {
+              alert("New password must contain at least one special character");
+              return false;
+            }
+        
+            if (newPassword === oldPassword) {
+              alert("old password is not correct");
+              return false;
+            }
+        
+            if (newPassword !== confirmPassword) {
+              alert("new password and confirmPassword not matched");
+              return true;
+            }
+        
+            alert("Password changed successfully");
+            return true;
+          }
+        </script>
 </body>
 </html>
