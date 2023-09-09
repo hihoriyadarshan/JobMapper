@@ -1,45 +1,90 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'css/apply.css' %}" rel="stylesheet" media="all">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static 'css/apply.css' %}" rel="stylesheet" media="all" />
+
+    <script>
+      function validateForm() {
+        var name = document.forms["jobApplyForm"]["name"].value;
+        var email = document.forms["jobApplyForm"]["email"].value;
+        var resume = document.forms["jobApplyForm"]["resume"].value;
+
+        if (name === "") {
+          alert("Name must be filled out");
+          return false;
+        }
+
+        if (!isValidEmail(email)) {
+          alert("Invalid email address");
+          return false;
+        }
+
+        if (resume === "") {
+          alert("Please upload your CV");
+          return false;
+        }
+      }
+
+      function isValidEmail(email) {
+        // You can add a regular expression for email validation here
+        // Example: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+        return true; // Replace with your email validation logic
+      }
+    </script>
 
     <title>Document</title>
-</head>
-<body>
-        <hgroup>
-            <h1>Apply Job</h1>
-        </hgroup>
-        <form action="user_jobapply" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="hidden" name="job_id" value="{{ job.job_id }}" />
-        
-            <div class="group"> 
-                <label>Upload CV</label>
-            </div>
-            <div class="group">
-                <input type="File" name="resume"><span class="highlight"></span><span class="bar"></span>
-            </div>    
-            <div class="group">
-                <input type="text" name="name" required><span class="highlight"></span><span class="bar"></span>
-                <label>Name</label>
-            </div>
-            <div class="group">
-                <input type="email" name="email" required><span class="highlight"></span><span class="bar"></span>
-                <label>Email</label>
-            </div>
-            <div class="group">
-                <input type="number" name="phone"><span class="highlight"></span><span class="bar"></span>
-                <label>Phone</label>
-            </div>
-                   
-            <button type="submit" class="button buttonBlue">Apply job
-                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-            </button>
-        </form>
-    
-</body>
+  </head>
+  <body>
+    <hgroup>
+      <h1>Apply Job</h1>
+    </hgroup>
+    <form
+      name="jobApplyForm"
+      action="user_jobapply"
+      method="POST"
+      enctype="multipart/form-data"
+      onsubmit="return validateForm()"
+    >
+      {% csrf_token %}
+      <input type="hidden" name="job_id" value="{{ job.job_id }}" />
+
+      <div class="group">
+        <label>Upload CV</label>
+      </div>
+      <div class="group">
+        <input type="file" name="resume" required /><span
+          class="highlight"
+        ></span
+        ><span class="bar"></span>
+      </div>
+      <div class="group">
+        <input type="text" name="name" required /><span class="highlight"></span
+        ><span class="bar"></span>
+        <label>Name</label>
+      </div>
+      <div class="group">
+        <input type="email" name="email" required /><span
+          class="highlight"
+        ></span
+        ><span class="bar"></span>
+        <label>Email</label>
+      </div>
+      <div class="group">
+        <input type="number" name="phone" /><span class="highlight"></span
+        ><span class="bar"></span>
+        <label>Phone</label>
+      </div>
+
+      <button type="submit" class="button buttonBlue">
+        Apply job
+        <div class="ripples buttonRipples">
+          <span class="ripplesCircle"></span>
+        </div>
+      </button>
+    </form>
+  </body>
 </html>

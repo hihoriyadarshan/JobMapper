@@ -1,117 +1,94 @@
 {% load static %}
 <html>
-    <head>
-        <title>Blog</title>
-        <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-      
-      </head>
-      <body style="background-color: #e9eaef;">
-        <header role="banner">
-            <h1>Admin Panel</h1>
-            <ul class="utilities">
-              <div class="search-container">
-                <form method="get">
-                  <input type="text" placeholder="Search..." name="usersearch">
-                  <button type="submit"><i class='bx bx-search-alt-2'></i></button>
-                </form>
-                <br>
-              <li class="users"><a href="adminprofile">My Account</a></li>
-              <li><a href="{% url 'admin_change_pswd' %}">change password</a></li>    
-              <li class="logout warn"><a href="logout">Log Out</a></li>
-                </ul>
-              </header>
-          
-              </div>
-            </ul>
-          </header>
-          
-          <nav role='navigation'>
-            <ul class="main">
-              <li class="dashboard"><a href="showadmindashboard" class="btn btn--pill">Admin LTE</a></li>
-              <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
-              <li class="user"><a href="{% url 'writeblog' %}" class="btn btn--pill">write Blog</a></li>
-              <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
-              <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
-              <li class="user"><a href="{% url 'category' %}" class="btn btn--pill">category</a></li>
-              <li class="user"><a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a></li>
-              {% comment %} <li class="user"><a href="#" class="btn btn--pill">Apply Job</a></li> {% endcomment %}
-              <li class="user"><a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill">Company Feedback</a></li>
-              <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
-              <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
-              <li><a href="{% url 'admin_change_pswd' %}">change password</a></li>
-            </ul>
-          </nav>
-          
-          <main role="main">
-            
-            <section class="panel important">
-              <div class="add">
-                <center><h2>Blog</center></h2>
-            
-           
-              
-              <section class="panel important">
-              <tabel class="table" style="font-size: 30px;">
-                <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Blog title</th>
-                    <th scope="col">Blog image</th>
-                    <th scope="col">Blog Date</th>
-                    <th scope="col">Blog</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for blog in blogs %} 
-                  <tr>
-                      <th scope="row">{{blog.id}}</th>
-                      <td>{{blog.title}}</td>
-                      <div class="image-box">
-                        {% if blog.image.url %}
-                        <td>
-                          <img src="{{ blog.image }}"  alt="" class="prod-size" height="50px" width="50px">
-                        </td>
+<head>
+    <title>Blog</title>
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body style="background-color: #e9eaef;">
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+
+        <li class="users"><a href="adminprofile">My Account</a></li>
+        <li><a href="{% url 'admin_change_pswd' %}">Change Password</a></li>
+        <li class="logout warn"><a href="logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="showadmindashboard" class="btn btn--pill">Admin LTE</a></li>
+        <li class="user"><a href="{% url 'showadmindashboard' %}" class="btn btn--pill">Dashboard </a></li>
+        <li class="user"><a href="{% url 'writeblog' %}" class="btn btn--pill">Write Blog</a></li>
+        <li class="user"><a href="{% url 'showuser' %}" class="btn btn--pill">User </a></li>
+        <li class="user"><a href="{% url 'showcompany' %}" class="btn btn--pill">Company</a></li>
+        <li class="user"><a href="{% url 'category' %}" class="btn btn--pill">Category</a></li>
+        <li class="user"><a href="{% url 'showjobpost' %}" class="btn btn--pill">Post Job</a></li>
+        <li class="user"><a href="{%url 'showcompanyfeedback' %}" class="btn btn--pill">Company Feedback</a></li>
+        <li class="user"><a href="{% url 'feedback' %}" class="btn btn--pill">Feedback</a></li>
+        <li class="user"><a href="{% url 'adminblog' %}" class="btn btn--pill">Blog</a></li>
+        <li><a href="{% url 'admin_change_pswd' %}">Change Password</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+    <section class="panel important">
+        <div class="add">
+            <center><h2>Blog</h2></center>
+        </div>
+    </section>
+
+    <section class="panel important">
+        <table class="table" style="font-size: 30px;">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Blog title</th>
+                <th scope="col">Blog image</th>
+                <th scope="col">Blog Date</th>
+                <th scope="col">Blog</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for blog in blogs %}
+            <tr>
+                <th scope="row">{{ blog.id }}</th>
+                <td>{{ blog.title }}</td>
+                <td>
+                    <div class="image-box">
+                        {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="" class="prod-size" height="50px" width="50px">
                         {% else %}
-                        <td>
-                          <img src="{{ blog.image.url }}"  alt="" class="prod-size">
-                          </td>  
-                        {% endif %}      
-                      </div>
-                      <td>{{blog.blogdate}}</td>
-                      <td>{{blog.message}}</td>
-                      <td>
-                        <button class="btn btn-danger btn-sm rounded-0"  type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
-                        <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'updateblog' blog.id %}"</a><i class="fa fa-edit" style="color:white"></i></button>
-                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deleteblog' blog.id %}"><i class="fa fa-trash" style="color:white"></i></button>
-                      </td> 
-                     
-                      {% comment %} <td><a href="" class="btn btn-daanger btn-sm ">delete</a></td> {% endcomment %}
-                  </tr>
-                  {% endfor %}
-
-                  
-                </tbody>
-            </div>
-            </table>  
-            <center>
-              {%if page_obj.has_previous %} {# whether the previous page exists #}
-                  <a href="?page={{page_obj.previous_page_number}}"><</a> {# link to the prev page #}
-              {% endif %}
-              <span>{{page_obj.number}}</span> {# the current page number #}
-              
-              {%if page_obj.has_next %} {# whether the next page exists #}
-                  <a href="?page={{page_obj.next_page_number}}">></a> {# link to the next page #}
-              {% endif %}
-          </center>
-            </section>
-              
-            </section>
-          </main>
-    </body>
+                        <!-- Handle the case when there is no image -->
+                        No Image Available
+                        {% endif %}
+                    </div>
+                </td>
+                <td>{{ blog.blogdate }}</td>
+                <td>{{ blog.message }}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-eye" style="color:white"></i></button>
+                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a href="{% url 'updateblog' blog.id %}"></a><i class="fa fa-edit" style="color:white"></i></button>
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a href="{% url 'deleteblog' blog.id %}"><i class="fa fa-trash" style="color:white"></i></button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <center>
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"><</a>
+            {% endif %}
+            <span>{{ page_obj.number }}</span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">></a>
+            {% endif %}
+        </center>
+    </section>
+</main>
+</body>
 </html>
-
-  
